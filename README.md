@@ -1,7 +1,7 @@
-CwsBounceMail
-=============
+CwsBounceMailHandler
+====================
 
-CwsBounceMail is a PHP toolkit : (CwsBounceMail and CwsBounceMailRules) forked from [PHPMailer-BMH (Bounce Mail Handler) v5.0.0rc1](http://phpmailer.codeworxtech.com) by Andy Prevost to help webmasters handle bounce-back mails in standard DSN (Delivery Status Notification, RFC-1894).
+CwsBounceMailHandler is a PHP toolkit : (CwsBounceMailHandler and CwsBounceMailHandlerRules) forked from [PHPMailer-BMH (Bounce Mail Handler) v5.0.0rc1](http://phpmailer.codeworxtech.com) by Andy Prevost to help webmasters handle bounce-back mails in standard DSN (Delivery Status Notification, RFC-1894).
 It checks your IMAP/POP3 inbox and delete all 'hard' bounced emails.
 A result var is available to process custom post-actions.
 
@@ -9,7 +9,7 @@ Installation
 ------------
 
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension.
-* Copy the ``class.cws.bouncemail.php`` and ``class.cws.bouncemail.rules.php`` files in a folder on your server.
+* Copy the ``class.cws.bouncemailhandler.php`` and ``class.cws.bouncemailhandler.rules.php`` files in a folder on your server.
 * You can use the sample ``index.php`` file to help you.
 
 Options
