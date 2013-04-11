@@ -1,9 +1,9 @@
 <?php
 
 /**
- * CwsBounceMailHandler
+ * CwsMailBounceHandler
  *
- * CwsBounceMailHandler is a PHP toolkit : (CwsBounceMailHandler and CwsBounceMailHandlerRules)
+ * CwsMailBounceHandler is a PHP toolkit : (CwsMailBounceHandler and CwsMailBounceHandlerRules)
  * forked from PHPMailer-BMH (Bounce Mail Handler) v5.0.0rc1 at
  * http://phpmailer.codeworxtech.com by Andy Prevost to help webmasters
  * handle bounce-back mails in standard DSN (Delivery Status Notification, RFC-1894).
@@ -22,45 +22,45 @@
  *
  * Please see the GNU General Public License at http://www.gnu.org/licenses/.
  *
- * @package CwsBounceMailHandler
+ * @package CwsMailBounceHandler
  * @author Cr@zy
  * @copyright 2013, Cr@zy
  * @license GPL licensed
  * @version 1.0
- * @link https://github.com/crazy-max/CwsBounceMailHandler
+ * @link https://github.com/crazy-max/CwsMailBounceHandler
  *
  */
 
-define('CWSBMH_BOUNCE_ANTISPAM',        'antispam');
-define('CWSBMH_BOUNCE_AUTOREPLY',       'autoreply');
-define('CWSBMH_BOUNCE_CONCURRENT',      'concurrent');
-define('CWSBMH_BOUNCE_CONTENT_REJECT',  'content_reject');
-define('CWSBMH_BOUNCE_COMMAND_REJECT',  'command_reject');
-define('CWSBMH_BOUNCE_INTERNAL_ERROR',  'internal_error');
-define('CWSBMH_BOUNCE_DEFER',           'defer');
-define('CWSBMH_BOUNCE_DELAYED',         'delayed');
-define('CWSBMH_BOUNCE_DNS_LOOP',        'dns_loop');
-define('CWSBMH_BOUNCE_DNS_UNKNOWN',     'dns_unknown');
-define('CWSBMH_BOUNCE_FULL',            'full');
-define('CWSBMH_BOUNCE_INACTIVE',        'inactive');
-define('CWSBMH_BOUNCE_LATIN_ONLY',      'latin_only');
-define('CWSBMH_BOUNCE_OTHER',           'other');
-define('CWSBMH_BOUNCE_OVERSIZE',        'oversize');
-define('CWSBMH_BOUNCE_OUT_OF_OFFICE',   'outofoffice');
-define('CWSBMH_BOUNCE_UNKNOWN',         'unknown');
-define('CWSBMH_BOUNCE_UNRECOGNIZED',    'unrecognized');
-define('CWSBMH_BOUNCE_USER_REJECT',     'user_reject');
-define('CWSBMH_BOUNCE_WARNING',         'warning');
+define('CWSMBH_BOUNCE_ANTISPAM',        'antispam');
+define('CWSMBH_BOUNCE_AUTOREPLY',       'autoreply');
+define('CWSMBH_BOUNCE_CONCURRENT',      'concurrent');
+define('CWSMBH_BOUNCE_CONTENT_REJECT',  'content_reject');
+define('CWSMBH_BOUNCE_COMMAND_REJECT',  'command_reject');
+define('CWSMBH_BOUNCE_INTERNAL_ERROR',  'internal_error');
+define('CWSMBH_BOUNCE_DEFER',           'defer');
+define('CWSMBH_BOUNCE_DELAYED',         'delayed');
+define('CWSMBH_BOUNCE_DNS_LOOP',        'dns_loop');
+define('CWSMBH_BOUNCE_DNS_UNKNOWN',     'dns_unknown');
+define('CWSMBH_BOUNCE_FULL',            'full');
+define('CWSMBH_BOUNCE_INACTIVE',        'inactive');
+define('CWSMBH_BOUNCE_LATIN_ONLY',      'latin_only');
+define('CWSMBH_BOUNCE_OTHER',           'other');
+define('CWSMBH_BOUNCE_OVERSIZE',        'oversize');
+define('CWSMBH_BOUNCE_OUT_OF_OFFICE',   'outofoffice');
+define('CWSMBH_BOUNCE_UNKNOWN',         'unknown');
+define('CWSMBH_BOUNCE_UNRECOGNIZED',    'unrecognized');
+define('CWSMBH_BOUNCE_USER_REJECT',     'user_reject');
+define('CWSMBH_BOUNCE_WARNING',         'warning');
 
-define('CWSBMH_BOUNCE_TYPE_NULL',        null);
-define('CWSBMH_BOUNCE_TYPE_BLOCKED',     'blocked');
-define('CWSBMH_BOUNCE_TYPE_AUTOREPLY',   'autoreply');
-define('CWSBMH_BOUNCE_TYPE_SOFT',        'soft');
-define('CWSBMH_BOUNCE_TYPE_HARD',        'hard');
-define('CWSBMH_BOUNCE_TYPE_TEMPORARY',   'temporary');
-define('CWSBMH_BOUNCE_TYPE_GENERIC',     'generic');
+define('CWSMBH_BOUNCE_TYPE_NULL',        null);
+define('CWSMBH_BOUNCE_TYPE_BLOCKED',     'blocked');
+define('CWSMBH_BOUNCE_TYPE_AUTOREPLY',   'autoreply');
+define('CWSMBH_BOUNCE_TYPE_SOFT',        'soft');
+define('CWSMBH_BOUNCE_TYPE_HARD',        'hard');
+define('CWSMBH_BOUNCE_TYPE_TEMPORARY',   'temporary');
+define('CWSMBH_BOUNCE_TYPE_GENERIC',     'generic');
 
-class CwsBounceMailHandlerRules
+class CwsMailBounceHandlerRules
 {
     /**
      * Defines new line ending
@@ -83,105 +83,105 @@ class CwsBounceMailHandlerRules
      */
     private $_rules_cats = array
     (
-        CWSBMH_BOUNCE_ANTISPAM => array
+        CWSMBH_BOUNCE_ANTISPAM => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_BLOCKED,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_BLOCKED,
         ),
-        CWSBMH_BOUNCE_AUTOREPLY => array
+        CWSMBH_BOUNCE_AUTOREPLY => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_AUTOREPLY,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_AUTOREPLY,
         ),
-        CWSBMH_BOUNCE_CONCURRENT => array
+        CWSMBH_BOUNCE_CONCURRENT => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_CONTENT_REJECT => array
+        CWSMBH_BOUNCE_CONTENT_REJECT => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_COMMAND_REJECT => array
+        CWSMBH_BOUNCE_COMMAND_REJECT => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_HARD,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_HARD,
         ),
-        CWSBMH_BOUNCE_INTERNAL_ERROR => array
+        CWSMBH_BOUNCE_INTERNAL_ERROR => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_TEMPORARY,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_TEMPORARY,
         ),
-        CWSBMH_BOUNCE_DEFER => array
+        CWSMBH_BOUNCE_DEFER => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_DELAYED => array
+        CWSMBH_BOUNCE_DELAYED => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_TEMPORARY,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_TEMPORARY,
         ),
-        CWSBMH_BOUNCE_DNS_LOOP => array
+        CWSMBH_BOUNCE_DNS_LOOP => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_HARD,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_HARD,
         ),
-        CWSBMH_BOUNCE_DNS_UNKNOWN => array
+        CWSMBH_BOUNCE_DNS_UNKNOWN => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_HARD,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_HARD,
         ),
-        CWSBMH_BOUNCE_FULL => array
+        CWSMBH_BOUNCE_FULL => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_INACTIVE => array
+        CWSMBH_BOUNCE_INACTIVE => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_HARD,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_HARD,
         ),
-        CWSBMH_BOUNCE_LATIN_ONLY => array
+        CWSMBH_BOUNCE_LATIN_ONLY => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_OTHER => array
+        CWSMBH_BOUNCE_OTHER => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_GENERIC,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_GENERIC,
         ),
-        CWSBMH_BOUNCE_OVERSIZE => array
+        CWSMBH_BOUNCE_OVERSIZE => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_OUT_OF_OFFICE => array
+        CWSMBH_BOUNCE_OUT_OF_OFFICE => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
-        CWSBMH_BOUNCE_UNKNOWN => array
+        CWSMBH_BOUNCE_UNKNOWN => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_HARD,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_HARD,
         ),
-        CWSBMH_BOUNCE_UNRECOGNIZED => array
+        CWSMBH_BOUNCE_UNRECOGNIZED => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_NULL,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_NULL,
         ),
-        CWSBMH_BOUNCE_USER_REJECT => array
+        CWSMBH_BOUNCE_USER_REJECT => array
         (
             'remove'         => true,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_HARD,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_HARD,
         ),
-        CWSBMH_BOUNCE_WARNING => array
+        CWSMBH_BOUNCE_WARNING => array
         (
             'remove'         => false,
-            'bounce_type'    => CWSBMH_BOUNCE_TYPE_SOFT,
+            'bounce_type'    => CWSMBH_BOUNCE_TYPE_SOFT,
         ),
     );
     
@@ -508,7 +508,7 @@ class CwsBounceMailHandlerRules
             echo $this->_newline;
         }
         
-        if ($result['rule_no'] != '0000' && $result['bounce_type'] === CWSBMH_BOUNCE_TYPE_NULL) {
+        if ($result['rule_no'] != '0000' && $result['bounce_type'] === CWSMBH_BOUNCE_TYPE_NULL) {
             $result['bounce_type'] = $this->_rules_cats[$result['rule_cat']]['bounce_type'];
             $result['remove']      = $this->_rules_cats[$result['rule_cat']]['remove'];
         }
@@ -603,7 +603,7 @@ class CwsBounceMailHandlerRules
             echo '<strong>DSN Message:</strong> ' . $this->_newline . $dsn_msg . $this->_newline;
         }
         
-        if ($result['rule_no'] != '0000' && $result['bounce_type'] === CWSBMH_BOUNCE_TYPE_NULL) {
+        if ($result['rule_no'] != '0000' && $result['bounce_type'] === CWSMBH_BOUNCE_TYPE_NULL) {
             $result['bounce_type'] = $this->_rules_cats[$result['rule_cat']]['bounce_type'];
             $result['remove'] = $this->_rules_cats[$result['rule_cat']]['remove'];
         }

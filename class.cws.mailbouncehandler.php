@@ -1,9 +1,9 @@
 <?php
 
 /**
- * CwsBounceMailHandler
+ * CwsMailBounceHandler
  *
- * CwsBounceMailHandler is a PHP toolkit : (CwsBounceMailHandler and CwsBounceMailHandlerRules)
+ * CwsMailBounceHandler is a PHP toolkit : (CwsMailBounceHandler and CwsMailBounceHandlerRules)
  * forked from PHPMailer-BMH (Bounce Mail Handler) v5.0.0rc1 at
  * http://phpmailer.codeworxtech.com by Andy Prevost to help webmasters
  * handle bounce-back mails in standard DSN (Delivery Status Notification, RFC-1894).
@@ -22,29 +22,29 @@
  * 
  * Please see the GNU General Public License at http://www.gnu.org/licenses/.
  *
- * @package CwsBounceMailHandler
+ * @package CwsMailBounceHandler
  * @author Cr@zy
  * @copyright 2013, Cr@zy
  * @license GPL licensed
  * @version 1.0
- * @link https://github.com/crazy-max/CwsBounceMailHandler
+ * @link https://github.com/crazy-max/CwsMailBounceHandler
  *
  */
 
-define('CWSBMH_VERBOSE_QUIET',  0); // means no output at all
-define('CWSBMH_VERBOSE_SIMPLE', 1); // means only output simple report
-define('CWSBMH_VERBOSE_REPORT', 2); // means output a detail report
-define('CWSBMH_VERBOSE_DEBUG',  3); // means output detail report as well as debug info.
+define('CWSMBH_VERBOSE_QUIET',  0); // means no output at all
+define('CWSMBH_VERBOSE_SIMPLE', 1); // means only output simple report
+define('CWSMBH_VERBOSE_REPORT', 2); // means output a detail report
+define('CWSMBH_VERBOSE_DEBUG',  3); // means output detail report as well as debug info.
 
-define('CWSBMH_CERT_NOVALIDATE', 'novalidate-cert'); // do not validate certificates from TLS/SSL server
-define('CWSBMH_CERT_VALIDATE',   'validate-cert');   // validate certificates from TLS/SSL server (default behavior)
+define('CWSMBH_CERT_NOVALIDATE', 'novalidate-cert'); // do not validate certificates from TLS/SSL server
+define('CWSMBH_CERT_VALIDATE',   'validate-cert');   // validate certificates from TLS/SSL server (default behavior)
 
-require_once('class.cws.bouncemailhandler.rules.php');
+require_once('class.cws.mailbouncehandler.rules.php');
 
-class CwsBounceMailHandler extends CwsBounceMailHandlerRules
+class CwsMailBounceHandler extends CwsMailBounceHandlerRules
 {
     /**
-     * CwsBounceMailHandler version.
+     * CwsMailBounceHandler version.
      * @var string
      */
     public $version = "1.0";
@@ -91,10 +91,10 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
     
     /**
      * Control certificates validation if service_option is 'tls' or 'ssl'.
-     * default CWSBMH_CERT_NOVALIDATE
+     * default CWSMBH_CERT_NOVALIDATE
      * @var string
      */
-    public $cert = CWSBMH_CERT_NOVALIDATE;
+    public $cert = CWSMBH_CERT_NOVALIDATE;
     
     /**
      * Control the method to process the mail header.
@@ -170,10 +170,10 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
     
     /**
      * Control the debug output.
-     * default CWSBMH_VERBOSE_SIMPLE
+     * default CWSMBH_VERBOSE_SIMPLE
      * @var int
      */
-    public $debug_verbose = CWSBMH_VERBOSE_SIMPLE;
+    public $debug_verbose = CWSMBH_VERBOSE_SIMPLE;
 
     /**
      * If true, it will disable the delete function.
@@ -247,7 +247,7 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
      * @param string $msg : if not given, output the last error msg
      * @param string $verbose_level : the output level of this message
      */
-    private function output($msg=false, $verbose_level=CWSBMH_VERBOSE_SIMPLE, $newline=true)
+    private function output($msg=false, $verbose_level=CWSMBH_VERBOSE_SIMPLE, $newline=true)
     {
         if ($this->debug_verbose >= $verbose_level) {
             if (empty($msg)) {
@@ -267,7 +267,7 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
      */
     public function openRemote()
     {
-        $this->output('<h2>Init openRemote</h2>', CWSBMH_VERBOSE_SIMPLE, false);
+        $this->output('<h2>Init openRemote</h2>', CWSMBH_VERBOSE_SIMPLE, false);
         
         // disable move operations if server is Gmail ... Gmail does not support mailbox creation
         if (stristr($this->host,'gmail')) {
@@ -302,7 +302,7 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
      */
     public function openLocal($file_path)
     {
-        $this->output('<h2>Init openLocal</h2>', CWSBMH_VERBOSE_SIMPLE, false);
+        $this->output('<h2>Init openLocal</h2>', CWSMBH_VERBOSE_SIMPLE, false);
         
         set_time_limit(6000);
         
@@ -325,7 +325,7 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
      */
     public function processMailbox($max=false)
     {
-        $this->output('<h2>Init processMailbox</h2>', CWSBMH_VERBOSE_SIMPLE, false);
+        $this->output('<h2>Init processMailbox</h2>', CWSMBH_VERBOSE_SIMPLE, false);
         
         if (!$this->_handler) {
             $this->error_msg = '<strong>Mailbox not opened</strong>';
@@ -390,12 +390,12 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
                     $processed = $this->processBounce($x, 'DSN');
                 } else {
                     // not standard DSN msg
-                    $this->output('<strong>Msg #' .    $x . '</strong> is not a standard DSN message', CWSBMH_VERBOSE_REPORT);
-                    if ($this->debug_verbose == CWSBMH_VERBOSE_DEBUG) {
+                    $this->output('<strong>Msg #' .    $x . '</strong> is not a standard DSN message', CWSMBH_VERBOSE_REPORT);
+                    if ($this->debug_verbose == CWSMBH_VERBOSE_DEBUG) {
                         if ($structure->ifdescription) {
-                            $this->output('<strong>Content-Type:</strong> {' . $structure->description . '}', CWSBMH_VERBOSE_DEBUG);
+                            $this->output('<strong>Content-Type:</strong> {' . $structure->description . '}', CWSMBH_VERBOSE_DEBUG);
                         } else {
-                            $this->output('<strong>Content-Type:</strong> unsupported', CWSBMH_VERBOSE_DEBUG);
+                            $this->output('<strong>Content-Type:</strong> unsupported', CWSMBH_VERBOSE_DEBUG);
                         }
                     }
                     $processed = $this->processBounce($x, 'BODY');
@@ -408,17 +408,17 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
                         $processed = $this->processBounce($x, 'DSN');
                     } else {
                         // not standard DSN msg
-                        $this->output('<strong>Msg #' . $x . '</strong> is not a standard DSN message', CWSBMH_VERBOSE_REPORT);
-                        if ($this->debug_verbose == CWSBMH_VERBOSE_DEBUG) {
-                            $this->output('<strong>Content-Type:</strong> {' . $match[1] . '}', CWSBMH_VERBOSE_DEBUG);
+                        $this->output('<strong>Msg #' . $x . '</strong> is not a standard DSN message', CWSMBH_VERBOSE_REPORT);
+                        if ($this->debug_verbose == CWSMBH_VERBOSE_DEBUG) {
+                            $this->output('<strong>Content-Type:</strong> {' . $match[1] . '}', CWSMBH_VERBOSE_DEBUG);
                         }
                         $processed = $this->processBounce($x, 'BODY');
                     }
                 } else {
                     // didn't get content-type header
-                    $this->output('<strong>Msg #' . $x . '</strong> is not a well-formatted MIME mail, missing Content-Type', CWSBMH_VERBOSE_REPORT);
-                    if ($this->debug_verbose == CWSBMH_VERBOSE_DEBUG) {
-                        $this->output('<strong>Headers:</strong> ' . $this->_newline . $header . $this->_newline, CWSBMH_VERBOSE_DEBUG);
+                    $this->output('<strong>Msg #' . $x . '</strong> is not a well-formatted MIME mail, missing Content-Type', CWSMBH_VERBOSE_REPORT);
+                    if ($this->debug_verbose == CWSMBH_VERBOSE_DEBUG) {
+                        $this->output('<strong>Headers:</strong> ' . $this->_newline . $header . $this->_newline, CWSMBH_VERBOSE_DEBUG);
                     }
                     $processed = $this->processBounce($x, 'BODY');
                 }
@@ -459,7 +459,7 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
             flush();
         }
         
-        $this->output('<h2>End of process</h2>', CWSBMH_VERBOSE_SIMPLE, false);
+        $this->output('<h2>End of process</h2>', CWSMBH_VERBOSE_SIMPLE, false);
         $this->output('Closing mailbox, and purging messages');
         imap_close($this->_handler);
         
@@ -475,22 +475,22 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
         $this->result['resume']['deleted'] = $c_deleted;
         $this->result['resume']['moved'] = $c_moved;
         
-        $this->output('<h2>$result</h2>', CWSBMH_VERBOSE_REPORT, false);
+        $this->output('<h2>$result</h2>', CWSMBH_VERBOSE_REPORT, false);
         if (!empty($this->result)) {
-            $this->output('<h3>resume</h3>', CWSBMH_VERBOSE_REPORT, false);
+            $this->output('<h3>resume</h3>', CWSMBH_VERBOSE_REPORT, false);
             foreach ($this->result['resume'] as $key => $value) {
-                $this->output('<strong>' . $key . '</strong> => ' . $value, CWSBMH_VERBOSE_REPORT);
+                $this->output('<strong>' . $key . '</strong> => ' . $value, CWSMBH_VERBOSE_REPORT);
             }
-            $this->output('<h3>msgs</h3>', CWSBMH_VERBOSE_REPORT, false);
+            $this->output('<h3>msgs</h3>', CWSMBH_VERBOSE_REPORT, false);
             if (!empty($this->result['msgs'])) {
                 foreach ($this->result['msgs'] as $msg) {
                     foreach ($msg as $key => $value) {
-                        $this->output('<strong>' . $key . '</strong> => ' . $value, CWSBMH_VERBOSE_REPORT);
+                        $this->output('<strong>' . $key . '</strong> => ' . $value, CWSMBH_VERBOSE_REPORT);
                     }
-                    $this->output('&nbsp;', CWSBMH_VERBOSE_REPORT);
+                    $this->output('&nbsp;', CWSMBH_VERBOSE_REPORT);
                 }
             } else {
-                $this->output('empty', CWSBMH_VERBOSE_REPORT);
+                $this->output('empty', CWSMBH_VERBOSE_REPORT);
             }
         }
         
@@ -524,14 +524,14 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
             $dsn_report = imap_fetchbody($this->_handler, $pos, "2");
             
             // process bounces by DSN rules
-            $rulesResult = $this->processDSNRules($pos, $dsn_msg, $dsn_report, $this->debug_verbose == CWSBMH_VERBOSE_DEBUG);
+            $rulesResult = $this->processDSNRules($pos, $dsn_msg, $dsn_report, $this->debug_verbose == CWSMBH_VERBOSE_DEBUG);
         } elseif ($type == 'BODY') {
             $structure = imap_fetchstructure($this->_handler, $pos);
             switch ($structure->type) {
                 case 0:
                     // Content-type = text
                     $body = imap_fetchbody($this->_handler, $pos, "1");
-                    $rulesResult = $this->processBodyRules($pos, $body, $structure, $this->debug_verbose == CWSBMH_VERBOSE_DEBUG);
+                    $rulesResult = $this->processBodyRules($pos, $body, $structure, $this->debug_verbose == CWSMBH_VERBOSE_DEBUG);
                     break;
                 case 1:
                     // Content-type = multipart
@@ -543,7 +543,7 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
                     } elseif ($structure->parts[0]->encoding == 3) {
                         $body = base64_decode($body);
                     }
-                    $rulesResult = $this->processBodyRules($pos, $body, $structure, $this->debug_verbose == CWSBMH_VERBOSE_DEBUG);
+                    $rulesResult = $this->processBodyRules($pos, $body, $structure, $this->debug_verbose == CWSMBH_VERBOSE_DEBUG);
                     break;
                 case 2:
                     // Content-type = message
@@ -554,11 +554,11 @@ class CwsBounceMailHandler extends CwsBounceMailHandlerRules
                         $body = base64_decode($body);
                     }
                     $body = substr($body, 0, 1000);
-                    $rulesResult = $this->processBodyRules($pos, $body, $structure, $this->debug_verbose == CWSBMH_VERBOSE_DEBUG);
+                    $rulesResult = $this->processBodyRules($pos, $body, $structure, $this->debug_verbose == CWSMBH_VERBOSE_DEBUG);
                     break;
                 default:
                     // Unsupport Content-type
-                    $this->output('Msg #' . $pos . ' is unsupported Content-Type:' . $structure->type, CWSBMH_VERBOSE_REPORT);
+                    $this->output('Msg #' . $pos . ' is unsupported Content-Type:' . $structure->type, CWSMBH_VERBOSE_REPORT);
                     return false;
             }
         } else {
