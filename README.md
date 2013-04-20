@@ -4,7 +4,6 @@ CwsMailBounceHandler
 CwsMailBounceHandler is a PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
 It checks your IMAP/POP3 inbox or eml files and delete or move all 'hard' bounced emails.
 If a bounce is malformed, it tries to extract some useful information to parse status.
-A result array is available to process custom post-actions.
 
 Installation
 ------------
@@ -12,6 +11,13 @@ Installation
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
 * Copy the ``class.cws.mbh.php`` file in a folder on your server.
 * You can use the ``index.php`` file sample and the eml files in the emls directory to help you.
+
+Post-process
+------------
+
+A result array is available to process custom post-actions :
+
+![](http://static.crazyws.fr/resources/blog/2013/04/mail-bounce-handler-php-result.png)
 
 Options
 -------
