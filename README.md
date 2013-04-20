@@ -47,8 +47,3 @@ Public methods :
 * **openImapRemote** - Open a remote mail box.
 * **processMailbox** - Process the messages in a mailbox.
 * **findStatusExplanationsByCode** - Get explanations from DSN status code via the RFC 1893.
-
-More infos
-----------
-
-http://www.crazyws.fr/gaming/hlsw-portable-QTIQT.html
