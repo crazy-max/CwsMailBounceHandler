@@ -1,16 +1,17 @@
 CwsMailBounceHandler
 ====================
 
-CwsMailBounceHandler is a PHP toolkit : (CwsMailBounceHandler and CwsMailBounceHandlerRules) forked from [PHPMailer-BMH (Bounce Mail Handler) v5.0.0rc1](http://phpmailer.codeworxtech.com) by Andy Prevost to help webmasters handle bounce-back mails in standard DSN (Delivery Status Notification, RFC-1894).
-It checks your IMAP/POP3 inbox and delete all 'hard' bounced emails.
-A result var is available to process custom post-actions.
+CwsMailBounceHandler is a PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
+It checks your IMAP/POP3 inbox or eml files and delete or move all 'hard' bounced emails.
+If a bounce is malformed, it tries to extract some useful information to parse status.
+A result array is available to process custom post-actions.
 
 Installation
 ------------
 
-* Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension.
-* Copy the ``class.cws.mailbouncehandler.php`` and ``class.cws.mailbouncehandler.rules.php`` files in a folder on your server.
-* You can use the sample ``index.php`` file to help you.
+* Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
+* Copy the ``class.cws.mbh.php`` file in a folder on your server.
+* You can use the ``index.php`` file sample and the eml files in the emls directory to help you.
 
 Options
 -------
@@ -24,12 +25,12 @@ Public vars :
 * **service** - Defines service, choice includes 'pop3' and 'imap'.
 * **service_option** - Defines service option, choices are 'none', 'notls', 'tls', 'ssl'.
 * **cert** - Control certificates validation if service_option is 'tls' or 'ssl'.
-* **use_fetchstructure** - Control the method to process the mail header.
+* **open_mode** - Control the method to open e-mail(s).
 * **boxname** - Mailbox type, other choices are Tasks, Spam, Replies, etc.
-* **move_soft** - Determines if soft bounces will be moved to another mailbox folder.
-* **boxname_soft** - Mailbox folder to move soft bounces to.
-* **move_hard** - Determines if hard bounces will be moved to another mailbox folder. NOTE: If true, this will disable delete and perform a move operation instead.
-* **boxname_hard** - Mailbox folder to move hard bounces to.
+* **move_soft** - Determines if soft bounces will be moved to another mailbox or folder.
+* **boxname_soft** - Mailbox or folder to move soft bounces to.
+* **move_hard** - Determines if hard bounces will be moved to another mailbox or folder. NOTE: If true, this will disable delete and perform a move operation instead.
+* **boxname_hard** - Mailbox or folder to move hard bounces to.
 * **max_messages** - Maximum limit messages processed in one batch.
 * **error_msg** - The last error message.
 * **test_mode** - Test mode, if true will not delete messages.
@@ -40,6 +41,14 @@ Public vars :
 
 Public methods :
 
-* **openRemote** - Open a remote mail box.
-* **openLocal** - Open a mail box in local file system.
+* **openFolder** - Open a folder containing eml files on your system.
+* **openFile** - Open an eml file on your system.
+* **openImapLocal** - Open a mail box in local file system.
+* **openImapRemote** - Open a remote mail box.
 * **processMailbox** - Process the messages in a mailbox.
+* **findStatusExplanationsByCode** - Get explanations from DSN status code via the RFC 1893.
+
+More infos
+----------
+
+http://www.crazyws.fr/gaming/hlsw-portable-QTIQT.html
