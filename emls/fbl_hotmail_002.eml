@@ -1,0 +1,85 @@
+Return-Path: <MAILER-DAEMON>
+Delivered-To: bounces@crazyws.fr
+Received: by ns.crazyws.fr (Postfix)
+	id 3D06D1E3E084; Thu, 18 Apr 2013 12:33:22 +0200 (CEST)
+Date: Thu, 18 Apr 2013 12:33:22 +0200 (CEST)
+From: MAILER-DAEMON@ns.crazyws.fr (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: bounces@crazyws.fr
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="140B41E3E07C.1366281202/ns.crazyws.fr"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20130418103322.3D06D1E3E084@ns.crazyws.fr>
+
+This is a MIME-encapsulated message.
+
+--140B41E3E07C.1366281202/ns.crazyws.fr
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host ns.crazyws.fr.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<sdfsdqfdsf67657657@hotmail.com>: host mx1.hotmail.com[65.54.188.110] said: 550
+    Requested action not taken: mailbox unavailable (in reply to RCPT TO
+    command)
+
+--140B41E3E07C.1366281202/ns.crazyws.fr
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; ns.crazyws.fr
+X-Postfix-Queue-ID: 140B41E3E07C
+X-Postfix-Sender: rfc822; bounces@crazyws.fr
+Arrival-Date: Thu, 18 Apr 2013 12:33:21 +0200 (CEST)
+
+Final-Recipient: rfc822; sdfsdqfdsf67657657@hotmail.com
+Original-Recipient: rfc822;sdfsdqfdsf67657657@hotmail.com
+Action: failed
+Status: 5.0.0
+Remote-MTA: dns; mx1.hotmail.com
+Diagnostic-Code: smtp; 550 Requested action not taken: mailbox unavailable
+
+--140B41E3E07C.1366281202/ns.crazyws.fr
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+
+Return-Path: <bounces@crazyws.fr>
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by ns.crazyws.fr (Postfix) with ESMTP id 140B41E3E07C
+	for <sdfsdqfdsf67657657@hotmail.com>; Thu, 18 Apr 2013 12:33:21 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at ns.crazyws.fr
+Received: from ns.crazyws.fr ([127.0.0.1])
+	by localhost (ns.crazyws.fr [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L9JzsXwREwdp for <sdfsdqfdsf67657657@hotmail.com>;
+	Thu, 18 Apr 2013 12:33:19 +0200 (CEST)
+Received: by ns.crazyws.fr (Postfix, from userid 5012)
+	id DC4501E3E082; Thu, 18 Apr 2013 12:33:18 +0200 (CEST)
+To: <sdfsdqfdsf67657657@hotmail.com>
+Subject: Test
+X-PHP-Originating-Script: 5012:main.inc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Thu, 18 Apr 2013 12:33:18 +0200
+From: bounces@crazyws.fr
+Message-ID: <3f7de537215f8b4bc52e34cfb831406e@crazyws.fr>
+X-Sender: bounces@crazyws.fr
+User-Agent: Roundcube Webmail/RCMAIL_VERSION
+
+dsfsdfdsf
+
+--140B41E3E07C.1366281202/ns.crazyws.fr--
