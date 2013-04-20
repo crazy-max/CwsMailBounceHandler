@@ -47,3 +47,8 @@ Public methods :
 * **openImapRemote** - Open a remote mail box.
 * **processMailbox** - Process the messages in a mailbox.
 * **findStatusExplanationsByCode** - Get explanations from DSN status code via the RFC 1893.
+
+More infos
+----------
+
+http://www.crazyws.fr/dev/classes-php/classe-de-gestion-des-bounces-en-php-C72TG.html

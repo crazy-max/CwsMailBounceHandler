@@ -20,6 +20,8 @@
  * details.
  * 
  * Please see the GNU General Public License at http://www.gnu.org/licenses/.
+ * 
+ * Related post: http://goo.gl/Wrq8J
  *
  * @package CwsMailBounceHandler
  * @author Cr@zy
