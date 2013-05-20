@@ -4,7 +4,7 @@ include('class.cws.mbh.php');
 
 $cwsMailBounceHandler = new CwsMailBounceHandler();
 $cwsMailBounceHandler->test_mode            = true;                  // default false
-$cwsMailBounceHandler->debug_verbose        = CWSMBH_VERBOSE_DEBUG;  // default CWSMBH_VERBOSE_SIMPLE
+$cwsMailBounceHandler->debug_verbose        = CWSMBH_VERBOSE_DEBUG;  // default CWSMBH_VERBOSE_QUIET
 //$cwsMailBounceHandler->purge              = false;                 // default false
 //$cwsMailBounceHandler->disable_delete     = false;                 // default false
 //$cwsMailBounceHandler->open_mode          = CWSMBH_OPEN_MODE_IMAP; // default CWSMBH_OPEN_MODE_IMAP

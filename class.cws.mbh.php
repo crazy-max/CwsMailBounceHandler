@@ -27,7 +27,7 @@
  * @author Cr@zy
  * @copyright 2013, Cr@zy
  * @license GPL licensed
- * @version 1.0
+ * @version 1.1
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  *
  */
@@ -81,7 +81,7 @@ class CwsMailBounceHandler
      * CwsMailBounceHandler version.
      * @var string
      */
-    public $version = "1.0";
+    public $version = "1.1";
     
     /**
      * Mail host server.
@@ -202,10 +202,10 @@ class CwsMailBounceHandler
     
     /**
      * Control the debug output.
-     * default CWSMBH_VERBOSE_SIMPLE
+     * default CWSMBH_VERBOSE_QUIET
      * @var int
      */
-    public $debug_verbose = CWSMBH_VERBOSE_SIMPLE;
+    public $debug_verbose = CWSMBH_VERBOSE_QUIET;
 
     /**
      * If true, it will disable the delete function.
