@@ -27,7 +27,7 @@
  * @author Cr@zy
  * @copyright 2013, Cr@zy
  * @license GPL licensed
- * @version 1.1
+ * @version 1.2
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  *
  */
@@ -81,7 +81,7 @@ class CwsMailBounceHandler
      * CwsMailBounceHandler version.
      * @var string
      */
-    public $version = "1.1";
+    public $version = "1.2";
     
     /**
      * Mail host server.
@@ -1395,7 +1395,11 @@ class CwsMailBounceHandler
      */
     private function parseDsnFields($body_section_machine)
     {
-        $result = array();
+        $result = array(
+            'mime_header'   => null,
+            'per_message'   => null,
+            'per_recipient' => null,
+        );
         $dsn_fields = explode("\r\n\r\n", $body_section_machine);
         
         $j = 0;
