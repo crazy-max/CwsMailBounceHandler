@@ -30,7 +30,7 @@
  * @author Cr@zy
  * @copyright 2013, Cr@zy
  * @license LGPL licensed
- * @version 1.3
+ * @version 1.4
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  *
  */
@@ -84,7 +84,7 @@ class CwsMailBounceHandler
      * CwsMailBounceHandler version.
      * @var string
      */
-    public $version = "1.3";
+    public $version = "1.4";
     
     /**
      * Mail host server.
@@ -177,11 +177,11 @@ class CwsMailBounceHandler
     public $folder_hard = 'INBOX.hard';
 
     /**
-     * Maximum limit messages processed in one batch.
-     * default 1000
+     * Maximum limit messages processed in one batch (0 for unlimited).
+     * default 0
      * @var int
      */
-    public $max_messages = 1000;
+    public $max_messages = 0;
     
     /**
      * The last error message.
@@ -908,7 +908,7 @@ class CwsMailBounceHandler
         $this->output('<strong>Total:</strong> ' . $this->result['counter']['total'] . ' messages.');
         
         // process maximum number of messages
-        if ($this->result['counter']['fetched'] > $this->max_messages) {
+        if (!empty($this->max_messages) && $this->result['counter']['fetched'] > $this->max_messages) {
             $this->result['counter']['fetched'] = $this->max_messages;
             $this->output('Processing first <strong>' . $this->result['counter']['fetched'] . ' messages</strong>...');
         }
