@@ -9,8 +9,6 @@
  * If a bounce is malformed, it tries to extract some useful information to parse status.
  * A result array is available to process custom post-actions.
  * 
- * Copyright (C) 2013 Cr@zy <webmaster@crazyws.fr>
- * 
  * CwsMailBounceHandler is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,9 +26,9 @@
  *
  * @package CwsMailBounceHandler
  * @author Cr@zy
- * @copyright 2013, Cr@zy
- * @license LGPL licensed
- * @version 1.4
+ * @copyright 2013-2014, Cr@zy
+ * @license GNU LESSER GENERAL PUBLIC LICENSE
+ * @version 1.5
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  *
  */
@@ -84,7 +82,7 @@ class CwsMailBounceHandler
      * CwsMailBounceHandler version.
      * @var string
      */
-    public $version = "1.4";
+    public $version = "1.5";
     
     /**
      * Mail host server.
