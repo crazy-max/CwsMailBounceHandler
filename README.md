@@ -1,54 +1,72 @@
 # CwsMailBounceHandler
 
 CwsMailBounceHandler is a PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
-It checks your IMAP/POP3 inbox or eml files and delete or move all 'hard' bounced emails.
+It checks your IMAP inbox or eml files and delete or move all bounced emails.
 If a bounce is malformed, it tries to extract some useful information to parse status.
 
 ## Installation
 
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
+* Download [CwsDump](https://github.com/crazy-max/CwsDump) and [CwsDebug](https://github.com/crazy-max/CwsDebug).
 * Copy the ``class.cws.mbh.php`` file in a folder on your server.
-* You can use the ``index.php`` file sample and the eml files in the emls directory to help you.
+
+## Getting started
+
+See ``example.php`` file sample to help you.<br />
+You can use eml files in the emls folder for testing.
 
 ## Post-process
 
-A result array is available to process custom post-actions :
+A result object (CwsMbhResult) is available to process custom post-actions :
 
-![](http://static.crazyws.fr/resources/blog/2013/04/mail-bounce-handler-php-result.png)
+![](https://raw.github.com/crazy-max/CwsMailBounceHandler/master/example.png)
 
-## Options
+## Methods
 
-Public vars :
+**openImapLocal** - Open a IMAP mail box in local file system.<br />
+**openImapRemote** - Open a remote IMAP mail box.<br />
+**openEmlFolder** - Open a folder containing eml files on your system.<br /><br />
 
-* **host** - Mail host server.
-* **username** - The username of mailbox.
-* **password** - The password needed to access mailbox.
-* **port** - Defines port number, other common choices are '110' (pop3), '143' (imap), '995' (tls/ssl).
-* **service** - Defines service, choice includes 'pop3' and 'imap'.
-* **service_option** - Defines service option, choices are 'none', 'notls', 'tls', 'ssl'.
-* **cert** - Control certificates validation if service_option is 'tls' or 'ssl'.
-* **open_mode** - Control the method to open e-mail(s).
-* **boxname** - Mailbox type, other choices are Tasks, Spam, Replies, etc.
-* **move_soft** - Determines if soft bounces will be moved to another mailbox or folder.
-* **boxname_soft** - Mailbox or folder to move soft bounces to.
-* **move_hard** - Determines if hard bounces will be moved to another mailbox or folder. NOTE: If true, this will disable delete and perform a move operation instead.
-* **boxname_hard** - Mailbox or folder to move hard bounces to.
-* **max_messages** - Maximum limit messages processed in one batch.
-* **error_msg** - The last error message.
-* **test_mode** - Test mode, if true will not delete messages.
-* **purge** - Purge unknown messages. Be careful with this option.
-* **debug_verbose** - Control the debug output.
-* **disable_delete** - If true, it will disable the delete function.
-* **result** - Result array of process.
+**processMails** - Process the messages in a mailbox or a folder.<br /><br />
 
-Public methods :
+**getStatusCodeExplanations** -Get explanations from DSN status code via the RFC 1893.<br /><br />
 
-* **openFolder** - Open a folder containing eml files on your system.
-* **openFile** - Open an eml file on your system.
-* **openImapLocal** - Open a mail box in local file system.
-* **openImapRemote** - Open a remote mail box.
-* **processMailbox** - Process the messages in a mailbox.
-* **findStatusExplanationsByCode** - Get explanations from DSN status code via the RFC 1893.
+**isMailboxOpenMode** - Check if open mode is mailbox.<br />
+**isFileOpenMode** - Check if open mode is file.<br />
+**isNeutralProcessMode** - Check if process mode is neutral mode.<br />
+**isMoveProcessMode** - Check if process mode is move mode.<br />
+**isDeleteProcessMode** - Check if process mode is delete mode.<br />
+**getProcessMode** - The method to process bounces.<br />
+**setNeutralProcessMode** - Set the method to process bounces to neutral. (default)<br />
+**setMoveProcessMode** - Set the method to process bounces to move.<br />
+**setDeleteProcessMode** - Set the method to process bounces to delete.<br />
+**setProcessMode** - Set the method to process bounces.<br />
+**getMailboxService** - Mailbox service.<br />
+**setImapMailboxService** - Set the mailbox service to IMAP. (default)<br />
+**setMailboxService** - Set the mailbox service.<br />
+**getMailboxHost** - Mailbox host server.<br />
+**setMailboxHost** - Set the mailbox host server. (default localhost)<br />
+**getMailboxUsername** - The username of mailbox.<br />
+**setMailboxUsername** - Set the username of mailbox.<br />
+**setMailboxPassword** - Set the password needed to access mailbox.<br />
+**getMailboxPort** - The mailbox server port number.<br />
+**setImapMailboxPort** - Set the mailbox server port number to IMAP (143). (default)<br />
+**setTlsSslMailboxPort** - Set the mailbox server port number to TLS/SSL (995).<br />
+**setMailboxPort** - Set the mailbox server port number.<br />
+**getMailboxSecurity** - The mailbox security option.<br />
+**setMailboxSecurity** - Set the mailbox security option. (default const MAILBOX_SECURITY_NOTLS)<br />
+**getMailboxCert** - Certificate validation.<br />
+**setMailboxCertValidate** - Set the certificate validation to VALIDATE.<br />
+**setMailboxCertNoValidate** - Set the certificate validation to NOVALIDATE. (default)<br />
+**setMailboxCert** - Set the certificate validation.<br />
+**getMailboxName** - Mailbox name.<br />
+**setMailboxName** - Set the mailbox name, other choices are (Tasks, Spam, Replies, etc...). (default INBOX)<br />
+**getMailboxHandler** - The resource handler for the opened mailbox (POP3/IMAP/NNTP/etc...).<br />
+**getMaxMessages** - Maximum limit messages processed in one batch.<br />
+**setMaxMessages** - Set the maximum limit messages processed in one batch (0 for unlimited).<br />
+**isPurge** - Check if purge unknown messages.<br />
+**setPurge** - Set the mailbox server port number.<br />
+**getError** - The last error message.<br />
 
 ## License
 

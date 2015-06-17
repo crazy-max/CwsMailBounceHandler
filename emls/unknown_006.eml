@@ -1,0 +1,64 @@
+Return-Path: <>
+Received: by 10.231.11.4 with SMTP id r4cs16374ibr; Sun, 31 Jan 2010 21:45:58 +0000
+Date: Sun, 31 Jan 2010 21:45:57 +0000
+From: Postmaster@tradingpost.ch
+To: jack@swom.com
+Message-Id: <4b65fa15.160db80a.5b82.ffff9cedSMTPIN_ADDED@mx.google.com>
+Subject: Mail Delivery Failure
+X-Loop-Detect: 4
+Final-Recipient: rfc822;sdrake@tradingpost.ch
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of mail03c.hostcenter.com designates 195.186.64.158 as permitted sender) smtp.mail=
+Delivered-To: jack@swom.com
+Original-Recipient: rfc822;sdrake@tradingpost.ch
+Received-Spf: pass (google.com: domain of mail03c.hostcenter.com designates 195.186.64.158 as permitted sender) client-ip=195.186.64.158;
+
+Delivery of email to this address
+
+"sdrake@tradingpost.ch"
+
+has failed due to a full mailbox.  We have already made numerous
+attempts to deliver this message over the last few days.
+
+Please try to send your message again at a later time.
+
+The first 50 lines of your original message follow:> Received: from mx21.stngva01.us.mxservers.net (204.202.242.71)
+>       by mail03c-old.hostcenter.com (RS ver 1.0.95vs) with SMTP id 4-033563664
+>       for <sdrake@tradingpost.ch>; Sun, 31 Jan 2010 02:17:45 +0100 (CET)
+> Received: from unknown [188.40.35.30] (EHLO xenon.swom.com)
+>       by va1-mx21.stngva01.us.mxservers.net (mxl_mta-3.1.0-05)
+>       with ESMTP id 73ad46b4.2654722976.745535.00-003.va1-mx21.stngva01.us.mxservers.net (envelope-from <jack@swom.com>);
+>       Sat, 30 Jan 2010 20:17:43 -0500 (EST)
+> Received: from myswom.com (xenon.swom.com [188.40.35.28])
+>       (Authenticated sender: support@myswom.com)
+>       by xenon.swom.com (Postfix) with ESMTPSA id 979FE3D27
+>       for <sdrake@tradingpost.ch>; Sun, 31 Jan 2010 01:16:45 +0000 (GMT)
+> Date: Sun, 31 Jan 2010 01:16:45 +0000
+> From: Jack Whitehall <jack@swom.com>
+> To: sdrake@tradingpost.ch
+> Message-Id: <4b64d9fd8f537_18e83fa070dbb1b85499c1@xenon.swom.com.tmail>
+> Subject: From Jack Whitehall
+> Mime-Version: 1.0
+> Content-Type: text/plain; charset=utf-8
+> X-Swom-Uuid: 257c92310bd354f1cd0f2ca4e5fd75fe50f68355
+> X-Spam: [F=0.2000000000; B=0.500(0); S=0.200(2010011101); MH=0.500(2010013027)]
+> X-MAIL-FROM: <jack@swom.com>
+> X-SOURCE-IP: [188.40.35.30]
+> X-Loop-Detect:1
+> X-DistLoop-Detect:1
+>
+> Hi Simon
+- Hide quoted text -
+>
+> Jack Whitehall here, co-founder of the old CashCulture program in 2003. I thought I'd reconnect with my contacts.
+>
+> So what are you up to nowadays?
+>
+> I'm working on Swom.com, a lucrative program which is very cool! Its payplan gives earnings of $10k/month.
+>
+> I've got a special VIP pre-launch link before it goes on international launch to millions on Mar 1st. If you use the link you'll get a ton of spillover.
+>
+> http://swom.com/r/34118
+>
+> Do write back - be great to hear from you after all these years.
+>
+> = Jack

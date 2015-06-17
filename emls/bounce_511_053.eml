@@ -1,0 +1,297 @@
+Return-Path: <>
+Delivered-To: badmail@testcompany.se
+Received: (qmail 2967 invoked from network); 26 Apr 2011 14:27:59 -0000
+Received: from mx1.forss.net ([95.128.113.140])
+          (envelope-sender <>)
+          by mail1.forss.net (qmail-ldap-1.03) with AES256-SHA encrypted SMTP
+          for <badmail@testcompany.se>; 26 Apr 2011 14:27:59 -0000
+Received: from localhost (localhost [127.0.0.1])
+	by mx1.forss.net (Postfix) with ESMTP id 62B5A380087CF
+	for <badmail@testcompany.se>; Tue, 26 Apr 2011 16:27:59 +0200 (CEST)
+X-Virus-Scanned: Forss Webservice Scanner at forss.net
+X-Spam-Flag: NO
+X-Spam-Score: -1.427
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.427 tagged_above=-1000 required=4
+	tests=[BAYES_00=-2.599, HTML_MESSAGE=0.001, MIME_BOUND_MANY_HEX=0.803,
+	URI_HEX=0.368]
+Received: from customer-relay.songnetworks.se (customer-relay.songnetworks.se [195.42.210.9])
+	by mx1.forss.net (Postfix) with ESMTP id 7059D3800560E
+	for <badmail@testcompany.se>; Tue, 26 Apr 2011 16:27:57 +0200 (CEST)
+Received: from mail.test-receive-domain.se (mail.test-receive-domain.se [213.88.128.20])
+	by customer-relay.songnetworks.se (Postfix) with ESMTP id 9FEA624388
+	for <badmail@testcompany.se>; Tue, 26 Apr 2011 16:27:56 +0200 (CEST)
+MIME-Version: 1.0
+From: <postmaster@test-receive-domain.se>
+To: <badmail@testcompany.se>
+Date: Tue, 26 Apr 2011 16:27:48 +0200
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="f518d4c6-edf1-4463-b115-f1a617b52ef3"
+Content-Language: sv-SE
+Message-ID: <271e9eed-2188-497a-b051-53ad11a74673@test-receive-domain.se>
+In-Reply-To: <4db6d64e2f07a_1009115d44c424c@linux1.mail>
+References: <4db6d64e2f07a_1009115d44c424c@linux1.mail>
+Subject: =?iso-8859-1?Q?Olevererbart::_Testcompany_-_bekr=E4ftelse_byte_av_levera?=
+ =?iso-8859-1?Q?nt=F6r?=
+
+--f518d4c6-edf1-4463-b115-f1a617b52ef3
+Content-Type: multipart/alternative; differences=Content-Type;
+	boundary="6377eb29-66bb-46fd-90f3-d8c649abf8d2"
+
+--6377eb29-66bb-46fd-90f3-d8c649abf8d2
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Det gick inte att leverera till f=F6ljande mottagare eller grupper:
+
+customer.testemail@test-receive-domain.se<mailto:customer.testemail@test-receive-domain.se>
+Det gick inte att hitta e-postadressen du angav. Kontrollera adressen och f=
+=F6rs=F6k sedan skicka meddelandet igen. Kontakta din supportavdelning om p=
+roblemet kvarst=E5r.
+
+
+
+
+
+
+
+
+Diagnostisk information f=F6r administrat=F6rer:
+
+Genererande server: test-receive-domain.se
+
+customer.testemail@test-receive-domain.se
+#550 5.1.1 RESOLVER.ADR.RecipNotFound; not found ##
+
+Ursprungshuvuden:
+
+Received: from p02c12m081.mxlogic.net (208.65.145.245) by
+ fgsrv-mail01.fasadglas.sto (192.168.0.8) with Microsoft SMTP Server id
+ 14.0.722.0; Tue, 26 Apr 2011 16:27:47 +0200
+Received: from unknown [95.128.113.150] (EHLO mail1.forss.net)  by
+ p02c12m081.mxlogic.net(mxl_mta-6.9.0-2) over TLS secured channel       wit=
+h ESMTP
+ id 566d6bd4.0.3897208.00-2256.4580924.p02c12m081.mxlogic.net (envelope-fro=
+m
+ <badmail@testcompany.se>);       Tue, 26 Apr 2011 08:27:51 -0600 (MDT)
+Received: (qmail 487 invoked from network); 26 Apr 2011 14:27:28 -0000
+X-Mail-System: Forss Webservice AB Mailsystem (www.forss.se)
+X-Virus-Scanner: Panda CommandLine Secure for Linux
+X-Virus-Status: No virus found
+X-Spam-Checker-Version: SpamAssassin 3.1.0 (2005-09-13) on mail2.forss.net
+X-Spam-Level:
+X-Spam-Status: No, score=3D-3.4 required=3D5.0 tests=3DALL_TRUSTED,AWL,BAYE=
+S_00,
+        HTML_30_40,HTML_MESSAGE,MIME_HTML_ONLY autolearn=3Dham version=3D3.=
+1.0
+Received: from n-95-128-115-31.net.forss.net (HELO server1.testcompany.se)
+ (application@testcompany.com@[95.128.115.31])          (envelope-sender
+ <badmail@testcompany.se>)          by mail1.forss.net (qmail-ldap-1.03) with
+ SMTP          for <customer.testemail@test-receive-domain.se>; 26 Apr 2011 14:27:26 -000=
+0
+Received: by server1.testcompany.se (Postfix, from userid 1001)  id 3DD205F6=
+7A;
+ Tue, 26 Apr 2011 16:27:26 +0200 (CEST)
+Date: Tue, 26 Apr 2011 16:27:26 +0200
+From: Testcompany <info@testcompany.se>
+To: <customer.testemail@test-receive-domain.se>
+Message-ID: <4db6d64e2f07a_1009115d44c424c@linux1.mail>
+Subject: =3D?UTF-8?Q?Testcompany_-_bekr=3DC3=3DA4ftelse_byte_av_leverant=
+=3DC3=3DB6r?=3D
+MIME-Version: 1.0
+Content-Type: text/html; charset=3D"UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-BS-Tracker: 14771
+X-BS-Id: 13362
+X-Processed-By: Rebuild v2.0-0
+X-Spam: [F=3D0.1428571429; B=3D0.500(0); STSI=3D0.500(-12); STSM=3D0.400(-1=
+2); CM=3D0.500; MH=3D0.500(2011042613); S=3D0.200(2010122901); SC=3Dnone]
+X-MAIL-FROM: <badmail@testcompany.se>
+X-SOURCE-IP: [95.128.113.150]
+X-AnalysisOut: [v=3D1.0 c=3D1 a=3D_5SL2JS5Q28A:10 a=3DjPJDawAOAc8A:10 a=3DB=
+LceEmwcHo]
+X-AnalysisOut: [wA:10 a=3DIkcTkHD0fZMA:10 a=3D8JvCOHtooGmM4q1c5eVAlw=3D=3D:=
+17 a=3D3G]
+X-AnalysisOut: [eILzi6AAAA:8 a=3DiwwpTHDTvyZOjFydv4QA:9 a=3DPf0nvSi-hewE5oC=
+hIv]
+X-AnalysisOut: [oA:7 a=3DQEXdDO2ut3YA:10]
+Return-Path: badmail@testcompany.se
+
+
+--6377eb29-66bb-46fd-90f3-d8c649abf8d2
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+<html>
+<Head></head><body>
+<p><b><font color=3D"#000066" size=3D"3" face=3D"Arial">Det gick inte att l=
+everera till f=F6ljande mottagare eller grupper:</font></b></p>
+<font color=3D"#000000" size=3D"2" face=3D"Tahoma"><p><a href=3D"mailto:ger=
+ry.berqvist@test-receive-domain.se">customer.testemail@test-receive-domain.se</a><br>
+Det gick inte att hitta e-postadressen du angav. Kontrollera adressen och f=
+=F6rs=F6k sedan skicka meddelandet igen. Kontakta din supportavdelning om p=
+roblemet kvarst=E5r.<br>
+<br>
+
+</p>
+</font>
+<br><br><br><br><br><br>
+<font color=3D"#808080" size=3D"2" face=3D"Tahoma"><p><b>Diagnostisk inform=
+ation f=F6r administrat=F6rer:</b></p>
+<p>Genererande server: test-receive-domain.se</p>
+<p>customer.testemail@test-receive-domain.se<br>
+ #550 5.1.1 RESOLVER.ADR.RecipNotFound; not found ##</p>
+
+<p>Ursprungshuvuden:</p>
+<pre>Received: from p02c12m081.mxlogic.net (208.65.145.245) by
+ fgsrv-mail01.fasadglas.sto (192.168.0.8) with Microsoft SMTP Server id
+ 14.0.722.0; Tue, 26 Apr 2011 16:27:47 +0200
+Received: from unknown [95.128.113.150] (EHLO mail1.forss.net)	by
+ p02c12m081.mxlogic.net(mxl_mta-6.9.0-2) over TLS secured channel	with ESMT=
+P
+ id 566d6bd4.0.3897208.00-2256.4580924.p02c12m081.mxlogic.net (envelope-fro=
+m
+ &lt;badmail@testcompany.se&gt;);	Tue, 26 Apr 2011 08:27:51 -0600 (MDT)
+Received: (qmail 487 invoked from network); 26 Apr 2011 14:27:28 -0000
+X-Mail-System: Forss Webservice AB Mailsystem (www.forss.se)
+X-Virus-Scanner: Panda CommandLine Secure for Linux
+X-Virus-Status: No virus found
+X-Spam-Checker-Version: SpamAssassin 3.1.0 (2005-09-13) on mail2.forss.net
+X-Spam-Level:
+X-Spam-Status: No, score=3D-3.4 required=3D5.0 tests=3DALL_TRUSTED,AWL,BAYE=
+S_00,
+	HTML_30_40,HTML_MESSAGE,MIME_HTML_ONLY autolearn=3Dham version=3D3.1.0
+Received: from n-95-128-115-31.net.forss.net (HELO server1.testcompany.se)
+ (application@testcompany.com@[95.128.115.31])          (envelope-sender
+ &lt;badmail@testcompany.se&gt;)          by mail1.forss.net (qmail-ldap-1.03=
+) with
+ SMTP          for &lt;customer.testemail@test-receive-domain.se&gt;; 26 Apr 2011 14:27:2=
+6 -0000
+Received: by server1.testcompany.se (Postfix, from userid 1001)	id 3DD205F67=
+A;
+ Tue, 26 Apr 2011 16:27:26 +0200 (CEST)
+Date: Tue, 26 Apr 2011 16:27:26 +0200
+From: Testcompany &lt;info@testcompany.se&gt;
+To: &lt;customer.testemail@test-receive-domain.se&gt;
+Message-ID: &lt;4db6d64e2f07a_1009115d44c424c@linux1.mail&gt;
+Subject: =3D?UTF-8?Q?Testcompany_-_bekr=3DC3=3DA4ftelse_byte_av_leverant=
+=3DC3=3DB6r?=3D
+MIME-Version: 1.0
+Content-Type: text/html; charset=3D&quot;UTF-8&quot;
+Content-Transfer-Encoding: quoted-printable
+X-BS-Tracker: 14771
+X-BS-Id: 13362
+X-Processed-By: Rebuild v2.0-0
+X-Spam: [F=3D0.1428571429; B=3D0.500(0); STSI=3D0.500(-12); STSM=3D0.400(-1=
+2); CM=3D0.500; MH=3D0.500(2011042613); S=3D0.200(2010122901); SC=3Dnone]
+X-MAIL-FROM: &lt;badmail@testcompany.se&gt;
+X-SOURCE-IP: [95.128.113.150]
+X-AnalysisOut: [v=3D1.0 c=3D1 a=3D_5SL2JS5Q28A:10 a=3DjPJDawAOAc8A:10 a=3DB=
+LceEmwcHo]
+X-AnalysisOut: [wA:10 a=3DIkcTkHD0fZMA:10 a=3D8JvCOHtooGmM4q1c5eVAlw=3D=3D:=
+17 a=3D3G]
+X-AnalysisOut: [eILzi6AAAA:8 a=3DiwwpTHDTvyZOjFydv4QA:9 a=3DPf0nvSi-hewE5oC=
+hIv]
+X-AnalysisOut: [oA:7 a=3DQEXdDO2ut3YA:10]
+Return-Path: badmail@testcompany.se
+
+</pre>
+</font>
+</body>
+</html>=
+
+--6377eb29-66bb-46fd-90f3-d8c649abf8d2--
+
+--f518d4c6-edf1-4463-b115-f1a617b52ef3
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns;test-receive-domain.se
+Received-From-MTA: dns;p02c12m081.mxlogic.net
+Arrival-Date: Tue, 26 Apr 2011 14:27:47 +0000
+
+Final-Recipient: rfc822;customer.testemail@test-receive-domain.se
+Action: failed
+Status: 5.1.1
+Diagnostic-Code: smtp;550 5.1.1 RESOLVER.ADR.RecipNotFound; not found
+
+
+--f518d4c6-edf1-4463-b115-f1a617b52ef3
+Content-Type: message/rfc822
+
+Received: from p02c12m081.mxlogic.net (208.65.145.245) by
+ fgsrv-mail01.fasadglas.sto (192.168.0.8) with Microsoft SMTP Server id
+ 14.0.722.0; Tue, 26 Apr 2011 16:27:47 +0200
+Received: from unknown [95.128.113.150] (EHLO mail1.forss.net)	by
+ p02c12m081.mxlogic.net(mxl_mta-6.9.0-2) over TLS secured channel	with ESMTP
+ id 566d6bd4.0.3897208.00-2256.4580924.p02c12m081.mxlogic.net (envelope-from
+ <badmail@testcompany.se>);	Tue, 26 Apr 2011 08:27:51 -0600 (MDT)
+Received: (qmail 487 invoked from network); 26 Apr 2011 14:27:28 -0000
+X-Mail-System: Forss Webservice AB Mailsystem (www.forss.se)
+X-Virus-Scanner: Panda CommandLine Secure for Linux
+X-Virus-Status: No virus found
+X-Spam-Checker-Version: SpamAssassin 3.1.0 (2005-09-13) on mail2.forss.net
+X-Spam-Level:
+X-Spam-Status: No, score=-3.4 required=5.0 tests=ALL_TRUSTED,AWL,BAYES_00,
+	HTML_30_40,HTML_MESSAGE,MIME_HTML_ONLY autolearn=ham version=3.1.0
+Received: from n-95-128-115-31.net.forss.net (HELO server1.testcompany.se)
+ (application@testcompany.com@[95.128.115.31])          (envelope-sender
+ <badmail@testcompany.se>)          by mail1.forss.net (qmail-ldap-1.03) with
+ SMTP          for <customer.testemail@test-receive-domain.se>; 26 Apr 2011 14:27:26 -0000
+Received: by server1.testcompany.se (Postfix, from userid 1001)	id 3DD205F67A;
+ Tue, 26 Apr 2011 16:27:26 +0200 (CEST)
+Date: Tue, 26 Apr 2011 16:27:26 +0200
+From: Testcompany <info@testcompany.se>
+To: <customer.testemail@test-receive-domain.se>
+Message-ID: <4db6d64e2f07a_1009115d44c424c@linux1.mail>
+Subject: =?UTF-8?Q?Testcompany_-_bekr=C3=A4ftelse_byte_av_leverant=C3=B6r?=
+MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-BS-Tracker: 14771
+X-BS-Id: 13362
+X-Processed-By: Rebuild v2.0-0
+X-Spam: [F=0.1428571429; B=0.500(0); STSI=0.500(-12); STSM=0.400(-12); CM=0.500; MH=0.500(2011042613); S=0.200(2010122901); SC=none]
+X-MAIL-FROM: <badmail@testcompany.se>
+X-SOURCE-IP: [95.128.113.150]
+X-AnalysisOut: [v=1.0 c=1 a=_5SL2JS5Q28A:10 a=jPJDawAOAc8A:10 a=BLceEmwcHo]
+X-AnalysisOut: [wA:10 a=IkcTkHD0fZMA:10 a=8JvCOHtooGmM4q1c5eVAlw==:17 a=3G]
+X-AnalysisOut: [eILzi6AAAA:8 a=iwwpTHDTvyZOjFydv4QA:9 a=Pf0nvSi-hewE5oChIv]
+X-AnalysisOut: [oA:7 a=QEXdDO2ut3YA:10]
+Return-Path: badmail@testcompany.se
+
+<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://w=
+ww.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+<html>
+  <head>
+    <title>TestCompany</title>
+   =20
+   
+  </head>
+  <body>
+    <div style=3D"font: 12px Arial, sans-serif; color: #747474; margin-left=
+: 10px; padding: 0; width: 500px;">
+     =20
+
+<strong>Hej Test, </strong>
+<br>
+  Test Comapny AB vill informera dig om att vi har sett =C3=B6ver ditt avtal oc=
+h funnit en besparingspotential i att byta ditt avtal till=20
+  service provider varf=C3=B6r vi kommer att genomf=C3=B6ra detta byte i enlighet med =
+den fullmakt du givit oss. Test Company AB genomf=C3=B6r detta bytet i sin str=C3=
+=A4van att minimera dina kostnader och kontinuerligt erbjuda dig som medlem=
+ l=C3=A4gsta m=C3=B6jliga pris.
+
+<br>
+<br>
+<strong>Med v=C3=A4nlig h=C3=A4lsning</strong><br>
+<br>
+Test Company Sweden AB<br>
+Tj=C3=A4stvägen 21 A<br>
+100 10 Stockholm<br>
+    </div>
+  </body>
+
+</html>=20
+
+--f518d4c6-edf1-4463-b115-f1a617b52ef3--

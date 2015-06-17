@@ -1,0 +1,79 @@
+                                                                                                                                                                                                                                                               
+Delivered-To: saghaulor@gmail.com
+Received: by 10.96.89.195 with SMTP id bq3csp193052qdb;
+        Wed, 25 Mar 2015 16:06:37 -0700 (PDT)
+X-Received: by 10.236.231.244 with SMTP id l110mr3446122yhq.76.1427324797301;
+        Wed, 25 Mar 2015 16:06:37 -0700 (PDT)
+Return-Path: <>
+Received: from mail-yk0-x246.google.com (mail-yk0-x246.google.com. [2607:f8b0:4002:c07::246])
+        by mx.google.com with ESMTPS id v10si1943530yhn.71.2015.03.25.16.06.37
+        for <saghaulor@gmail.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Mar 2015 16:06:37 -0700 (PDT)
+Received-SPF: none (google.com: mail-yk0-x246.google.com does not designate permitted sender hosts) client-ip=2607:f8b0:4002:c07::246;
+Authentication-Results: mx.google.com;
+       spf=none (google.com: mail-yk0-x246.google.com does not designate permitted sender hosts) smtp.mail=;
+       dkim=pass header.i=@googlemail.com
+Received: by mail-yk0-x246.google.com with SMTP id u21so9169ykd.2
+        for <saghaulor@gmail.com>; Wed, 25 Mar 2015 16:06:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20120113;
+        h=mime-version:from:to:subject:message-id:date:content-type;
+        bh=zDroqkBtnjOx4oQsUjOsgCFXb0x6mWh6blclcKQ5iYI=;
+        b=PXS6yid56wdSx7roUQJoBggDMdNZT8cIIv5WQYV5IN4O/Vna8giENzEBwTsMyEPHBo
+         JfVgmhO6VWJ4RFjprNQdwHtBgU6XCmGKyK7pfQmmjyukMv+goACB/ApUnmDKgzV/QzuB
+         3yAwRnPN4srOivQXM9l5TA5OUzoIS9rDGA+bg229WXSqU+xbsUE1hj1iCsL+1gsEqWMi
+         m0Vpo9putaSS2Xz0SmJFq8biRKXbinBSb5d33kDp8T9P5GkRPD15byuXEKIrwR/81wXn
+         miucJ+GuMV5Y/g7N49Nz51H6nQgG0P3VBMuQxLrNBQPb7ofnh09hsW6PwlEu0Ba2LHkS
+         0A3w==
+X-Received: by 10.140.144.11 with SMTP id 11mr14639966qhq.54.1427324797247;
+        Wed, 25 Mar 2015 16:06:37 -0700 (PDT)
+MIME-Version: 1.0
+Return-Path: <>
+Received: by 10.140.144.11 with SMTP id 11mr12478298qhq.54; Wed, 25 Mar 2015
+ 16:06:37 -0700 (PDT)
+From: Mail Delivery Subsystem <mailer-daemon@googlemail.com>
+To: saghaulor@gmail.com
+X-Failed-Recipients: undeliverable@coupa.com
+Subject: Delivery Status Notification (Failure)
+Message-ID: <001a1137654084e059051224f354@google.com>
+Date: Wed, 25 Mar 2015 23:06:37 +0000
+Content-Type: text/plain; charset=UTF-8
+
+Delivery to the following recipient failed permanently:
+
+     undeliverable@coupa.com
+
+Technical details of permanent failure: 
+Google tried to deliver your message, but it was rejected by the server for the recipient domain coupa.com by aspmx.l.google.com. [2607:f8b0:400d:c03::1b].
+
+The error that the other server returned was:
+550-5.1.1 The email account that you tried to reach does not exist. Please try
+550-5.1.1 double-checking the recipient's email address for typos or
+550-5.1.1 unnecessary spaces. Learn more at
+550 5.1.1 http://support.google.com/mail/bin/answer.py?answer=6596 140si3605502qhd.80 - gsmtp
+
+
+----- Original message -----
+
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:from:date:message-id:subject:to:content-type;
+        bh=EeOLB+iPfnulBvl+QlMunNfssBotsqV19IRSrGZ7wjE=;
+        b=cZHw/hf4sqwgBCotRSuBGMcyEViNc9PIYhV/1wVrmYZYcXsleL0b2laAQD3ri5WO67
+         cLQc2a2tfTRfDFTiq1JQ9MOmcRatUUBmbkydjOq8R8Xqf4bi6wJobZL0ieiT/CHJtQuk
+         MLF/UkM10Ev/FBHFZSBnowZDhEjUzVRO4aRDHyPjzPS3+456c3ywuvb0nVDphKKMTrNW
+         FDyaYlG01XgkgPaguknjOVpK59cSJ/aQyLBW9EoQBEgOPtkzhXbVBbiM+7ofL6DXi7lm
+         UnMFYUkzKPnDoVlqD0d+ykjrun3a2gLD6aNXKQDynTmRpWvdzCRwsoC5UkflU5D4303U
+         +9HQ==
+X-Received: by 10.140.144.11 with SMTP id 11mr14639959qhq.54.1427324797130;
+ Wed, 25 Mar 2015 16:06:37 -0700 (PDT)
+MIME-Version: 1.0
+From: Stephen Aghaulor <saghaulor@gmail.com>
+Date: Wed, 25 Mar 2015 23:06:36 +0000
+Message-ID: <CAEivLMBmmXp-4h7XtUzYy6V2KY44SJ_4yy=9u1+D9KaJ1jjcEg@mail.gmail.com>
+Subject: Test
+To: undeliverable@coupa.com
+Content-Type: multipart/alternative; boundary=001a1137654083206f051224f3e9
+
+Test

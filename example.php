@@ -1,0 +1,60 @@
+<?php
+
+// Download CwsDump at https://github.com/crazy-max/CwsDump
+require_once '../CwsDump/class.cws.dump.php';
+$cwsDump = new CwsDump();
+
+// Download CwsDebug at https://github.com/crazy-max/CwsDebug
+require_once '../CwsDebug/class.cws.debug.php';
+$cwsDebug = new CwsDebug($cwsDump);
+$cwsDebug->setDebugVerbose();
+$cwsDebug->setEchoMode();
+
+require_once 'class.cws.mbh.php';
+
+$cwsMbh = new CwsMailBounceHandler($cwsDebug);
+
+// process mode
+$cwsMbh->setNeutralProcessMode(); // default
+//$cwsMbh->setMoveProcessMode();
+//$cwsMbh->setDeleteProcessMode();
+
+/**
+ * Eml folder
+ */
+if ($cwsMbh->openEmlFolder('test') === false) {
+    $error = $cwsMbh->getError();
+    return;
+}
+
+/**
+ * Local mailbox
+ */
+/*if ($cwsMbh->openImapLocal('/home/email/temp/mailbox') === false) {
+    $error = $cwsMbh->getError();
+    return;
+}*/
+
+/**
+ * Remote mailbox
+ */
+/*$cwsMbh->setImapMailboxService(); // default
+$cwsMbh->setMailboxHost('imap.mydomain.com'); // default 'localhost'
+$cwsMbh->setMailboxPort(993); // default const MAILBOX_PORT_IMAP
+$cwsMbh->setMailboxUsername('myusername');
+$cwsMbh->setMailboxPassword('mypassword');
+$cwsMbh->setMailboxSecurity(CwsMailBounceHandler::MAILBOX_SECURITY_SSL); // default const MAILBOX_SECURITY_NOTLS
+$cwsMbh->setMailboxCertValidate(); // default const MAILBOX_CERT_NOVALIDATE
+$cwsMbh->setMailboxName('SPAM'); // default 'INBOX'
+if ($cwsMbh->openImapRemote() === false) {
+    $error = $cwsMbh->getError();
+    return;
+}*/
+
+// process mails!
+$result = $cwsMbh->processMails();
+if (!$result instanceof CwsMbhResult) {
+    $error = $cwsMbh->getError();
+} else {
+    // continue with CwsMbhResult
+}
