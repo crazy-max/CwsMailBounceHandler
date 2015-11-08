@@ -22,7 +22,7 @@ $cwsMbh->setNeutralProcessMode(); // default
 /**
  * Eml folder
  */
-if ($cwsMbh->openEmlFolder('test') === false) {
+if ($cwsMbh->openEmlFolder('emls') === false) {
     $error = $cwsMbh->getError();
     return;
 }
@@ -57,4 +57,31 @@ if (!$result instanceof CwsMbhResult) {
     $error = $cwsMbh->getError();
 } else {
     // continue with CwsMbhResult
+    
+    $counter = $result->getCounter();
+    echo '<h2>Counter</h2>';
+    echo 'total : ' . $counter->getTotal() . '<br />';
+    echo 'fetched : ' . $counter->getFetched() . '<br />';
+    echo 'processed : ' . $counter->getProcessed() . '<br />';
+    echo 'unprocessed : ' . $counter->getUnprocessed() . '<br />';
+    echo 'deleted : ' . $counter->getDeleted() . '<br />';
+    echo 'moved : ' . $counter->getMoved() . '<br />';
+    
+    $mails = $result->getMails();
+    echo '<h2>Mails</h2>';
+    foreach ($mails as $mail) {
+        if (!$mail instanceof CwsMbhMail) {
+            continue;
+        }
+        echo '<h3>' . $mail->getToken() . '</h3>';
+        echo 'subject : ' . $mail->getSubject() . '<br />';
+        echo 'type : ' . $mail->getType() . '<br />';
+        echo 'recipients :<br />';
+        foreach ($mail->getRecipients() as $recipient) {
+            if (!$recipient instanceof CwsMbhRecipient) {
+                continue;
+            }
+            echo '- ' . $recipient->getEmail() . '<br />';
+        }
+    }
 }

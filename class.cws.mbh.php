@@ -332,7 +332,7 @@ class CwsMailBounceHandler
         }
         
         $nbFiles = 0;
-        while ($file = readdir($handle)) {
+        while (false !== ($file = readdir($handle))) {
             if ($file == '.' || $file == '..' || !self::endWith($file, '.eml')) {
                 continue;
             }
