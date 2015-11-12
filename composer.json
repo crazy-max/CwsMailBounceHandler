@@ -18,6 +18,7 @@
     "suggest":      {
     },
     "autoload":     {
+      "classmap": [ "class.cws.mbh.php"]
     },
     "extra": {
     },
