@@ -6,9 +6,21 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 
 ## Installation
 
+### classical way
+
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
 * Download [CwsDump](https://github.com/crazy-max/CwsDump) and [CwsDebug](https://github.com/crazy-max/CwsDebug).
 * Copy the ``class.cws.mbh.php`` file in a folder on your server.
+
+### with composer
+
+* Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
+* Install with composer
+```
+composer require crazy-max/cws-mail-bounce-handler:dev-master
+```
+
+
 
 ## Getting started
 
