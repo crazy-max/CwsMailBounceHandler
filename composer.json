@@ -18,7 +18,7 @@
     "suggest":      {
     },
     "autoload":     {
-      "classmap": [ "class.cws.mbh.php"]
+        "psr-4": {"Cws\\": "Cws"}
     },
     "extra": {
     },
