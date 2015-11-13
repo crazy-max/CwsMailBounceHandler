@@ -10,7 +10,8 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
 * Download [CwsDump](https://github.com/crazy-max/CwsDump) and [CwsDebug](https://github.com/crazy-max/CwsDebug).
-* Copy the ``class.cws.mbh.php`` file in a folder on your server.
+* Copy the ``class.cws.mbh.php`` file and ``Cws`` folder in a folder on your server.
+* try it with ``php example.php``
 
 ### with composer
 
@@ -19,7 +20,11 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 ```
 composer require crazy-max/cws-mail-bounce-handler:dev-master
 ```
-
+* and try it :
+```
+cd vendor/crazy-max/cws-mail-bounce-handler
+php example.composer.php
+```
 
 
 ## Getting started
@@ -29,7 +34,7 @@ You can use eml files in the emls folder for testing.
 
 ## Post-process
 
-A result object (CwsMbhResult) is available to process custom post-actions :
+A result object (Cws\MailBounceHandler\Models\Result) is available to process custom post-actions :
 
 ![](https://raw.github.com/crazy-max/CwsMailBounceHandler/master/example.png)
 
