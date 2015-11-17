@@ -12,6 +12,8 @@
         }
     ],
     "require":      {
+        "crazy-max/cws-debug": "dev-master",
+        "crazy-max/cws-dump": "dev-master"
     },
     "require-dev":  {
     },
