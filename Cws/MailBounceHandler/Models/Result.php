@@ -1,4 +1,5 @@
 <?php
+namespace Cws\MailBounceHandler\Models;
 
 /**
  * CwsMailBounceHandler
@@ -33,8 +34,47 @@
  *
  */
 
-require_once dirname(__FILE__)."/Cws/MailBounceHandler/Handler.php";
-require_once dirname(__FILE__)."/Cws/MailBounceHandler/Models/Result.php";
-require_once dirname(__FILE__)."/Cws/MailBounceHandler/Models/Counter.php";
-require_once dirname(__FILE__)."/Cws/MailBounceHandler/Models/Mail.php";
-require_once dirname(__FILE__)."/Cws/MailBounceHandler/Models/Recipient.php";
+class Result
+{
+    /**
+     * Counter report
+     * @var Counter
+     */
+    private $counter;
+    
+    /**
+     * List of mails,
+     * @see Cws\MailBounceHandler\Models\Mail
+     * @var array
+     */
+    private $mails;
+    
+    public function __construct()
+    {
+        $this->counter = new Counter();
+        $this->mails = array();
+    }
+    
+    public function getCounter()
+    {
+        if ($this->counter instanceof Counter) {
+            return $this->counter;
+        }
+        return null;
+    }
+
+    public function setCounter(Counter $counter)
+    {
+        $this->counter = $counter;
+    }
+    
+    public function getMails()
+    {
+        return $this->mails;
+    }
+
+    public function addMail(Mail $mail)
+    {
+        $this->mails[] = $mail;
+    }
+}

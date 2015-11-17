@@ -1,16 +1,17 @@
 <?php
+// sample of cwsMailBounceHandler when installed with composer
+// for now, you still need to manually install CwsDebug et CwsDump
 
-// Download CwsDump at https://github.com/crazy-max/CwsDump
-require_once '../CwsDump/class.cws.dump.php';
+// load composer autoloader
+require_once dirname(__FILE__).'/../../autoload.php';
+
+// see CwsDump at https://github.com/crazy-max/CwsDump
 $cwsDump = new CwsDump();
 
-// Download CwsDebug at https://github.com/crazy-max/CwsDebug
-require_once '../CwsDebug/class.cws.debug.php';
+// see CwsDebug at https://github.com/crazy-max/CwsDebug
 $cwsDebug = new CwsDebug($cwsDump);
 $cwsDebug->setDebugVerbose();
 $cwsDebug->setEchoMode();
-
-require_once 'class.cws.mbh.php';
 
 $cwsMbh = new Cws\MailBounceHandler\Handler($cwsDebug);
 
