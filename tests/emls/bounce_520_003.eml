@@ -1,0 +1,67 @@
+Return-Path: <>
+Delivered-To: badmail@test-domain.se
+Received: (qmail 23861 invoked for bounce); 14 Apr 2011 15:44:12 -0000
+Date: 14 Apr 2011 15:44:12 -0000
+From: MAILER-DAEMON@mail1.forss.net
+To: badmail@test-domain.se
+Subject: failure notice
+
+Hi. This is the qmail-send program at mail1.forss.net.
+I'm afraid I wasn't able to deliver your message to the following addresses.
+This is a permanent error; I've given up. Sorry it didn't work out.
+
+<Delar-Med-Frun@live.se>:
+65.55.37.120 does not like recipient.
+Remote host said: 550 Requested action not taken: mailbox unavailable
+Giving up on 65.55.37.120.
+
+--- Below this line is a copy of the message.
+
+Return-Path: <badmail@test-domain.se>
+Received: (qmail 23836 invoked from network); 14 Apr 2011 15:44:11 -0000
+X-Mail-System: Forss Webservice AB Mailsystem (www.forss.se)
+X-Virus-Scanner: Panda CommandLine Secure for Linux
+X-Virus-Status: No virus found
+X-Spam-Checker-Version: SpamAssassin 3.1.0 (2005-09-13) on mail2.forss.net
+X-Spam-Level: 
+X-Spam-Status: No, score=-3.3 required=5.0 tests=ALL_TRUSTED,AWL,BAYES_00,
+	HTML_30_40,HTML_MESSAGE,MIME_HTML_ONLY autolearn=ham version=3.1.0
+Received: from n-95-128-115-31.net.forss.net (HELO server1.test-domain.com) (application@test-domain.com@[95.115.100.31])
+          (envelope-sender <badmail@test-domain.se>)
+          by mail1.forss.net (qmail-ldap-1.03) with SMTP
+          for <Delar-Med-Frun@live.se>; 14 Apr 2011 15:44:11 -0000
+Received: by server1.test-domain.com (Postfix, from userid 1001)
+	id DEA9112988A; Thu, 14 Apr 2011 17:44:10 +0200 (CEST)
+Date: Thu, 14 Apr 2011 17:44:10 +0200
+From: TestCompany <info@test-domain.se>
+To: Delar-Med-Frun@live.se
+Message-ID: <4da7164ad9229_c19a7f9f495573@linux1.mail>
+Subject: =?UTF-8?Q?TestCompany_-_V=C3=A4lkommen_som_medlem?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http:/=
+/www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+<html>
+  <head>
+    <title>TestCompany</title>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DISO=
+-8859-1" />
+  </head>
+  <body>
+    <div style=3D"font: 12px Arial, sans-serif; color: #747474; margin-le=
+ft: 10px; padding: 0; width: 500px;">
+      <span style=3D"font-size: 16px; padding-bottom: 4px;">V=C3=A4lkomme=
+n som medlem i Bara<span style=3D"color: #8dc63f">spara</span></span> <br=
+ />
+<br />
+<strong>Hej Test, </strong>
+<br />
+Vi tackar f=C3=B6r ett trevligt samtal och =C3=B6nskar dig varmt v=C3=A4l=
+kommen som medlem i TestCompany. =
+
+    </div>
+  </body>
+</html> =

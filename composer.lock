@@ -1,0 +1,110 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "f7ab0b099008781e6c31fc2e6e13af61",
+    "content-hash": "a1bdec3f6343ae86c8542d47bb091d76",
+    "packages": [
+        {
+            "name": "crazy-max/cws-debug",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazy-max/CwsDebug.git",
+                "reference": "edbcd917a441fbf4a824d5d3f8df6b791bfb01bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazy-max/CwsDebug/zipball/edbcd917a441fbf4a824d5d3f8df6b791bfb01bb",
+                "reference": "edbcd917a441fbf4a824d5d3f8df6b791bfb01bb",
+                "shasum": ""
+            },
+            "require": {
+                "crazy-max/cws-dump": ">=1.5",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cws": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "crazy-max",
+                    "homepage": "http://www.crazyws.fr/"
+                }
+            ],
+            "description": "PHP class to output additional messages for debug.",
+            "homepage": "https://github.com/crazy-max/CwsDebug",
+            "keywords": [
+                "debug",
+                "log",
+                "print"
+            ],
+            "time": "2016-08-22 08:00:02"
+        },
+        {
+            "name": "crazy-max/cws-dump",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazy-max/CwsDump.git",
+                "reference": "b73f3925cf73a2f073e23c5f863f2940a2e12f18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazy-max/CwsDump/zipball/b73f3925cf73a2f073e23c5f863f2940a2e12f18",
+                "reference": "b73f3925cf73a2f073e23c5f863f2940a2e12f18",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cws": "lib/"
+                },
+                "files": [
+                    "lib/Cws/CwsDumpHelper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "crazy-max",
+                    "homepage": "http://www.crazyws.fr/"
+                }
+            ],
+            "description": "PHP class to replace var_dump(), print_r() based on the Xdebug style.",
+            "homepage": "https://github.com/crazy-max/CwsDump",
+            "keywords": [
+                "Xdebug",
+                "dump",
+                "print_r",
+                "var_dump"
+            ],
+            "time": "2016-08-22 08:00:13"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.2"
+    },
+    "platform-dev": []
+}

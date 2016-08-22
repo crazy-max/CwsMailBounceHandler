@@ -1,40 +1,37 @@
+[![Build Status](https://travis-ci.org/crazy-max/CwsMailBounceHandler.svg?branch=master)](https://travis-ci.org/crazy-max/CwsMailBounceHandler) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/crazy-max/CwsMailBounceHandler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/crazy-max/CwsMailBounceHandler/?branch=master)
+
 # CwsMailBounceHandler
 
-CwsMailBounceHandler is a PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
+PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
 It checks your IMAP inbox or eml files and delete or move all bounced emails.
 If a bounce is malformed, it tries to extract some useful information to parse status.
 
-## Installation
+## Requirements
 
-### classical way
-
+* PHP >= 5.3
+* CwsDebug >= 1.8
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
-* Download [CwsDump](https://github.com/crazy-max/CwsDump) and [CwsDebug](https://github.com/crazy-max/CwsDebug).
-* Copy the ``class.cws.mbh.php`` file and ``Cws`` folder in a folder on your server.
-* try it with ``php example.php``
 
-### with composer
+## Installation with Composer
 
-* Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
-* Install with composer
-```
-composer require crazy-max/cws-mail-bounce-handler:dev-master
-```
-* and try it :
-```
-cd vendor/crazy-max/cws-mail-bounce-handler
-php example.composer.php
+```bash
+composer require crazy-max/cws-mail-bounce-handler
 ```
 
+And download the code:
+
+```bash
+composer install # or update
+```
 
 ## Getting started
 
-See ``example.php`` file sample to help you.<br />
-You can use eml files in the emls folder for testing.
+See `tests/test.php` file sample to help you.<br />
+You can use the eml files in the `tests/emls` folder for testing.
 
 ## Post-process
 
-A result object (Cws\MailBounceHandler\Models\Result) is available to process custom post-actions :
+A result object `Cws\MailBounceHandler\Models\Result` is available to process custom post-actions :
 
 ![](https://raw.github.com/crazy-max/CwsMailBounceHandler/master/example.png)
 

@@ -1,28 +1,24 @@
 {
-    "name":         "crazy-max/cws-mail-bounce-handler",
-    "type":         "library",
-    "description":  "CwsMailBounceHandler is a PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).",
-    "keywords":     [],
-    "homepage":     "https://github.com/crazy-max/CwsMailBounceHandler",
-    "license":      "LGPL",
-    "authors":      [
-        {
-            "name":     "crazy-max",
-            "homepage": "http://www.crazyws.fr/"
-        }
-    ],
-    "require":      {
-        "crazy-max/cws-debug": "dev-master",
-        "crazy-max/cws-dump": "dev-master"
-    },
-    "require-dev":  {
-    },
-    "suggest":      {
-    },
-    "autoload":     {
-        "psr-4": {"Cws\\": "Cws"}
-    },
-    "extra": {
-    },
-    "minimum-stability": "dev"
+  "name": "crazy-max/cws-mail-bounce-handler",
+  "type": "library",
+  "description": "PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).",
+  "keywords": ["mail", "bounce", "dsn", "arf"],
+  "homepage": "https://github.com/crazy-max/CwsMailBounceHandler",
+  "license": "LGPL",
+  "authors": [
+    {
+      "name": "crazy-max",
+      "homepage": "http://www.crazyws.fr/"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.3.2",
+    "crazy-max/cws-debug": ">=1.8"
+  },
+  "autoload": {
+    "psr-0": {
+      "Cws": "lib/"
+    }
+  }
 }
