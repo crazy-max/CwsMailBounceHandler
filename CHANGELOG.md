@@ -6,13 +6,19 @@
 * Add CHANGELOG.md
 * Small refactoring
 
-## 1.7 (2015/11/12)
+## 1.7 (2015/11/17)
 
 * Add composer.json
 
 ## 1.6 (2015/06/17)
 
 * Refactoring
+* Implement CwsDebug (Issue #8)
+* Add new rules categories (Issue #7)
+* Refactor file open mode (Issue #5)
+* Bug while creating bounces mailbox (Issue #3)
+* Bug while processing move operation (Issue #2)
+* Bug with eml folder path on Windows (Issue #1)
 
 ## 1.5 (2014/01/22)
 
