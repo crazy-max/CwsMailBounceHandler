@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/crazy-max/CwsMailBounceHandler.svg?branch=master)](https://travis-ci.org/crazy-max/CwsMailBounceHandler) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/crazy-max/CwsMailBounceHandler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/crazy-max/CwsMailBounceHandler/?branch=master)
+[![Latest Stable Version](https://img.shields.io/packagist/v/crazy-max/cws-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/crazy-max/cws-mail-bounce-handler)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.3.2-8892BF.svg?style=flat-square)](https://php.net/)
+[![Build Status](https://img.shields.io/travis/crazy-max/CwsMailBounceHandler/master.svg?style=flat-square)](https://travis-ci.org/crazy-max/CwsMailBounceHandler)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/crazy-max/CwsMailBounceHandler.svg?style=flat-square)](https://scrutinizer-ci.com/g/crazy-max/CwsMailBounceHandler)
 
 # CwsMailBounceHandler
 
@@ -8,7 +11,7 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 
 ## Requirements
 
-* PHP >= 5.3
+* PHP >= 5.3.2
 * CwsDebug >= 1.8
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
 
