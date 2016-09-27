@@ -1,54 +1,60 @@
 <?php
+
 namespace Cws\MailBounceHandler\Models;
 
 /**
- * Recipient
+ * Recipient.
  *
- * @package CwsMailBounceHandler
  * @author Cr@zy
  * @copyright 2013-2016, Cr@zy
  * @license GNU LESSER GENERAL PUBLIC LICENSE
+ *
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  */
-
 class Recipient
 {
     /**
-     * The DSN action (only for DSN process)
+     * The DSN action (only for DSN process).
+     *
      * @var string
      */
     private $action;
-    
+
     /**
-     * The status code
+     * The status code.
+     *
      * @var string
      */
     private $status;
-    
+
     /**
-     * The recipient email
+     * The recipient email.
+     *
      * @var string
      */
     private $email;
-    
+
     /**
-     * Bounce type (see BOUNCE_ const in Cws\MailBounceHandler\Handler)
+     * Bounce type (see BOUNCE_ const in Cws\MailBounceHandler\Handler).
+     *
      * @var string
      */
     private $bounceType;
-    
+
     /**
-     * Bounce category (see CAT_ const in Cws\MailBounceHandler\Handler)
+     * Bounce category (see CAT_ const in Cws\MailBounceHandler\Handler).
+     *
      * @var string
      */
     private $bounceCat;
-    
+
     /**
-     * To remove
-     * @var boolean
+     * To remove.
+     *
+     * @var bool
      */
     private $remove;
-    
+
     public function __construct()
     {
         $this->action = null;
@@ -58,7 +64,7 @@ class Recipient
         $this->bounceCat = \Cws\MailBounceHandler\Handler::CAT_UNRECOGNIZED;
         $this->remove = false;
     }
-    
+
     public function getAction()
     {
         return $this->action;

@@ -1,55 +1,60 @@
 <?php
 
 /**
- * Counter
+ * Counter.
  *
- * @package CwsMailBounceHandler
  * @author Cr@zy
  * @copyright 2013-2016, Cr@zy
  * @license GNU LESSER GENERAL PUBLIC LICENSE
+ *
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  */
-
 namespace Cws\MailBounceHandler\Models;
 
 class Counter
 {
     /**
-     * Total messages in the mailbox/folder
+     * Total messages in the mailbox/folder.
+     *
      * @var int
      */
     private $total;
-    
+
     /**
-     * Fetched messages in the mailbox/folder
+     * Fetched messages in the mailbox/folder.
+     *
      * @var int
      */
     private $fetched;
-    
+
     /**
-     * Message processed
+     * Message processed.
+     *
      * @var int
      */
     private $processed;
-    
+
     /**
-     * Messages unprocessed
+     * Messages unprocessed.
+     *
      * @var int
      */
     private $unprocessed;
-    
+
     /**
-     * Messages unprocessed deleted
+     * Messages unprocessed deleted.
+     *
      * @var int
      */
     private $deleted;
-    
+
     /**
-     * Messages moved
+     * Messages moved.
+     *
      * @var int
      */
     private $moved;
-    
+
     public function __construct()
     {
         $this->total = 0;
@@ -59,7 +64,7 @@ class Counter
         $this->deleted = 0;
         $this->moved = 0;
     }
-    
+
     public function getTotal()
     {
         return $this->total;
@@ -89,7 +94,7 @@ class Counter
     {
         $this->processed++;
     }
-    
+
     public function setProcessed($processed)
     {
         $this->processed = $processed;
@@ -99,7 +104,7 @@ class Counter
     {
         return $this->unprocessed;
     }
-    
+
     public function incrUnprocessed()
     {
         $this->unprocessed++;
@@ -114,7 +119,7 @@ class Counter
     {
         return $this->deleted;
     }
-    
+
     public function incrDeleted()
     {
         $this->deleted++;
@@ -129,7 +134,7 @@ class Counter
     {
         return $this->moved;
     }
-    
+
     public function incrMoved()
     {
         $this->moved++;
