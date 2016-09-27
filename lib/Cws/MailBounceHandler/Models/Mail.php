@@ -1,95 +1,111 @@
 <?php
 
 /**
- * Mail
+ * Mail.
  *
- * @package CwsMailBounceHandler
  * @author Cr@zy
  * @copyright 2013-2015, Cr@zy
  * @license GNU LESSER GENERAL PUBLIC LICENSE
+ *
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  */
-
 namespace Cws\MailBounceHandler\Models;
 
-class Mail {
-
+class Mail
+{
     /**
-     * Message number or filename
+     * Message number or filename.
+     *
      * @var int|string
      */
     private $token;
 
     /**
-     * Was processed during bounce or fbl analyze
-     * @var boolean
+     * Was processed during bounce or fbl analyze.
+     *
+     * @var bool
      */
     private $processed;
 
     /**
-     * Message subject
+     * Message subject.
+     *
      * @var string
      */
     private $subject;
 
     /**
-     * Type detected (bounce or fbl)
+     * Type detected (bounce or fbl).
+     *
      * @var string
      */
     private $type;
 
     /**
-     * List of recipients, 
+     * List of recipients,.
+     *
      * @see Cws\MailBounceHandler\Models\Recipient object
+     *
      * @var array
      */
     private $recipients;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->token = null;
         $this->processed = true;
         $this->subject = null;
         $this->type = null;
-        $this->recipients = array();
+        $this->recipients = [];
     }
 
-    public function getToken() {
+    public function getToken()
+    {
         return $this->token;
     }
 
-    public function setToken($token) {
+    public function setToken($token)
+    {
         $this->token = $token;
     }
 
-    public function isProcessed() {
+    public function isProcessed()
+    {
         return $this->processed;
     }
 
-    public function setProcessed($processed) {
+    public function setProcessed($processed)
+    {
         $this->processed = $processed;
     }
 
-    public function getSubject() {
+    public function getSubject()
+    {
         return $this->subject;
     }
 
-    public function setSubject($subject) {
+    public function setSubject($subject)
+    {
         $this->subject = $subject;
     }
 
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
     }
 
-    public function getRecipients() {
+    public function getRecipients()
+    {
         return $this->recipients;
     }
 
-    public function addRecipient(Recipient $recipient) {
+    public function addRecipient(Recipient $recipient)
+    {
         $this->recipients[] = $recipient;
     }
 }

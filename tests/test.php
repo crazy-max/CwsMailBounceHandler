@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
+require_once __DIR__.'/../vendor/autoload.php'; // Autoload files using Composer autoload
 
 $cwsDebug = new Cws\CwsDebug();
 $cwsDebug->setDebugVerbose();
@@ -13,15 +13,16 @@ $cwsMbh->setNeutralProcessMode(); // default
 //$cwsMbh->setMoveProcessMode();
 //$cwsMbh->setDeleteProcessMode();
 
-/**
+/*
  * Eml folder
  */
 if ($cwsMbh->openEmlFolder('emls') === false) {
     $error = $cwsMbh->getError();
+
     return;
 }
 
-/**
+/*
  * Local mailbox
  */
 /*if ($cwsMbh->openImapLocal('/home/email/temp/mailbox') === false) {
@@ -29,7 +30,7 @@ if ($cwsMbh->openEmlFolder('emls') === false) {
     return;
 }*/
 
-/**
+/*
  * Remote mailbox
  */
 /*$cwsMbh->setImapMailboxService(); // default
@@ -53,12 +54,12 @@ if (!$result instanceof \Cws\MailBounceHandler\Models\Result) {
     // continue with Result
     $counter = $result->getCounter();
     echo '<h2>Counter</h2>';
-    echo 'total : ' . $counter->getTotal() . '<br />';
-    echo 'fetched : ' . $counter->getFetched() . '<br />';
-    echo 'processed : ' . $counter->getProcessed() . '<br />';
-    echo 'unprocessed : ' . $counter->getUnprocessed() . '<br />';
-    echo 'deleted : ' . $counter->getDeleted() . '<br />';
-    echo 'moved : ' . $counter->getMoved() . '<br />';
+    echo 'total : '.$counter->getTotal().'<br />';
+    echo 'fetched : '.$counter->getFetched().'<br />';
+    echo 'processed : '.$counter->getProcessed().'<br />';
+    echo 'unprocessed : '.$counter->getUnprocessed().'<br />';
+    echo 'deleted : '.$counter->getDeleted().'<br />';
+    echo 'moved : '.$counter->getMoved().'<br />';
 
     $mails = $result->getMails();
     echo '<h2>Mails</h2>';
@@ -66,15 +67,15 @@ if (!$result instanceof \Cws\MailBounceHandler\Models\Result) {
         if (!$mail instanceof \Cws\MailBounceHandler\Models\Mail) {
             continue;
         }
-        echo '<h3>' . $mail->getToken() . '</h3>';
-        echo 'subject : ' . $mail->getSubject() . '<br />';
-        echo 'type : ' . $mail->getType() . '<br />';
+        echo '<h3>'.$mail->getToken().'</h3>';
+        echo 'subject : '.$mail->getSubject().'<br />';
+        echo 'type : '.$mail->getType().'<br />';
         echo 'recipients :<br />';
         foreach ($mail->getRecipients() as $recipient) {
             if (!$recipient instanceof \Cws\MailBounceHandler\Models\Recipient) {
                 continue;
             }
-            echo '- ' . $recipient->getEmail() . '<br />';
+            echo '- '.$recipient->getEmail().'<br />';
         }
     }
 }
