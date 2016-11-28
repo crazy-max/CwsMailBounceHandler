@@ -32,7 +32,7 @@ class Result
     public function __construct()
     {
         $this->counter = new Counter();
-        $this->mails = [];
+        $this->mails = array();
     }
 
     public function getCounter()
@@ -40,6 +40,7 @@ class Result
         if ($this->counter instanceof Counter) {
             return $this->counter;
         }
+        return null;
     }
 
     public function setCounter(Counter $counter)

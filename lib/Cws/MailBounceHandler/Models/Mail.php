@@ -56,7 +56,7 @@ class Mail
         $this->processed = true;
         $this->subject = null;
         $this->type = null;
-        $this->recipients = [];
+        $this->recipients = array();
     }
 
     public function getToken()
