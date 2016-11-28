@@ -231,7 +231,7 @@ class Handler
     {
         $this->mailboxHandler = false;
         $this->emlFolder = '';
-        $this->emlFiles = [];
+        $this->emlFiles = array();
         $this->enableMove = true;
     }
 
@@ -509,7 +509,7 @@ class Handler
         }
 
         // begin process
-        $tmpRecipients = [];
+        $tmpRecipients = array();
         if ($isFbl) {
             $this->cwsDebug->simple('<strong>Feedback loop</strong> detected', CwsDebug::VERBOSE_DEBUG);
             $cwsMbhMail->setSubject(trim(str_ireplace('Fw:', '', $header['Subject'])));
@@ -855,20 +855,20 @@ class Handler
 
         if (!self::isEmpty($result['perMessage'], 'X-postfix-sender')) {
             $arTmp = explode(';', $result['perMessage']['X-postfix-sender']);
-            $result['perMessage']['X-postfix-sender'] = [
+            $result['perMessage']['X-postfix-sender'] = array(
                 'type' => isset($arTmp[0]) ? trim($arTmp[0]) : null,
                 'addr' => isset($arTmp[1]) ? trim($arTmp[1]) : null,
-            ];
+            );
         }
         if (!self::isEmpty($result['perMessage'], 'Reporting-mta')) {
             $arTmp = explode(';', $result['perMessage']['Reporting-mta']);
-            $result['perMessage']['Reporting-mta'] = [
+            $result['perMessage']['Reporting-mta'] = array(
                 'type' => isset($arTmp[0]) ? trim($arTmp[0]) : null,
                 'addr' => isset($arTmp[1]) ? trim($arTmp[1]) : null,
-            ];
+            );
         }
 
-        $tmpPerRecipient = [];
+        $tmpPerRecipient = array();
         foreach ($result['perRecipient'] as $perRecipient) {
             $arPerRecipient = self::parseLines(explode("\r\n", $perRecipient));
             $arPerRecipient['Final-recipient'] = isset($arPerRecipient['Final-recipient']) ? self::formatFinalRecipient($arPerRecipient['Final-recipient']) : null;
@@ -942,7 +942,7 @@ class Handler
      */
     private static function parseBodySections($arHeader, $body)
     {
-        $sections = [];
+        $sections = array();
 
         if (is_array($arHeader) && isset($arHeader['Content-type']) && isset($arHeader['Content-type']['boundary'])) {
             $arBoundary = explode($arHeader['Content-type']['boundary'], $body);
@@ -964,11 +964,11 @@ class Handler
      */
     private static function parseDsnFields($bodySectionMachine)
     {
-        $result = [
+        $result = array(
             'mimeHeader'   => null,
             'perMessage'   => null,
             'perRecipient' => null,
-        ];
+        );
 
         $dsnFields = explode("\r\n\r\n", $bodySectionMachine);
 
@@ -1001,7 +1001,7 @@ class Handler
      */
     private static function parseLines($content)
     {
-        $result = [];
+        $result = array();
 
         if (!is_array($content)) {
             $content = explode("\r\n", $content);
@@ -1064,7 +1064,7 @@ class Handler
      *
      * @return bool
      */
-    private static function isFbl($arHeader, $bodySections = [])
+    private static function isFbl($arHeader, $bodySections = array())
     {
         if (!empty($arHeader)) {
             if (isset($arHeader['Content-type'])
@@ -1136,10 +1136,10 @@ class Handler
      */
     private static function formatFinalRecipient($finalRecipient)
     {
-        $result = [
+        $result = array(
             'addr' => '',
             'type' => '',
-        ];
+        );
 
         $arFinalRecipient = explode(';', $finalRecipient);
         if (empty($arFinalRecipient)) {
@@ -1166,10 +1166,10 @@ class Handler
      */
     private static function formatOriginalRecipient($originalRecipient)
     {
-        $result = [
+        $result = array(
             'addr' => '',
             'type' => '',
-        ];
+        );
 
         $arOriginalRecipient = explode(';', $originalRecipient);
         if (empty($arOriginalRecipient)) {
@@ -1191,10 +1191,10 @@ class Handler
      */
     private static function formatDiagnosticCode($diagCode)
     {
-        $result = [
+        $result = array(
             'type' => '',
             'text' => '',
-        ];
+        );
 
         $arDiagCode = explode(';', $diagCode);
         if (empty($arDiagCode)) {
@@ -1223,15 +1223,15 @@ class Handler
             return false;
         }
 
-        $content = @file_get_contents($emlFilePath, false, stream_context_create(['http' => ['method' => 'GET']]));
+        $content = @file_get_contents($emlFilePath, false, stream_context_create(array('http' => array('method' => 'GET'))));
         if (empty($content)) {
             return false;
         }
 
-        return [
+        return array(
             'name'    => basename($emlFilePath),
             'content' => $content,
-        ];
+        );
     }
 
     /**
@@ -1248,12 +1248,12 @@ class Handler
      */
     public static function getStatusCodeExplanations($statusCode)
     {
-        $result = [
+        $result = array(
             self::STATUS_CODE           => null,
-            self::STATUS_FIRST_SUBCODE  => [],
-            self::STATUS_SECOND_SUBCODE => [],
-            self::STATUS_THIRD_SUBCODE  => [],
-        ];
+            self::STATUS_FIRST_SUBCODE  => array(),
+            self::STATUS_SECOND_SUBCODE => array(),
+            self::STATUS_THIRD_SUBCODE  => array(),
+        );
 
         $statusCode = self::formatStatusCode($statusCode);
         if (self::isEmpty($statusCode)) {
@@ -1270,24 +1270,24 @@ class Handler
         // First sub-code : indicates whether the delivery attempt was successful
         switch ($arStatusCode[0]) {
             case '2':
-                $result[self::STATUS_FIRST_SUBCODE] = [
+                $result[self::STATUS_FIRST_SUBCODE] = array(
                     'title' => 'Success',
                     'desc'  => 'Success specifies that the DSN is reporting a positive delivery action. Detail sub-codes may provide notification of transformations required for delivery.',
-                ];
+                );
                 break;
 
             case '4':
-                $result[self::STATUS_FIRST_SUBCODE] = [
+                $result[self::STATUS_FIRST_SUBCODE] = array(
                     'title' => 'Persistent Transient Failure',
                     'desc'  => 'A persistent transient failure is one in which the message as sent is valid, but some temporary event prevents the successful sending of the message. Sending in the future may be successful.',
-                ];
+                );
                 break;
 
             case '5':
-                $result[self::STATUS_FIRST_SUBCODE] = [
+                $result[self::STATUS_FIRST_SUBCODE] = array(
                     'title' => 'Permanent Failure',
                     'desc'  => 'A permanent failure is one which is not likely to be resolved by resending the message in the current form. Some change to the message or the destination must be made for successful delivery.',
-                ];
+                );
                 break;
 
             default:
@@ -1297,59 +1297,59 @@ class Handler
         // Second sub-code : indicates the probable source of any delivery anomalies
         switch ($arStatusCode[1]) {
             case '0':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Other or Undefined Status',
                     'desc'  => 'There is no additional subject information available.',
-                ];
+                );
                 break;
 
             case '1':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Addressing Status',
                     'desc'  => 'The address status reports on the originator or destination address. It may include address syntax or validity. These errors can generally be corrected by the sender and retried.',
-                ];
+                );
                 break;
 
             case '2':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Mailbox Status',
                     'desc'  => 'Mailbox status indicates that something having to do with the mailbox has cause this DSN. Mailbox issues are assumed to be under the general control of the recipient.',
-                ];
+                );
                 break;
 
             case '3':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Mail System Status',
                     'desc'  => 'Mail system status indicates that something having to do with the destination system has caused this DSN. System issues are assumed to be under the general control of the destination system administrator.',
-                ];
+                );
                 break;
 
             case '4':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Network and Routing Status',
                     'desc'  => 'The networking or routing codes report status about the delivery system itself. These system components include any necessary infrastructure such as directory and routing services. Network issues are assumed to be under the control of the destination or intermediate system administrator.',
-                ];
+                );
                 break;
 
             case '5':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Mail Delivery Protocol Status',
                     'desc'  => 'The mail delivery protocol status codes report failures involving the message delivery protocol. These failures include the full range of problems resulting from implementation errors or an unreliable connection. Mail delivery protocol issues may be controlled by many parties including the originating system, destination system, or intermediate system administrators.',
-                ];
+                );
                 break;
 
             case '6':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Message Content or Media Status',
                     'desc'  => 'The message content or media status codes report failures involving the content of the message. These codes report failures due to translation, transcoding, or otherwise unsupported message media. Message content or media issues are under the control of both the sender and the receiver, both of whom must support a common set of supported content-types.',
-                ];
+                );
                 break;
 
             case '7':
-                $result[self::STATUS_SECOND_SUBCODE] = [
+                $result[self::STATUS_SECOND_SUBCODE] = array(
                     'title' => 'Security or Policy Status',
                     'desc'  => 'The security or policy status codes report failures involving policies such as per-recipient or per-host filtering and cryptographic operations. Security and policy status issues are assumed to be under the control of either or both the sender and recipient. Both the sender and recipient must permit the exchange of messages and arrange the exchange of necessary keys and certificates for cryptographic operations.',
-                ];
+                );
                 break;
 
             default:
@@ -1359,346 +1359,346 @@ class Handler
         // Second and Third sub-code : indicates a precise error condition
         switch ($arStatusCode[1].'.'.$arStatusCode[2]) {
             case '0.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other undefined Status',
                     'desc'  => 'Other undefined status is the only undefined error code. It should be used for all errors for which only the class of the error is known.',
-                ];
+                );
                 break;
 
             case '1.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other address status',
                     'desc'  => 'Something about the address specified in the message caused this DSN.',
-                ];
+                );
                 break;
 
             case '1.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Bad destination mailbox address',
                     'desc'  => 'The mailbox specified in the address does not exist. For Internet mail names, this means the address portion to the left of the @ sign is invalid. This code is only useful for permanent failures.',
-                ];
+                );
                 break;
 
             case '1.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Bad destination system address',
                     'desc'  => 'The destination system specified in the address does not exist or is incapable of accepting mail. For Internet mail names, this means the address portion to the right of the @ is invalid for mail. This codes is only useful for permanent failures.',
-                ];
+                );
                 break;
 
             case '1.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Bad destination mailbox address syntax',
                     'desc'  => 'The destination address was syntactically invalid. This can apply to any field in the address. This code is only useful for permanent failures.',
-                ];
+                );
                 break;
 
             case '1.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Destination mailbox address ambiguous',
                     'desc'  => 'The mailbox address as specified matches one or more recipients on the destination system. This may result if a heuristic address mapping algorithm is used to map the specified address to a local mailbox name.',
-                ];
+                );
                 break;
 
             case '1.5':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Destination address valid',
                     'desc'  => 'This mailbox address as specified was valid. This status code should be used for positive delivery reports.',
-                ];
+                );
                 break;
 
             case '1.6':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Destination mailbox has moved, No forwarding address',
                     'desc'  => 'The mailbox address provided was at one time valid, but mail is no longer being accepted for that address. This code is only useful for permanent failures.',
-                ];
+                );
                 break;
 
             case '1.7':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Bad sender\'s mailbox address syntax',
                     'desc'  => 'The sender\'s address was syntactically invalid. This can apply to any field in the address.',
-                ];
+                );
                 break;
 
             case '1.8':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Bad sender\'s system address',
                     'desc'  => 'The sender\'s system specified in the address does not exist or is incapable of accepting return mail. For domain names, this means the address portion to the right of the @ is invalid for mail.',
-                ];
+                );
                 break;
 
             case '2.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other or undefined mailbox status',
                     'desc'  => 'The mailbox exists, but something about the destination mailbox has caused the sending of this DSN.',
-                ];
+                );
                 break;
 
             case '2.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Mailbox disabled, not accepting messages',
                     'desc'  => 'The mailbox exists, but is not accepting messages. This may be a permanent error if the mailbox will never be re-enabled or a transient error if the mailbox is only temporarily disabled.',
-                ];
+                );
                 break;
 
             case '2.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Mailbox full',
                     'desc'  => 'The mailbox is full because the user has exceeded a per-mailbox administrative quota or physical capacity. The general semantics implies that the recipient can delete messages to make more space available. This code should be used as a persistent transient failure.',
-                ];
+                );
                 break;
 
             case '2.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Message length exceeds administrative limit',
                     'desc'  => 'A per-mailbox administrative message length limit has been exceeded. This status code should be used when the per-mailbox message length limit is less than the general system limit. This code should be used as a permanent failure.',
-                ];
+                );
                 break;
 
             case '2.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Mailing list expansion problem',
                     'desc'  => 'The mailbox is a mailing list address and the mailing list was unable to be expanded. This code may represent a permanent failure or a persistent transient failure.',
-                ];
+                );
                 break;
 
             case '3.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other or undefined mail system status',
                     'desc'  => 'The destination system exists and normally accepts mail, but something about the system has caused the generation of this DSN.',
-                ];
+                );
                 break;
 
             case '3.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Mail system full',
                     'desc'  => 'Mail system storage has been exceeded. The general semantics imply that the individual recipient may not be able to delete material to make room for additional messages. This is useful only as a persistent transient error.',
-                ];
+                );
                 break;
 
             case '3.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'System not accepting network messages',
                     'desc'  => 'The host on which the mailbox is resident is not accepting messages. Examples of such conditions include an immanent shutdown, excessive load, or system maintenance. This is useful for both permanent and permanent transient errors.',
-                ];
+                );
                 break;
 
             case '3.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'System not capable of selected features',
                     'desc'  => 'Selected features specified for the message are not supported by the destination system. This can occur in gateways when features from one domain cannot be mapped onto the supported feature in another.',
-                ];
+                );
                 break;
 
             case '3.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Message too big for system',
                     'desc'  => 'The message is larger than per-message size limit. This limit may either be for physical or administrative reasons. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '3.5':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'System incorrectly configured',
                     'desc'  => 'The system is not configured in a manner which will permit it to accept this message.',
-                ];
+                );
                 break;
 
             case '4.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other or undefined network or routing status',
                     'desc'  => 'Something went wrong with the networking, but it is not clear what the problem is, or the problem cannot be well expressed with any of the other provided detail codes.',
-                ];
+                );
                 break;
 
             case '4.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'No answer from host',
                     'desc'  => 'The outbound connection attempt was not answered, either because the remote system was busy, or otherwise unable to take a call. This is useful only as a persistent transient error.',
-                ];
+                );
                 break;
 
             case '4.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Bad connection',
                     'desc'  => 'The outbound connection was established, but was otherwise unable to complete the message transaction, either because of time-out, or inadequate connection quality. This is useful only as a persistent transient error.',
-                ];
+                );
                 break;
 
             case '4.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Directory server failure',
                     'desc'  => 'The network system was unable to forward the message, because a directory server was unavailable. This is useful only as a persistent transient error. The inability to connect to an Internet DNS server is one example of the directory server failure error.',
-                ];
+                );
                 break;
 
             case '4.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Unable to route',
                     'desc'  => 'The mail system was unable to determine the next hop for the message because the necessary routing information was unavailable from the directory server. This is useful for both permanent and persistent transient errors. A DNS lookup returning only an SOA (Start of Administration) record for a domain name is one example of the unable to route error.',
-                ];
+                );
                 break;
 
             case '4.5':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Mail system congestion',
                     'desc'  => 'The mail system was unable to deliver the message because the mail system was congested. This is useful only as a persistent transient error.',
-                ];
+                );
                 break;
 
             case '4.6':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Routing loop detected',
                     'desc'  => 'A routing loop caused the message to be forwarded too many times, either because of incorrect routing tables or a user forwarding loop. This is useful only as a persistent transient error.',
-                ];
+                );
                 break;
 
             case '4.7':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Delivery time expired',
                     'desc'  => 'The message was considered too old by the rejecting system, either because it remained on that host too long or because the time-to-live value specified by the sender of the message was exceeded. If possible, the code for the actual problem found when delivery was attempted should be returned rather than this code. This is useful only as a persistent transient error.',
-                ];
+                );
                 break;
 
             case '5.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other or undefined protocol status',
                     'desc'  => 'Something was wrong with the protocol necessary to deliver the message to the next hop and the problem cannot be well expressed with any of the other provided detail codes.',
-                ];
+                );
                 break;
 
             case '5.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Invalid command',
                     'desc'  => 'A mail transaction protocol command was issued which was either out of sequence or unsupported. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '5.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Syntax error',
                     'desc'  => 'A mail transaction protocol command was issued which could not be interpreted, either because the syntax was wrong or the command is unrecognized. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '5.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Too many recipients',
                     'desc'  => 'More recipients were specified for the message than could have been delivered by the protocol. This error should normally result in the segmentation of the message into two, the remainder of the recipients to be delivered on a subsequent delivery attempt. It is included in this list in the event that such segmentation is not possible.',
-                ];
+                );
                 break;
 
             case '5.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Invalid command arguments',
                     'desc'  => 'A valid mail transaction protocol command was issued with invalid arguments, either because the arguments were out of range or represented unrecognized features. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '5.5':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Wrong protocol version',
                     'desc'  => 'A protocol version mis-match existed which could not be automatically resolved by the communicating parties.',
-                ];
+                );
                 break;
 
             case '6.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other or undefined media error',
                     'desc'  => 'Something about the content of a message caused it to be considered undeliverable and the problem cannot be well expressed with any of the other provided detail codes.',
-                ];
+                );
                 break;
 
             case '6.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Media not supported',
                     'desc'  => 'The media of the message is not supported by either the delivery protocol or the next system in the forwarding path. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '6.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Conversion required and prohibited',
                     'desc'  => 'The content of the message must be converted before it can be delivered and such conversion is not permitted. Such prohibitions may be the expression of the sender in the message itself or the policy of the sending host.',
-                ];
+                );
                 break;
 
             case '6.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Conversion required but not supported',
                     'desc'  => 'The message content must be converted to be forwarded but such conversion is not possible or is not practical by a host in the forwarding path. This condition may result when an ESMTP gateway supports 8bit transport but is not able to downgrade the message to 7 bit as required for the next hop.',
-                ];
+                );
                 break;
 
             case '6.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Conversion with loss performed',
                     'desc'  => 'This is a warning sent to the sender when message delivery was successfully but when the delivery required a conversion in which some data was lost. This may also be a permanant error if the sender has indicated that conversion with loss is prohibited for the message.',
-                ];
+                );
                 break;
 
             case '6.5':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Conversion Failed',
                     'desc'  => 'A conversion was required but was unsuccessful. This may be useful as a permanent or persistent temporary notification.',
-                ];
+                );
                 break;
 
             case '7.0':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Other or undefined security status',
                     'desc'  => 'Something related to security caused the message to be returned, and the problem cannot be well expressed with any of the other provided detail codes. This status code may also be used when the condition cannot be further described because of security policies in force.',
-                ];
+                );
                 break;
 
             case '7.1':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Delivery not authorized, message refused',
                     'desc'  => 'The sender is not authorized to send to the destination. This can be the result of per-host or per-recipient filtering. This memo does not discuss the merits of any such filtering, but provides a mechanism to report such. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '7.2':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Mailing list expansion prohibited',
                     'desc'  => 'The sender is not authorized to send a message to the intended mailing list. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '7.3':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Security conversion required but not possible',
                     'desc'  => 'A conversion from one secure messaging protocol to another was required for delivery and such conversion was not possible. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '7.4':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Security features not supported',
                     'desc'  => 'A message contained security features such as secure authentication which could not be supported on the delivery protocol. This is useful only as a permanent error.',
-                ];
+                );
                 break;
 
             case '7.5':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Cryptographic failure',
                     'desc'  => 'A transport system otherwise authorized to validate or decrypt a message in transport was unable to do so because necessary information such as key was not available or such information was invalid.',
-                ];
+                );
                 break;
 
             case '7.6':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Cryptographic algorithm not supported',
                     'desc'  => 'A transport system otherwise authorized to validate or decrypt a message was unable to do so because the necessary algorithm was not supported.',
-                ];
+                );
                 break;
 
             case '7.7':
-                $result[self::STATUS_THIRD_SUBCODE] = [
+                $result[self::STATUS_THIRD_SUBCODE] = array(
                     'title' => 'Message integrity failure',
                     'desc'  => 'A transport system otherwise authorized to validate a message was unable to do so because the message was corrupted or altered. This may be useful as a permanent, transient persistent, or successful delivery code.',
-                ];
+                );
                 break;
 
             default:
@@ -1717,7 +1717,7 @@ class Handler
      */
     private static function getStatusCodeFromPattern($pattern)
     {
-        $statusCodeResolver = [
+        $statusCodeResolver = array(
             // regexp
             '[45]\d\d[- ]\#?([45]\.\d\.\d)'                      => 'x',
             'Diagnostic[- ][Cc]ode: smtp; ?\d\d\ ([45]\.\d\.\d)' => 'x',
@@ -1941,7 +1941,7 @@ class Handler
             'transaction rejected'                                      => '5.7.1',
             'wiadomosc zostala odrzucona przez system antyspamowy'      => '5.7.1',
             'your message was declared spam'                            => '5.7.1',
-        ];
+        );
 
         foreach ($statusCodeResolver as $bounceBody => $bounceCode) {
             if (preg_match('#'.$bounceBody.'#is', $pattern, $matches)) {
@@ -1989,108 +1989,108 @@ class Handler
      */
     private static function getRuleCat($ruleCatName)
     {
-        $ruleCatsData = [
-            [
+        $ruleCatsData = array(
+            array(
                 'name'       => self::CAT_ANTISPAM,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_BLOCKED,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_AUTOREPLY,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_AUTOREPLY,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_CONCURRENT,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_CONTENT_REJECT,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_COMMAND_REJECT,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_HARD,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_DEFER,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_DELAYED,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_TEMPORARY,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_DNS_LOOP,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_HARD,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_DNS_UNKNOWN,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_HARD,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_FULL,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_INACTIVE,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_HARD,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_INTERNAL_ERROR,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_TEMPORARY,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_LATIN_ONLY,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_OTHER,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_GENERIC,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_OVERSIZE,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_TIMEOUT,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_UNKNOWN,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_HARD,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_UNRECOGNIZED,
                 'remove'     => false,
                 'bounceType' => null,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_USER_REJECT,
                 'remove'     => true,
                 'bounceType' => self::BOUNCE_HARD,
-            ],
-            [
+            ),
+            array(
                 'name'       => self::CAT_WARNING,
                 'remove'     => false,
                 'bounceType' => self::BOUNCE_SOFT,
-            ],
-        ];
+            ),
+        );
 
         foreach ($ruleCatsData as $ruleCatData) {
             if ($ruleCatData['name'] == $ruleCatName) {
@@ -2108,7 +2108,7 @@ class Handler
      */
     private static function getRuleCatByStatusCode($statusCode)
     {
-        $ruleCatStatusCode = [
+        $ruleCatStatusCode = array(
             '4.0.0' => self::CAT_INTERNAL_ERROR,
             '4.2.0' => self::CAT_DEFER,
             '4.2.2' => self::CAT_FULL,
@@ -2137,7 +2137,7 @@ class Handler
             '5.6.2' => self::CAT_CONTENT_REJECT,
             '5.7.0' => self::CAT_USER_REJECT,
             '5.7.1' => self::CAT_USER_REJECT,
-        ];
+        );
 
         if (!isset($ruleCatStatusCode[$statusCode])) {
             return;
@@ -2171,7 +2171,7 @@ class Handler
      */
     private static function findEmails($bodySectionFirst)
     {
-        $result = [];
+        $result = array();
 
         if (empty($bodySectionFirst)) {
             return $result;
