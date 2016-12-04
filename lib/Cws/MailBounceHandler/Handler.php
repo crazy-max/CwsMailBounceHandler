@@ -2458,7 +2458,7 @@ class Handler
      */
     public function setMailboxPort($mailboxPort)
     {
-        $this->setMail = $mailboxPort;
+        $this->mailboxPort = $mailboxPort;
     }
 
     /**
