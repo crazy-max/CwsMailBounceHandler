@@ -262,11 +262,10 @@ class Handler
             $this->cwsDebug->error($this->error);
 
             return false;
-        } else {
-            $this->cwsDebug->labelValue('Opened', $filePath, CwsDebug::VERBOSE_SIMPLE);
-
-            return true;
         }
+
+        $this->cwsDebug->labelValue('Opened', $filePath, CwsDebug::VERBOSE_SIMPLE);
+        return true;
     }
 
     /**
@@ -971,7 +970,7 @@ class Handler
 
         $dsnFields = explode("\r\n\r\n", $bodySectionMachine);
 
-        $j = 0;
+        $recipientIndex = 0;
         for ($i = 0; $i < count($dsnFields); $i++) {
             $dsnFields[$i] = trim($dsnFields[$i]);
             if ($i == 0) {
@@ -983,8 +982,8 @@ class Handler
                 if ($dsnFields[$i] == '--') {
                     continue;
                 }
-                $result['perRecipient'][$j] = $dsnFields[$i];
-                $j++;
+                $result['perRecipient'][$recipientIndex] = $dsnFields[$i];
+                $recipientIndex++;
             }
         }
 
