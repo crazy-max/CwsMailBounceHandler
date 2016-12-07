@@ -437,6 +437,7 @@ class Handler
 
         // process mails
         foreach ($cwsMbhResult->getMails() as $cwsMbhMail) {
+            /* @var $cwsMbhMail Mail */
             if ($cwsMbhMail->isProcessed()) {
                 $cwsMbhResult->getCounter()->incrProcessed();
                 if ($this->enableMove && $this->isMoveProcessMode()) {
@@ -617,6 +618,7 @@ class Handler
 
         if (count($tmpRecipients) > 0) {
             foreach ($tmpRecipients as $cwsMbhRecipient) {
+                /* @var $cwsMbhRecipient Recipient */
                 // check status
                 if (!$cwsMbhRecipient->getStatus()) {
                     $cwsMbhRecipient->setStatus($this->findStatusCodeByRecipient($body));
@@ -1219,7 +1221,6 @@ class Handler
      */
     private static function getEmlFile($emlFilePath)
     {
-        $emlFile = false;
         set_time_limit(6000);
 
         if (!file_exists($emlFilePath)) {
@@ -1861,13 +1862,11 @@ class Handler
             'exceeded the rate limit'             => '5.2.0',
             'local Policy Violation'              => '5.2.0',
             'mailbox currently suspended'         => '5.2.0',
-            'mailbox unavailable'                 => '5.2.0',
             'mail can not be delivered'           => '5.2.0',
             'mail couldn\'t be delivered'         => '5.2.0',
             'the account or domain may not exist' => '5.2.0',
             // 5.2.1
             'account disabled'                                              => '5.2.1',
-            'account has been disabled'                                     => '5.2.1',
             'account inactive'                                              => '5.2.1',
             'inactive account'                                              => '5.2.1',
             'adressat unbekannt oder mailbox deaktiviert'                   => '5.2.1',
