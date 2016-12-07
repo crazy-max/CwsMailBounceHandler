@@ -250,8 +250,6 @@ class Handler
         $this->cwsDebug->titleH2('Mode openImapLocal', CwsDebug::VERBOSE_SIMPLE);
         $this->openMode = self::OPEN_MODE_MAILBOX;
 
-        set_time_limit(6000);
-
         $this->mailboxHandler = imap_open(
             $filePath,
             '',
@@ -295,8 +293,6 @@ class Handler
             $opts .= '/'.$this->mailboxCert;
         }
 
-        set_time_limit(6000);
-
         $this->mailboxHandler = imap_open(
             '{'.$this->mailboxHost.':'.$this->mailboxPort.$opts.'}'.$this->mailboxName,
             $this->mailboxUsername,
@@ -332,8 +328,6 @@ class Handler
 
         $this->emlFolder = self::formatUnixPath(rtrim(realpath($emlFolder), '/'));
         $this->cwsDebug->labelValue('Open folder', $this->emlFolder, CwsDebug::VERBOSE_SIMPLE);
-
-        set_time_limit(30000);
 
         $handle = @opendir($this->emlFolder);
         if (!$handle) {
