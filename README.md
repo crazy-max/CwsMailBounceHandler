@@ -14,7 +14,6 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 ## Requirements
 
 * PHP >= 5.3.2
-* CwsDebug >= 1.8
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
 
 ## Installation with Composer
