@@ -21,7 +21,7 @@ class Result
     private $counter;
 
     /**
-     * List of mails,.
+     * List of mails.
      *
      * @see Cws\MailBounceHandler\Models\Mail
      *

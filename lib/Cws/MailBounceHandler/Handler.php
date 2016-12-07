@@ -159,7 +159,7 @@ class Handler
     /**
      * The resource handler for the opened mailbox (POP3/IMAP/NNTP/etc.).
      *
-     * @var object
+     * @var resource
      */
     private $mailboxHandler = false;
 
@@ -350,7 +350,7 @@ class Handler
             }
             $emlFilePath = $this->emlFolder.'/'.$file;
             $emlFile = self::getEmlFile($emlFilePath);
-            if ($emlFile !== false) {
+            if (!empty($emlFile)) {
                 $this->emlFiles[] = $emlFile;
             }
             $nbFiles++;
@@ -760,7 +760,7 @@ class Handler
         $result = '';
 
         if (empty($statusCode)) {
-            return '';
+            return $result;
         }
 
         $statusCode = self::formatStatusCode($statusCode);
@@ -839,6 +839,8 @@ class Handler
                 return $statusCode;
             }
         }
+
+        return null;
     }
 
     /**
@@ -1213,7 +1215,7 @@ class Handler
      *
      * @param string $emlFilePath : the eml file path
      *
-     * @return bool
+     * @return array
      */
     private static function getEmlFile($emlFilePath)
     {
@@ -1221,12 +1223,12 @@ class Handler
         set_time_limit(6000);
 
         if (!file_exists($emlFilePath)) {
-            return false;
+            return null;
         }
 
         $content = @file_get_contents($emlFilePath, false, stream_context_create(array('http' => array('method' => 'GET'))));
         if (empty($content)) {
-            return false;
+            return null;
         }
 
         return array(
@@ -1948,10 +1950,11 @@ class Handler
             if (preg_match('#'.$bounceBody.'#is', $pattern, $matches)) {
                 $statusCode = isset($matches[1]) ? $matches[1] : $bounceCode;
                 $statusCode = self::formatStatusCode($statusCode);
-
                 return $statusCode;
             }
         }
+
+        return null;
     }
 
     /**
@@ -1963,19 +1966,21 @@ class Handler
      */
     private static function formatStatusCode($statusCode)
     {
-        if (!empty($statusCode)) {
-            if (preg_match('#(\d\d\d)\s#', $statusCode, $match)) {
-                $statusCode = $match[1];
-            } elseif (preg_match('#(\d\.\d\.\d)\s#', $statusCode, $match)) {
-                $statusCode = $match[1];
-            }
-            if (preg_match('#([245]\.[01234567]\.[012345678])(.*)#', $statusCode, $match)) {
-                return $match[1];
-            } elseif (preg_match('#([245][01234567][012345678])(.*)#', $statusCode, $match)) {
-                preg_match_all('#.#', $match[1], $arStatusCode);
-                if (is_array($arStatusCode[0]) && count($arStatusCode[0]) == 3) {
-                    return implode('.', $arStatusCode[0]);
-                }
+        if (empty($statusCode)) {
+            return null;
+        }
+
+        if (preg_match('#(\d\d\d)\s#', $statusCode, $match)) {
+            $statusCode = $match[1];
+        } elseif (preg_match('#(\d\.\d\.\d)\s#', $statusCode, $match)) {
+            $statusCode = $match[1];
+        }
+        if (preg_match('#([245]\.[01234567]\.[012345678])(.*)#', $statusCode, $match)) {
+            return $match[1];
+        } elseif (preg_match('#([245][01234567][012345678])(.*)#', $statusCode, $match)) {
+            preg_match_all('#.#', $match[1], $arStatusCode);
+            if (is_array($arStatusCode[0]) && count($arStatusCode[0]) == 3) {
+                return implode('.', $arStatusCode[0]);
             }
         }
     }
@@ -1986,7 +1991,7 @@ class Handler
      * * string 'remove' is removed.
      * * string 'bounceType' type of bounce (see BOUNCE_ const).
      *
-     * @param string ruleCatName
+     * @param string
      */
     private static function getRuleCat($ruleCatName)
     {
@@ -2098,6 +2103,8 @@ class Handler
                 return $ruleCatData;
             }
         }
+
+        return null;
     }
 
     /**
@@ -2141,7 +2148,7 @@ class Handler
         );
 
         if (!isset($ruleCatStatusCode[$statusCode])) {
-            return;
+            return null;
         }
 
         return self::getRuleCat($ruleCatStatusCode[$statusCode]);
@@ -2161,6 +2168,8 @@ class Handler
         } elseif (isset($rcpt['Final-recipient']) && !self::isEmpty($rcpt['Final-recipient'], 'addr')) {
             return self::extractEmail($rcpt['Final-recipient']['addr']);
         }
+
+        return null;
     }
 
     /**
@@ -2307,7 +2316,7 @@ class Handler
     /**
      * The method to process bounces.
      *
-     * @return the $processMode
+     * @return string $processMode
      */
     public function getProcessMode()
     {
@@ -2351,7 +2360,7 @@ class Handler
     /**
      * Mailbox service.
      *
-     * @return the $mailboxService
+     * @return string $mailboxService
      */
     public function getMailboxService()
     {
@@ -2379,7 +2388,7 @@ class Handler
     /**
      * Mailbox host server.
      *
-     * @return the $mailboxHost
+     * @return string $mailboxHost
      */
     public function getMailboxHost()
     {
@@ -2399,7 +2408,7 @@ class Handler
     /**
      * The username of mailbox.
      *
-     * @return the $mailboxUsername
+     * @return string $mailboxUsername
      */
     public function getMailboxUsername()
     {
@@ -2429,7 +2438,7 @@ class Handler
     /**
      * The mailbox server port number.
      *
-     * @return the $mailboxPort
+     * @return int $mailboxPort
      */
     public function getMailboxPort()
     {
@@ -2481,7 +2490,7 @@ class Handler
     /**
      * The mailbox security option.
      *
-     * @return the $mailboxSecurity
+     * @return string $mailboxSecurity
      */
     public function getMailboxSecurity()
     {
@@ -2501,7 +2510,7 @@ class Handler
     /**
      * Certificate validation.
      *
-     * @return the $mailboxCert
+     * @return string $mailboxCert
      */
     public function getMailboxCert()
     {
@@ -2537,7 +2546,7 @@ class Handler
     /**
      * Mailbox name.
      *
-     * @return the $mailboxName
+     * @return string $mailboxName
      */
     public function getMailboxName()
     {
@@ -2557,7 +2566,7 @@ class Handler
     /**
      * The resource handler for the opened mailbox (POP3/IMAP/NNTP/etc.).
      *
-     * @return the $handler
+     * @return resource $handler
      */
     public function getMailboxHandler()
     {
@@ -2567,7 +2576,7 @@ class Handler
     /**
      * Maximum limit messages processed in one batch.
      *
-     * @return the $maxMessages
+     * @return int $maxMessages
      */
     public function getMaxMessages()
     {
@@ -2587,7 +2596,7 @@ class Handler
     /**
      * Check if purge unknown messages.
      *
-     * @return the $purge
+     * @return bool $purge
      */
     public function isPurge()
     {
@@ -2607,7 +2616,7 @@ class Handler
     /**
      * The last error message.
      *
-     * @return the $error
+     * @return string $error
      */
     public function getError()
     {

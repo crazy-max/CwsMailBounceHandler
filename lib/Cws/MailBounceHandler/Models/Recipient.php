@@ -2,6 +2,8 @@
 
 namespace Cws\MailBounceHandler\Models;
 
+use Cws\MailBounceHandler\Handler;
+
 /**
  * Recipient.
  *
@@ -61,7 +63,7 @@ class Recipient
         $this->status = null;
         $this->email = null;
         $this->bounceCat = null;
-        $this->bounceCat = \Cws\MailBounceHandler\Handler::CAT_UNRECOGNIZED;
+        $this->bounceCat = Handler::CAT_UNRECOGNIZED;
         $this->remove = false;
     }
 
