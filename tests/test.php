@@ -16,7 +16,7 @@ $cwsMbh->setNeutralProcessMode(); // default
 /*
  * Eml folder
  */
-if ($cwsMbh->openEmlFolder('emls') === false) {
+if ($cwsMbh->openEmlFolder(__DIR__.'/emls') === false) {
     $error = $cwsMbh->getError();
 
     return;
