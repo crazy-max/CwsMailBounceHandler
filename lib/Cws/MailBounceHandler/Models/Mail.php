@@ -35,6 +35,20 @@ class Mail
     private $subject;
 
     /**
+     * Message headers.
+     *
+     * @var object
+     */
+    private $header;
+
+    /**
+     * Message body.
+     *
+     * @var object
+     */
+    private $body;
+
+    /**
      * Type detected (bounce or fbl).
      *
      * @var string
@@ -87,6 +101,26 @@ class Mail
     public function setSubject($subject)
     {
         $this->subject = $subject;
+    }
+
+    public function getHeader()
+    {
+        return $this->header;
+    }
+
+    public function setHeader($header)
+    {
+        $this->header = $header;
+    }
+
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    public function setBody($body)
+    {
+        $this->body = $body;
     }
 
     public function getType()

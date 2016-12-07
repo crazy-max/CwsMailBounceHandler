@@ -485,8 +485,8 @@ class Handler
             list($header, $body) = preg_split('#\n\n#', $content, 2);
         }
 
-        $this->cwsDebug->dump('Header', $header, CwsDebug::VERBOSE_DEBUG);
-        $this->cwsDebug->dump('Body', $body, CwsDebug::VERBOSE_DEBUG);
+        $cwsMbhMail->setHeader($header);
+        $cwsMbhMail->setBody($body);
 
         // parse header
         $header = self::parseHeader($header);
