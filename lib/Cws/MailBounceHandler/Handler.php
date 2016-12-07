@@ -1982,6 +1982,8 @@ class Handler
                 return implode('.', $arStatusCode[0]);
             }
         }
+
+        return null;
     }
 
     /**
