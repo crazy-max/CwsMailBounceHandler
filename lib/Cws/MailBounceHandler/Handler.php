@@ -29,8 +29,9 @@ class Handler
     const MAILBOX_SERVICE_POP3 = 'pop3';
 
     const MAILBOX_PORT_POP3 = 110;
+    const MAILBOX_PORT_POP3_TLS_SSL = 995;
     const MAILBOX_PORT_IMAP = 143;
-    const MAILBOX_PORT_TLS_SSL = 995;
+    const MAILBOX_PORT_IMAP_TLS_SSL = 993;
 
     const MAILBOX_SECURITY_NONE = 'none';
     const MAILBOX_SECURITY_NOTLS = 'notls';
@@ -124,7 +125,7 @@ class Handler
     private $mailboxPassword;
 
     /**
-     * Defines port number, other common choices are MAILBOX_PORT_IMAP, MAILBOX_PORT_TLS_SSL
+     * Defines port number, other common choices are MAILBOX_PORT_IMAP, MAILBOX_PORT_IMAP_TLS_SSL
      * default MAILBOX_PORT_IMAP.
      *
      * @var int
@@ -2436,19 +2437,35 @@ class Handler
     }
 
     /**
+     * Set the mailbox server port number to POP3 (110).
+     */
+    public function setMailboxPortPop3()
+    {
+        $this->setMailboxPort(self::MAILBOX_PORT_POP3);
+    }
+
+    /**
+     * Set the mailbox server port number to POP3 TLS/SSL (995).
+     */
+    public function setMailboxPortPop3TlsSsl()
+    {
+        $this->setMailboxPort(self::MAILBOX_PORT_POP3_TLS_SSL);
+    }
+
+    /**
      * Set the mailbox server port number to IMAP (143).
      */
-    public function setImapMailboxPort()
+    public function setMailboxPortImap()
     {
         $this->setMailboxPort(self::MAILBOX_PORT_IMAP);
     }
 
     /**
-     * Set the mailbox server port number to TLS/SSL (995).
+     * Set the mailbox server port number to IMAP TLS/SSL (993).
      */
-    public function setTlsSslMailboxPort()
+    public function setMailboxPortImapTlsSsl()
     {
-        $this->setMailboxPort(self::MAILBOX_PORT_TLS_SSL);
+        $this->setMailboxPort(self::MAILBOX_PORT_IMAP_TLS_SSL);
     }
 
     /**

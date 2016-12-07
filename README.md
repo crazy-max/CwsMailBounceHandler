@@ -44,11 +44,11 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 
 **openImapLocal** - Open a IMAP mail box in local file system.<br />
 **openImapRemote** - Open a remote IMAP mail box.<br />
-**openEmlFolder** - Open a folder containing eml files on your system.<br /><br />
+**openEmlFolder** - Open a folder containing eml files on your system.<br />
 
-**processMails** - Process the messages in a mailbox or a folder.<br /><br />
+**processMails** - Process the messages in a mailbox or a folder.<br />
 
-**getStatusCodeExplanations** -Get explanations from DSN status code via the RFC 1893.<br /><br />
+**getStatusCodeExplanations** -Get explanations from DSN status code via the RFC 1893.<br />
 
 **isMailboxOpenMode** - Check if open mode is mailbox.<br />
 **isFileOpenMode** - Check if open mode is file.<br />
@@ -69,8 +69,10 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 **setMailboxUsername** - Set the username of mailbox.<br />
 **setMailboxPassword** - Set the password needed to access mailbox.<br />
 **getMailboxPort** - The mailbox server port number.<br />
-**setImapMailboxPort** - Set the mailbox server port number to IMAP (143). (default)<br />
-**setTlsSslMailboxPort** - Set the mailbox server port number to TLS/SSL (995).<br />
+**setMailboxPortPop3** - Set the mailbox server port number to POP3 (110).<br />
+**setMailboxPortPop3TlsSsl** - Set the mailbox server port number to POP3 TLS/SSL (995).<br />
+**setMailboxPortImap** - Set the mailbox server port number to IMAP (143). (default)<br />
+**setMailboxPortImapTlsSsl** - Set the mailbox server port number to IMAP TLS/SSL (995).<br />
 **setMailboxPort** - Set the mailbox server port number.<br />
 **getMailboxSecurity** - The mailbox security option.<br />
 **setMailboxSecurity** - Set the mailbox security option. (default const MAILBOX_SECURITY_NOTLS)<br />
@@ -89,7 +91,7 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 
 ## License
 
-LGPL. See ``LICENSE`` for more details.
+LGPL. See `LICENSE` for more details.
 
 ## More infos
 
