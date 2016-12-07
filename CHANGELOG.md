@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.10 (2016/12/07)
+
+* Split POP3 and IMAP TLS/SSL ports (Issue #20)
+* Misspelled var (PR #19)
+* Add header and body var in Mail object (Issue #17)
+* Duplicated resolvers
+* Clean code
+* Remove set_time_limit
+
 ## 1.9 (2016/11/28)
 
 * Add StyleCI config
