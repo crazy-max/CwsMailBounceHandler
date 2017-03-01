@@ -911,7 +911,7 @@ class Handler
 
         if (isset($arHeader['Content-type'])) {
             $ar_mr = explode(';', $arHeader['Content-type']);
-            $arHeader['Content-type'] = '';
+            $arHeader['Content-type'] = [];
             $arHeader['Content-type']['type'] = strtolower($ar_mr[0]);
             foreach ($ar_mr as $mr) {
                 if (preg_match('#([^=.]*?)=(.*)#i', $mr, $matches)) {
