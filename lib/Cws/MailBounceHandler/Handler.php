@@ -275,39 +275,46 @@ class Handler
      */
     public function openImapRemote()
     {
-        $this->reset();
+        try {
+            $this->reset();
 
-        $this->cwsDebug->titleH2('Mode openImapRemote', CwsDebug::VERBOSE_SIMPLE);
-        $this->openMode = self::OPEN_MODE_MAILBOX;
+            $this->cwsDebug->titleH2('Mode openImapRemote', CwsDebug::VERBOSE_SIMPLE);
+            $this->openMode = self::OPEN_MODE_MAILBOX;
 
-        // disable move operations if server is Gmail... Gmail does not support mailbox creation
-        if (stristr($this->mailboxHost, 'gmail') && $this->isMoveProcessMode()) {
-            $this->enableMove = false;
-            $this->cwsDebug->simple('<strong>Move operations disabled</strong> for Gmail server, Gmail does not support mailbox creation', CwsDebug::VERBOSE_SIMPLE);
-        }
+            // disable move operations if server is Gmail... Gmail does not support mailbox creation
+            if (stristr($this->mailboxHost, 'gmail') && $this->isMoveProcessMode()) {
+                $this->enableMove = false;
+                $this->cwsDebug->simple('<strong>Move operations disabled</strong> for Gmail server, Gmail does not support mailbox creation', CwsDebug::VERBOSE_SIMPLE);
+            }
 
-        // required options for imap_open connection.
-        $opts = '/'.$this->mailboxService.'/'.$this->mailboxSecurity;
-        if ($this->mailboxSecurity == self::MAILBOX_SECURITY_TLS || $this->mailboxSecurity == self::MAILBOX_SECURITY_SSL) {
-            $opts .= '/'.$this->mailboxCert;
-        }
+            // required options for imap_open connection.
+            $opts = '/'.$this->mailboxService.'/'.$this->mailboxSecurity;
+            if ($this->mailboxSecurity == self::MAILBOX_SECURITY_TLS || $this->mailboxSecurity == self::MAILBOX_SECURITY_SSL) {
+                $opts .= '/'.$this->mailboxCert;
+            }
 
-        $this->mailboxHandler = imap_open(
-            '{'.$this->mailboxHost.':'.$this->mailboxPort.$opts.'}'.$this->mailboxName,
-            $this->mailboxUsername,
-            $this->mailboxPassword,
-            !$this->isNeutralProcessMode() ? CL_EXPUNGE : null
-        );
+            $this->mailboxHandler = imap_open(
+                '{'.$this->mailboxHost.':'.$this->mailboxPort.$opts.'}'.$this->mailboxName,
+                $this->mailboxUsername,
+                $this->mailboxPassword,
+                !$this->isNeutralProcessMode() ? CL_EXPUNGE : null
+            );
 
-        if (!$this->mailboxHandler) {
-            $this->error = 'Cannot create '.$this->mailboxService.' connection to '.$this->mailboxHost.': '.imap_last_error();
-            $this->cwsDebug->error($this->error);
+            if (!$this->mailboxHandler) {
+                $this->error = 'Cannot create '.$this->mailboxService.' connection to '.$this->mailboxHost.': '.imap_last_error();
+                $this->cwsDebug->error($this->error);
 
-            return false;
-        } else {
-            $this->cwsDebug->labelValue('Connected to', $this->mailboxHost.':'.$this->mailboxPort.$opts.' on mailbox '.$this->mailboxName.' ('.$this->mailboxUsername.')', CwsDebug::VERBOSE_SIMPLE);
+                return false;
+            } else {
+                $this->cwsDebug->labelValue('Connected to', $this->mailboxHost.':'.$this->mailboxPort.$opts.' on mailbox '.$this->mailboxName.' ('.$this->mailboxUsername.')', CwsDebug::VERBOSE_SIMPLE);
 
-            return true;
+                return true;
+            }
+        } catch (Exception $e) {
+                $this->error = 'Cannot create '.$this->mailboxService.' connection to '.$this->mailboxHost.': '.imap_last_error();
+                $this->cwsDebug->error($this->error);
+
+                return false;
         }
     }
 
