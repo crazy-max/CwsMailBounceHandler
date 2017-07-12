@@ -311,10 +311,10 @@ class Handler
                 return true;
             }
         } catch (Exception $e) {
-                $this->error = 'Cannot create '.$this->mailboxService.' connection to '.$this->mailboxHost.': '.imap_last_error();
-                $this->cwsDebug->error($this->error);
+            $this->error = 'Cannot create '.$this->mailboxService.' connection to '.$this->mailboxHost.': '.imap_last_error();
+            $this->cwsDebug->error($this->error);
 
-                return false;
+            return false;
         }
     }
 
