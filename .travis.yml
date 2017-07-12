@@ -15,6 +15,6 @@ matrix:
 
 install:
   - composer self-update
-  - composer install --no-interaction --dev
+  - composer install --no-interaction
 
 script: phpunit --version
