@@ -1,4 +1,6 @@
 language: php
+dist: trusty
+
 php:
   - 7.1
   - 7.0
@@ -7,9 +9,13 @@ php:
   - 5.4
   - 5.3
   - hhvm
+
 matrix:
   allow_failures:
   - php: hhvm
-before_script:
-- composer install
+
+install:
+  - composer self-update
+  - composer install --no-interaction --dev
+
 script: phpunit --version
