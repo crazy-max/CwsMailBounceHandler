@@ -1,9 +1,15 @@
 # Changelog
 
+## 1.11 (2017/07/12)
+
+* Handle exceptions for openImapRemote method (Issue #26)
+* Change processMailDelete and processMailMove scope to public (Issue #24)
+* Initialize `$arHeader['Content-type']` var to array (Issue #21)
+
 ## 1.10 (2016/12/07)
 
 * Split POP3 and IMAP TLS/SSL ports (Issue #20)
-* Misspelled var (PR #19)
+* Misspelled var (Issue #19)
 * Add header and body var in Mail object (Issue #17)
 * Duplicated resolvers
 * Clean code
