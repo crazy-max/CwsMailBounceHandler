@@ -650,7 +650,7 @@ class Handler
      *
      * @return bool
      */
-    private function processMailDelete(Mail $cwsMbhMail)
+    public function processMailDelete(Mail $cwsMbhMail)
     {
         if ($this->isMailboxOpenMode()) {
             $this->cwsDebug->simple('Process <strong>delete '.$cwsMbhMail->getType().' bounce</strong> message '.$cwsMbhMail->getToken().' in mailbox', CwsDebug::VERBOSE_DEBUG);
@@ -672,7 +672,7 @@ class Handler
      *
      * @return bool
      */
-    private function processMailMove(Mail $cwsMbhMail)
+    public function processMailMove(Mail $cwsMbhMail)
     {
         if ($this->isMailboxOpenMode()) {
             $moveFolder = $this->getMailboxName().'.'.self::SUFFIX_BOUNCES_MOVE;
