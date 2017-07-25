@@ -1,0 +1,135 @@
+Return-Path: <>
+Received: from [134.169.9.26] (HELO pmx2.rz.tu-bs.de)
+  by tu-braunschweig.de (CommuniGate Pro SMTP 6.1.14)
+  with ESMTP id 71661817 for i0040201@mailvip.rz.tu-bs.de; Tue, 25 Jul 2017 12:03:26 +0200
+Received: by pmx2.rz.tu-bs.de (Postfix)
+	id 89CB38C5610; Tue, 25 Jul 2017 12:03:25 +0200 (CEST)
+Delivered-To: sz-mail-bounce@tu-braunschweig.de
+Received: from pmx2.rz.tu-bs.de (localhost [127.0.0.1])
+	by localhost (Postfix) with SMTP id 88AD18C5618
+	for <sz-mail-bounce@tu-braunschweig.de>; Tue, 25 Jul 2017 12:03:25 +0200 (CEST)
+Received: from rzsoph02.rz.tu-bs.de (cns-gw52-2.rz.tu-bs.de [134.169.12.147])
+	by pmx2.rz.tu-bs.de (Postfix) with ESMTP id 3785F8C5610
+	for <sz-mail-bounce@tu-braunschweig.de>; Tue, 25 Jul 2017 12:03:25 +0200 (CEST)
+Received: from rzsoph02.rz.tu-bs.de (localhost.localdomain [127.0.0.1])
+	by localhost (Email Security Appliance) with SMTP id DFCBEE5695_977176DB
+	for <sz-mail-bounce@tu-braunschweig.de>; Tue, 25 Jul 2017 10:03:25 +0000 (GMT)
+Received: from nm29-vm1.bullet.mail.ir2.yahoo.com (nm29-vm1.bullet.mail.ir2.yahoo.com [212.82.97.70])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by rzsoph02.rz.tu-bs.de (Sophos Email Appliance) with ESMTPS id 9C8F2E2551_977176DF
+	for <sz-mail-bounce@tu-braunschweig.de>; Tue, 25 Jul 2017 10:03:25 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.fr; s=s2048; t=1500977005; bh=hiyHONLXDvsz9j59Ero4QmeIrfZgr5ISmsWbsihKv/4=; h=Date:From:To:Subject:From:Subject; b=j+4//LcvStNbOECOeUb8iDjfOTLQ0wKwd7aM9OHi9w5SCA22Dmhml7Pv/Ka5KVuub6jDXfHNW+I/9a7GjJdtyjnYSMvQD1A7XhGOs3bL7bz8l83d934+jxm4lE7wSaDkiNfBYwLKnivqHW/w/fxoCZRCPOvVbCZmrc6mH7IlyiAa3Ly064kSJZ1L3lpxKNBfK5rt7fdToFZIwkiZCpC7UrJ4dbCN5EkIgDLMLGM3ELB6SylkbWAzrnaL4nFO4qGjIlzeERPiFleAECTaupz/iKhM24T9twNE7EZoWwwePYXcm36gVtWCBZ9GA9i5ShwZSIPKBuXyEvTwEJ209056Cw==
+Received: from [212.82.98.126] by nm29.bullet.mail.ir2.yahoo.com with NNFMP; 25 Jul 2017 10:03:25 -0000
+Received: from [212.82.98.92] by tm19.bullet.mail.ir2.yahoo.com with NNFMP; 25 Jul 2017 10:03:25 -0000
+Received: from [127.0.0.1] by omp1029.mail.ir2.yahoo.com with NNFMP; 25 Jul 2017 10:03:25 -0000
+X-Yahoo-Newman-Property: ymail-3
+X-Yahoo-Newman-Id: 99766.87117.bm@omp1029.mail.ir2.yahoo.com
+Message-ID: <99766.87117.bm@omp1029.mail.ir2.yahoo.com>
+Date: Tue, 25 Jul 2017 10:03:25 +0000 (UTC)
+X-RocketTIP: 134.169.83.66 ; NO_TIP_HEADER_ALLOWED ; 
+X-RocketSRV: s_ip=134.169.83.66;d_t=1500977004;url=tu-bs.de,https://aura.sz.etc.tu-bs.de/student/list;Retro=Y;SgrnP=N;FolderOfDelivery=                    ;msgid=1500977004.608821.18246@mta1023.mail.ir2.yahoo.com#0;
+X-Rocket-Delivery: Sn.2U_Q3bBt7CZVyqa2JqXtHFqvZ9SihbEChAIc3KkZfiJySVcvjz97F4skmr7K98UBl1HFuYw4MGyVxdVAixML_DzJVxTU7dGq.ghiS2zwfijJL__oZnptgVtxsxFdzAe.zDMLFX60ghFrX_h0n40Zkodelxtf2hwMgQEQeDbJahHtMrLHff4CzojT7ZjMaWvHZDjNL8o3mNBBIOyhi0E4tjtUyPwSW0hq1iTA4vZd55izNX06le2IEL41233zD2YscwRwIXlRQCKeoOPJ5NYk9WGScoywaRoG00bPosTnL57eJOY3.zXjWnt3VkjC_m6.Yk9GqaiaNaHLUeWqfzMPyP5c-
+X-RocketRCL: ;;;73127
+From: MAILER-DAEMON@yahoo.fr
+To: sz-mail-bounce@tu-braunschweig.de
+X-Loop: MAILER-DAEMON@yahoo.fr
+Subject: Delivery failure
+X-Sophos-SenderHistory: ip=212.82.97.70,fs=0,da=27133013,mc=1,sc=0,hc=1,sp=0,fso=26698613,re=257,sd=1,hd=0
+X-Sophos-ESA: [rzsoph02.rz.tu-bs.de] 4.2.1.0, Antispam-Engine: 2.7.2.2107409, Antispam-Data: 2017.7.25.95415
+X-SEA-Spam: Gauge=IIIIIIII, Probability=8%, Report='
+ HTML_00_01 0.05, HTML_00_10 0.05, BODY_SIZE_3000_3999 0, BODY_SIZE_5000_LESS 0, BODY_SIZE_7000_LESS 0, BOUNCE_ENVELOPE 0, BOUNCE_GENERIC 0, BOUNCE_NDR 0, DKIM_SIGNATURE 0, DQ_S_H 0, ECARD_KNOWN_DOMAINS 0, NO_REAL_NAME 0, SINGLE_URI_IN_BODY 0, SPF_NONE 0, URI_WITH_PATH_ONLY 0, WEBMAIL_SOURCE 0, __ANY_URI 0, __BOUNCE_NDR_FROM 0, __BOUNCE_NDR_SUBJECT_CONTAINS 0, __CP_URI_IN_BODY 0, __DQ_IP_FSO_LARGE 0, __DQ_IP_FS_1K 0, __DQ_IP_HIST 0, __DQ_NEG_HEUR 0, __DQ_NEG_IP 0, __DQ_S_HIST_1 0, __DQ_S_HIST_2 0, __DQ_S_IP_MC_1 0, __FRAUD_BODY_WEBMAIL 0, __FRAUD_COMMON 0, __FRAUD_MONEY_BIG_COIN 0, __FRAUD_MONEY_BIG_COIN_DIG 0, __FRAUD_NEGATE 0, __FRAUD_REFNUM 0, __FRAUD_WEBMAIL 0, __FRAUD_WEBMAIL_FROM 0, __FROM_YAHOO 0, __HAMMY_DAYS_0 0, __HAS_FROM 0, __HAS_MSGID 0, __HAS_X_LOOP 0, __HELO_YAHOO 0, __HTTPS_URI 0, __MIME_TEXT_ONLY 0, __MIME_TEXT_P 0, __MIME_TEXT_P1 0, __NO_HTML_TAG_RAW 0,
+ __PHISH_SPEAR_NEGATE 0, __RDNS_YAHOO 0, __SANE_MSGID 0, __SINGLE_URI_TEXT 0, __STOCK_PHRASE_24 0, __SUBJ_ALPHA_END 0, __TO_MALFORMED_2 0, __TO_NO_NAME 0, __URI_IN_BODY 0, __URI_NOT_IMG 0, __URI_NO_WWW 0, __URI_NS , __URI_WITH_PATH 0, __VBOUNCE_ZAFI_2_B 0'
+X-PMX-Version: 6.3.2.2635362, Antispam-Engine: 2.7.2.2107409, Antispam-Data: 2017.7.25.95415, AntiVirus-Engine: 5.38.0, AntiVirus-Data: 2017.7.25.5380001
+X-PMX-Spam: Gauge=IIIIIIII, Probability=8%, Report='
+ FORGED_FROM_YAHOO 0.1, HTML_00_01 0.05, HTML_00_10 0.05, BODY_SIZE_3000_3999 0, BODY_SIZE_5000_LESS 0, BODY_SIZE_7000_LESS 0, BOUNCE_ENVELOPE 0, BOUNCE_GENERIC 0, BOUNCE_NDR 0, DKIM_SIGNATURE 0, DQ_S_H 0, ECARD_KNOWN_DOMAINS 0, NO_REAL_NAME 0, SINGLE_URI_IN_BODY 0, URI_WITH_PATH_ONLY 0, __ANY_URI 0, __BOUNCE_NDR_FROM 0, __BOUNCE_NDR_SUBJECT_CONTAINS 0, __CP_URI_IN_BODY 0, __DQ_IP_FSO_LARGE 0, __DQ_IP_FS_1K 0, __DQ_IP_HIST 0, __DQ_NEG_HEUR 0, __DQ_NEG_IP 0, __DQ_S_HIST_1 0, __DQ_S_HIST_2 0, __DQ_S_IP_MC_1 0, __FRAUD_BODY_WEBMAIL 0, __FRAUD_COMMON 0, __FRAUD_MONEY_BIG_COIN 0, __FRAUD_MONEY_BIG_COIN_DIG 0, __FRAUD_NEGATE 0, __FRAUD_REFNUM 0, __FRAUD_WEBMAIL 0, __FRAUD_WEBMAIL_FROM 0, __FROM_YAHOO 0, __HAMMY_DAYS_0 0, __HAS_FROM 0, __HAS_MSGID 0, __HAS_X_LOOP 0, __HTTPS_URI 0, __MIME_TEXT_ONLY 0, __MIME_TEXT_P 0, __MIME_TEXT_P1 0, __NO_HTML_TAG_RAW 0, __PHISH_SPEAR_NEGATE 0,
+ __SANE_MSGID 0, __SINGLE_URI_TEXT 0, __STOCK_PHRASE_24 0, __SUBJ_ALPHA_END 0, __TO_MALFORMED_2 0, __TO_NO_NAME 0, __URI_IN_BODY 0, __URI_NOT_IMG 0, __URI_NO_WWW 0, __URI_NS , __URI_WITH_PATH 0, __VBOUNCE_ZAFI_2_B 0'
+
+Message from yahoo.fr.
+Unable to deliver message to the following address(es).
+
+<akponseuliette@yahoo.fr>:
+This user doesn't have a yahoo.fr account (akponseuliette@yahoo.fr) [0]
+
+--- Original message follows.
+
+The original message is over 5K. Message truncated.
+
+Return-Path: <sz-mail-bounce@tu-braunschweig.de>
+Received-SPF: none (domain of tu-braunschweig.de does not designate permitted sender hosts)
+X-YMailISG: 25QLpAsWLDuzty88HytIbCF57EgxFx70bJJampztJo_Vfdtr
+ 08GUBnCXnJkZXKR1W4_8mRL0yGhtGLOQ3otnkBr.iMmev3QnPToqSBS5nrsD
+ dO5K2fwqzOVJyR_Cm0sCgTOmokJfhi27soC_LHQ1OR06I3Qa1XFy0FR7RSdE
+ lEB.lpthBR59OpMsQAIC4vVZQlC6vGejtf___FfGPIcADyBcW0z2LaQOM4.T
+ UsjT8U.Irt_yv9H3gQmORWUIStFjYw4ojiApr99c9588KMDMISrISXhU57ZR
+ QqiNaMJbNAlrvdlgys7FQnh4AGTVtpV4dRuUql28w31WohTfEJmbqpzD1WMh
+ QIuMXxPbc94ijYdv.fpVPyCoIXLm.Hsdd5WMziH4eQPjJmWmJt80Om_MrkJA
+ 93sCv3DaxalzX5nZYGZZNjwFhs9UsH66qDwNVmungEIYbpXirm0Ru_DpukqT
+ pxPS_muyojPTSycXfXlktjWRaaDYAjxkjIjuxECOwpuHvn3QxBjjiTbNWAp9
+ FFv_g1Rt0aYj1hO._Ai_s51eLZWaZbIfHeAvWuLImKctc8zkbnew8MWiHUbu
+ 0vxDBHo9mEHnuPl3s7ZKfrmXc0E49FZvX7t8m2vT84pYY7Cr8o_LeysQnhzJ
+ mx8KIzOLK3E5TwDbVvxe6L9kp2tq1z4oz2XBf4O83_ppshcsShIliSXPfmix
+ 5HE1TsVZVHkME8hMt8vO.cXzHK6Mbv_4ACYDs2rXBZZ9iEt8FfbXX2iL650I
+ ei05PsL1gzsFZc5bLMX3Py.hDggO2A9X1PgYAjl7_49s.I4WMnmz_Ztb3Zbr
+ JKig.YYTJKKZe7FuTfM4Btqx.n2WfA6I9imB8WOPRRGIXI8IFuvusyJLypFC
+ I_8_Tvj08i.kpcvyA5Qi2DSpsXihImvo1Ekz9MY2vmse96RkD7ylk7rhg0kt
+ 7a_img1SrP6yx2RrAG4.bHgcJEVNxNN4bGZHMZ.UIdi4CRvwshsG1cBz5AcC
+ RBj0moK7hbaWCvnK90zTD8SghZ1KmIKGEk0wYLLjwJ4uMSfJFGXA58ytS0yp
+ nRtJRTArSWRza8vh53Oum94voI6swIpq2viWW8j084SpgdMwDa9z_e8K0x69
+ YjkdiVBofJid0w0xoz_ixHGZUHqsH6UBVIT3yXNFH4WM5ryA95g6aUNeGgkv
+ P16TryHRVinT6WnpMEfHIvy16.itm5VSL73m
+X-Originating-IP: [134.169.83.66]
+Authentication-Results: mta1023.mail.ir2.yahoo.com  from=tu-braunschweig.de; domainkeys=neutral (no sig);  from=tu-braunschweig.de; dkim=neutral (no sig)
+Received: from 127.0.0.1  (EHLO mail.sz.etc.tu-bs.de) (134.169.83.66)
+  by mta1023.mail.ir2.yahoo.com with SMTPS; Tue, 25 Jul 2017 10:03:24 +0000
+Received: from aura-1.sz.etc.tu-bs.de (aura-1.sz.etc.tu-bs.de [134.169.83.114])
+	by mail.sz.etc.tu-bs.de (Postfix) with ESMTPSA id 58B6B2E1A69;
+	Tue, 25 Jul 2017 12:03:24 +0200 (CEST)
+Received: from aura.sz.etc.tu-bs.de (localhost [IPv6:::1])
+	by aura-1.sz.etc.tu-bs.de (Postfix) with ESMTP id 327E02008B3;
+	Tue, 25 Jul 2017 12:03:24 +0200 (CEST)
+Sender: sz-mail-bounce@tu-braunschweig.de
+Message-ID: <2b9c9bb542c3ad38f09ca67b5c496612@aura.sz.etc.tu-bs.de>
+Date: Tue, 25 Jul 2017 12:03:24 +0200
+Subject: Ihr Ergebnis =?utf-8?Q?f=C3=BCr?= den Kurs SS17-en-a2.1-02-01 -
+ Pre-Intermediate 1 liegt bereit
+From: Sprachenzentrum TU Braunschweig <sprachenzentrum@tu-braunschweig.de>
+To: Juliette Panra Akponse <akponsejuliette@yahoo.fr>, Juliette Panra Akponse
+ <akponseuliette@yahoo.fr>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1500977004_3fc416003609012b97c983c74fd794dc_=_"
+
+
+--_=_swift_v4_1500977004_3fc416003609012b97c983c74fd794dc_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hallo Juliette Panra Akponse,
+
+English version follows at the end of th=
+e email
+
+Ihr Ergenis f=C3=BCr Ihre Teilnahme an dem Kurs SS17-en-a2.1-0=
+2-01 - Pre-Intermediate 1 steht ab jetzt zur Verf=C3=BCgung. Folgen Sie htt=
+ps://aura.sz.etc.tu-bs.de/student/list
+
+Ihr Benutzername lautet sz95638=
+9 .
+Falls Sie noch kein Passwort am Sprachenzentrum haben, klicken Sie bi=
+tte auf https://aura.sz.etc.tu-bs.de/resetting/request
+
+TU Braunschweig=
+ Sprachenzentrum=20
+
+----------------------------------------------------=
+------------------
+
+Hello Juliette Panra Akponse,
+
+Your certificate=
+ for the course SS17-en-a2.1-02-01 - Pre-Intermediate 1 is
+*** MESSAGE TRUNCATED ***
+
+
+.
