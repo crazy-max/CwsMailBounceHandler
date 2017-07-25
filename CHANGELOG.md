@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.12 (2017/07/25)
+
+* New pattern for Yahoo (Issue #27)
+* Bad version constraint
+* Drop PHP 5.3 support (See travis-ci/travis-ci#8072)
+
 ## 1.11 (2017/07/12)
 
 * Handle exceptions for openImapRemote method (Issue #26)
