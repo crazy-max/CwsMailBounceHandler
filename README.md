@@ -7,7 +7,7 @@
 
 # CwsMailBounceHandler
 
-PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
+📬 PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
 It checks your IMAP inbox or eml files and delete or move all bounced emails.
 If a bounce is malformed, it tries to extract some useful information to parse status.
 
