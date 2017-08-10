@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.13 (2017/08/10)
+
+* Control perRecipient element while parsing DSN fields (Issue #28)
+* Coding style
+
 ## 1.12 (2017/07/25)
 
 * New pattern for Yahoo (Issue #27)

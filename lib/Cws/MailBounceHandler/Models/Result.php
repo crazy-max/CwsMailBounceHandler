@@ -23,7 +23,7 @@ class Result
     /**
      * List of mails.
      *
-     * @see Cws\MailBounceHandler\Models\Mail
+     * @see Mail
      *
      * @var array
      */

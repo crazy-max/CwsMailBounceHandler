@@ -874,24 +874,27 @@ class Handler
         }
 
         $tmpPerRecipient = array();
-        foreach ($result['perRecipient'] as $perRecipient) {
-            $arPerRecipient = self::parseLines(explode("\r\n", $perRecipient));
-            $arPerRecipient['Final-recipient'] = isset($arPerRecipient['Final-recipient']) ? self::formatFinalRecipient($arPerRecipient['Final-recipient']) : null;
-            $arPerRecipient['Original-recipient'] = isset($arPerRecipient['Original-recipient']) ? self::formatOriginalRecipient($arPerRecipient['Original-recipient']) : null;
-            $arPerRecipient['Diagnostic-code'] = isset($arPerRecipient['Diagnostic-code']) ? self::formatDiagnosticCode($arPerRecipient['Diagnostic-code']) : null;
+        if (is_array($result['perRecipient'])) {
+            foreach ($result['perRecipient'] as $perRecipient) {
+                $arPerRecipient = self::parseLines(explode("\r\n", $perRecipient));
+                $arPerRecipient['Final-recipient'] = isset($arPerRecipient['Final-recipient']) ? self::formatFinalRecipient($arPerRecipient['Final-recipient']) : null;
+                $arPerRecipient['Original-recipient'] = isset($arPerRecipient['Original-recipient']) ? self::formatOriginalRecipient($arPerRecipient['Original-recipient']) : null;
+                $arPerRecipient['Diagnostic-code'] = isset($arPerRecipient['Diagnostic-code']) ? self::formatDiagnosticCode($arPerRecipient['Diagnostic-code']) : null;
 
-            // check if diagnostic code is a temporary failure
-            if (isset($arPerRecipient['Diagnostic-code'])) {
-                $statusCode = self::formatStatusCode($arPerRecipient['Diagnostic-code']['text']);
-                $action = $this->findActionByStatusCode($statusCode);
-                if ($action == 'transient' && stristr($arPerRecipient['Action'], 'failed') !== false) {
-                    $arPerRecipient['Action'] = 'transient';
-                    $arPerRecipient['Status'] = '4.3.0';
+                // check if diagnostic code is a temporary failure
+                if (isset($arPerRecipient['Diagnostic-code'])) {
+                    $statusCode = self::formatStatusCode($arPerRecipient['Diagnostic-code']['text']);
+                    $action = $this->findActionByStatusCode($statusCode);
+                    if ($action == 'transient' && stristr($arPerRecipient['Action'], 'failed') !== false) {
+                        $arPerRecipient['Action'] = 'transient';
+                        $arPerRecipient['Status'] = '4.3.0';
+                    }
                 }
-            }
 
-            $tmpPerRecipient[] = $arPerRecipient;
+                $tmpPerRecipient[] = $arPerRecipient;
+            }
         }
+
         $result['perRecipient'] = $tmpPerRecipient;
 
         return $result;
@@ -900,7 +903,7 @@ class Handler
     /**
      * Function to parse the header with some custom fields.
      *
-     * @param array $arHeader : the array or plain text headers
+     * @param string|array $arHeader : the array or plain text headers
      *
      * @return array
      */
@@ -918,8 +921,7 @@ class Handler
 
         if (isset($arHeader['Content-type'])) {
             $ar_mr = explode(';', $arHeader['Content-type']);
-            $arHeader['Content-type'] = array();
-            $arHeader['Content-type']['type'] = strtolower($ar_mr[0]);
+            $arHeader['Content-type'] = array('type' => strtolower($ar_mr[0]));
             foreach ($ar_mr as $mr) {
                 if (preg_match('#([^=.]*?)=(.*)#i', $mr, $matches)) {
                     $arHeader['Content-type'][strtolower(trim($matches[1]))] = str_replace('"', '', $matches[2]);
@@ -1994,6 +1996,8 @@ class Handler
      * * string 'bounceType' type of bounce (see BOUNCE_ const).
      *
      * @param string
+     *
+     * @return array
      */
     private static function getRuleCat($ruleCatName)
     {
@@ -2159,7 +2163,7 @@ class Handler
     /**
      * Find the recipient e-mail.
      *
-     * @param string $rcpt : the recipient headers
+     * @param array $rcpt : the recipient headers
      *
      * @return string
      */

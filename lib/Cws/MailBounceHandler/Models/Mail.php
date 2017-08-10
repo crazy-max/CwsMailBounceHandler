@@ -58,7 +58,7 @@ class Mail
     /**
      * List of recipients,.
      *
-     * @see Cws\MailBounceHandler\Models\Recipient object
+     * @see Recipient
      *
      * @var array
      */
