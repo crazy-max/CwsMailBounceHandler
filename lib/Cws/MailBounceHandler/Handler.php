@@ -3,6 +3,7 @@
 
 namespace Cws\MailBounceHandler;
 
+use Exception;
 use Cws\CwsDebug;
 use Cws\MailBounceHandler\Models\Mail;
 use Cws\MailBounceHandler\Models\Recipient;
@@ -76,7 +77,7 @@ class Handler
      *
      * @var string
      */
-    private $openMode;
+    protected $openMode;
 
     /**
      * Control the method to process bounces.
@@ -84,7 +85,7 @@ class Handler
      *
      * @var string
      */
-    private $processMode;
+    protected $processMode;
 
     /**
      * Defines mailbox service, MAILBOX_SERVICE_POP3 or MAILBOX_SERVICE_IMAP
@@ -92,7 +93,7 @@ class Handler
      *
      * @var string
      */
-    private $mailboxService;
+    protected $mailboxService;
 
     /**
      * Mailbox host server.<br />
@@ -100,21 +101,21 @@ class Handler
      *
      * @var string
      */
-    private $mailboxHost;
+    protected $mailboxHost;
 
     /**
      * The username of mailbox.
      *
      * @var string
      */
-    private $mailboxUsername;
+    protected $mailboxUsername;
 
     /**
      * The password needed to access mailbox.
      *
      * @var string
      */
-    private $mailboxPassword;
+    protected $mailboxPassword;
 
     /**
      * Defines port number, other common choices are MAILBOX_PORT_IMAP, MAILBOX_PORT_IMAP_TLS_SSL
@@ -122,7 +123,7 @@ class Handler
      *
      * @var int
      */
-    private $mailboxPort;
+    protected $mailboxPort;
 
     /**
      * Defines service option, choices are MAILBOX_SECURITY_NONE, MAILBOX_SECURITY_NOTLS, MAILBOX_SECURITY_TLS,
@@ -130,7 +131,7 @@ class Handler
      *
      * @var string
      */
-    private $mailboxSecurity;
+    protected $mailboxSecurity;
 
     /**
      * Control certificates validation if mailSecurity is MAILBOX_SECURITY_TLS or MAILBOX_SECURITY_SSL.
@@ -138,7 +139,7 @@ class Handler
      *
      * @var string
      */
-    private $mailboxCert;
+    protected $mailboxCert;
 
     /**
      * Mailbox type, other choices are (Tasks, Spam, Replies, etc.)
@@ -146,14 +147,14 @@ class Handler
      *
      * @var string
      */
-    private $mailboxName = 'INBOX';
+    protected $mailboxName = 'INBOX';
 
     /**
      * The resource handler for the opened mailbox (POP3/IMAP/NNTP/etc.).
      *
      * @var resource
      */
-    private $mailboxHandler = false;
+    protected $mailboxHandler = false;
 
     /**
      * Maximum limit messages processed in one batch (0 for unlimited).
@@ -161,7 +162,7 @@ class Handler
      *
      * @var int
      */
-    private $maxMessages = 0;
+    protected $maxMessages = 0;
 
     /**
      * Purge unknown messages. Be careful with this option.
@@ -169,42 +170,42 @@ class Handler
      *
      * @var bool
      */
-    private $purge = false;
+    protected $purge = false;
 
     /**
      * The folder path opened.
      *
      * @var string
      */
-    private $emlFolder;
+    protected $emlFolder;
 
     /**
      * The eml files opened.
      *
      * @var array
      */
-    private $emlFiles;
+    protected $emlFiles;
 
     /**
      * Control the move mode.
      *
      * @var bool
      */
-    private $enableMove;
+    protected $enableMove;
 
     /**
      * The last error message.
      *
      * @var string
      */
-    private $error;
+    protected $error;
 
     /**
      * The cws debug instance.
      *
      * @var CwsDebug
      */
-    private $cwsDebug;
+    protected $cwsDebug;
 
     public function __construct(CwsDebug $cwsDebug)
     {
@@ -220,7 +221,7 @@ class Handler
         $this->purge = false;
     }
 
-    private function reset()
+    protected function reset()
     {
         $this->mailboxHandler = false;
         $this->emlFolder = '';
@@ -466,7 +467,7 @@ class Handler
      *
      * @return Mail
      */
-    private function processMailParsing($token, $content)
+    protected function processMailParsing($token, $content)
     {
         $cwsMbhMail = new Mail();
         $cwsMbhMail->setToken($token);
@@ -711,7 +712,7 @@ class Handler
      *
      * @return bool
      */
-    private function isImapMailboxExists($mailboxName, $create = true)
+    protected function isImapMailboxExists($mailboxName, $create = true)
     {
         // required security option for imap_open connection.
         $opts = '/' . $this->mailboxService . '/' . $this->mailboxSecurity;
@@ -751,7 +752,7 @@ class Handler
      *
      * @return string
      */
-    private function findActionByStatusCode($statusCode)
+    protected function findActionByStatusCode($statusCode)
     {
         $result = '';
 
@@ -792,7 +793,7 @@ class Handler
      *
      * @return string
      */
-    private function findStatusCodeByRecipient($body)
+    protected function findStatusCodeByRecipient($body)
     {
         $arBody = explode("\r\n", $body);
 
@@ -852,7 +853,7 @@ class Handler
      *
      * @return array
      */
-    private function parseBodySectionMachine($bodySectionMachine)
+    protected function parseBodySectionMachine($bodySectionMachine)
     {
         $result = self::parseDsnFields($bodySectionMachine);
         $result['mimeHeader'] = self::parseLines($result['mimeHeader']);
@@ -907,7 +908,7 @@ class Handler
      *
      * @return array
      */
-    private static function parseHeader($arHeader)
+    protected static function parseHeader($arHeader)
     {
         if (!is_array($arHeader)) {
             $arHeader = explode("\r\n", $arHeader);
@@ -947,7 +948,7 @@ class Handler
      *
      * @return array
      */
-    private static function parseBodySections($arHeader, $body)
+    protected static function parseBodySections($arHeader, $body)
     {
         $sections = array();
 
@@ -969,7 +970,7 @@ class Handler
      *
      * @return array
      */
-    private static function parseDsnFields($bodySectionMachine)
+    protected static function parseDsnFields($bodySectionMachine)
     {
         $result = array(
             'mimeHeader' => null,
@@ -1006,7 +1007,7 @@ class Handler
      *
      * @return array
      */
-    private static function parseLines($content)
+    protected static function parseLines($content)
     {
         $result = array();
 
@@ -1039,7 +1040,7 @@ class Handler
      *
      * @return bool
      */
-    private static function isBounce($arHeader)
+    protected static function isBounce($arHeader)
     {
         if (!empty($arHeader)) {
             $pregSubject = 'mail delivery failed|failure notice|warning: message|delivery status notif|delivery failure|delivery problem|';
@@ -1068,7 +1069,7 @@ class Handler
      *
      * @return bool
      */
-    private static function isFbl($arHeader, $bodySections = array())
+    protected static function isFbl($arHeader, $bodySections = array())
     {
         if (!empty($arHeader)) {
             if (isset($arHeader['Content-type']) && isset($arHeader['Content-type']['report-type']) && preg_match('#feedback-report#',
@@ -1091,7 +1092,7 @@ class Handler
      *
      * @return bool
      */
-    private static function isHotmailFbl($bodySections)
+    protected static function isHotmailFbl($bodySections)
     {
         return !empty($bodySections) && isset($bodySections['arFirst']) && isset($bodySections['arFirst']['X-HmXmrOriginalRecipient']);
     }
@@ -1103,7 +1104,7 @@ class Handler
      *
      * @return bool
      */
-    private static function isRfc1892Report($arHeader)
+    protected static function isRfc1892Report($arHeader)
     {
         if (empty($arHeader)) {
             return false;
@@ -1136,7 +1137,7 @@ class Handler
      *
      * @return array
      */
-    private static function formatFinalRecipient($finalRecipient)
+    protected static function formatFinalRecipient($finalRecipient)
     {
         $result = array(
             'addr' => '',
@@ -1166,7 +1167,7 @@ class Handler
      *
      * @return array
      */
-    private static function formatOriginalRecipient($originalRecipient)
+    protected static function formatOriginalRecipient($originalRecipient)
     {
         $result = array(
             'addr' => '',
@@ -1191,7 +1192,7 @@ class Handler
      *
      * @return array
      */
-    private static function formatDiagnosticCode($diagCode)
+    protected static function formatDiagnosticCode($diagCode)
     {
         $result = array(
             'type' => '',
@@ -1216,7 +1217,7 @@ class Handler
      *
      * @return array
      */
-    private static function getEmlFile($emlFilePath)
+    protected static function getEmlFile($emlFilePath)
     {
         set_time_limit(6000);
 
@@ -1717,7 +1718,7 @@ class Handler
      *
      * @return string
      */
-    private static function getStatusCodeFromPattern($pattern)
+    protected static function getStatusCodeFromPattern($pattern)
     {
         $statusCodeResolver = array(
             // regexp
@@ -1962,7 +1963,7 @@ class Handler
      *
      * @return string
      */
-    private static function formatStatusCode($statusCode)
+    protected static function formatStatusCode($statusCode)
     {
         if (empty($statusCode)) {
             return null;
@@ -1995,7 +1996,7 @@ class Handler
      *
      * @return array
      */
-    private static function getRuleCat($ruleCatName)
+    protected static function getRuleCat($ruleCatName)
     {
         $ruleCatsData = array(
             array(
@@ -2116,7 +2117,7 @@ class Handler
      *
      * @return null|array ruleCat
      */
-    private static function getRuleCatByStatusCode($statusCode)
+    protected static function getRuleCatByStatusCode($statusCode)
     {
         $ruleCatStatusCode = array(
             '4.0.0' => self::CAT_INTERNAL_ERROR,
@@ -2163,7 +2164,7 @@ class Handler
      *
      * @return string
      */
-    private static function findEmail($rcpt)
+    protected static function findEmail($rcpt)
     {
         if (isset($rcpt['Original-recipient']) && !self::isEmpty($rcpt['Original-recipient'], 'addr')) {
             return self::extractEmail($rcpt['Original-recipient']['addr']);
@@ -2181,7 +2182,7 @@ class Handler
      *
      * @return array
      */
-    private static function findEmails($bodySectionFirst)
+    protected static function findEmails($bodySectionFirst)
     {
         $result = array();
 
@@ -2208,7 +2209,7 @@ class Handler
      *
      * @return string
      */
-    private static function formatEmailContent($content)
+    protected static function formatEmailContent($content)
     {
         if (empty($content)) {
             return $content;
@@ -2230,7 +2231,7 @@ class Handler
      *
      * @return string
      */
-    private static function extractEmail($string)
+    protected static function extractEmail($string)
     {
         $result = $string;
         $arResult = preg_split('#[ \"\'\<\>:\(\)\[\]]#', $string);
@@ -2243,12 +2244,12 @@ class Handler
         return $result;
     }
 
-    private static function formatUnixPath($path)
+    protected static function formatUnixPath($path)
     {
         return str_replace('\\', '/', $path);
     }
 
-    private static function endWith($string, $search)
+    protected static function endWith($string, $search)
     {
         $length = strlen($search);
         $start = $length * -1;
@@ -2256,7 +2257,7 @@ class Handler
         return substr($string, $start) === $search;
     }
 
-    private static function isEmpty($value, $key = '')
+    protected static function isEmpty($value, $key = '')
     {
         if (!empty($key) && is_array($value)) {
             return !array_key_exists($key, $value) || empty($value[$key]);
@@ -2354,7 +2355,7 @@ class Handler
      *
      * @param string $processMode
      */
-    private function setProcessMode($processMode)
+    protected function setProcessMode($processMode)
     {
         $this->processMode = $processMode;
     }
@@ -2382,7 +2383,7 @@ class Handler
      *
      * @param string $mailboxService
      */
-    private function setMailboxService($mailboxService)
+    protected function setMailboxService($mailboxService)
     {
         $this->mailboxService = $mailboxService;
     }
@@ -2540,7 +2541,7 @@ class Handler
      *
      * @param string $mailboxCert
      */
-    private function setMailboxCert($mailboxCert)
+    protected function setMailboxCert($mailboxCert)
     {
         $this->mailboxCert = $mailboxCert;
     }
