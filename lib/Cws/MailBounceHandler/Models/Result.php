@@ -9,6 +9,7 @@
  *
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  */
+
 namespace Cws\MailBounceHandler\Models;
 
 class Result
@@ -18,7 +19,7 @@ class Result
      *
      * @var Counter
      */
-    private $counter;
+    protected $counter;
 
     /**
      * List of mails.
@@ -27,7 +28,7 @@ class Result
      *
      * @var array
      */
-    private $mails;
+    protected $mails;
 
     public function __construct()
     {

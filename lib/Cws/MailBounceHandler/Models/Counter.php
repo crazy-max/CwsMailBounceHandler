@@ -9,6 +9,7 @@
  *
  * @link https://github.com/crazy-max/CwsMailBounceHandler
  */
+
 namespace Cws\MailBounceHandler\Models;
 
 class Counter
@@ -18,42 +19,42 @@ class Counter
      *
      * @var int
      */
-    private $total;
+    protected $total;
 
     /**
      * Fetched messages in the mailbox/folder.
      *
      * @var int
      */
-    private $fetched;
+    protected $fetched;
 
     /**
      * Message processed.
      *
      * @var int
      */
-    private $processed;
+    protected $processed;
 
     /**
      * Messages unprocessed.
      *
      * @var int
      */
-    private $unprocessed;
+    protected $unprocessed;
 
     /**
      * Messages unprocessed deleted.
      *
      * @var int
      */
-    private $deleted;
+    protected $deleted;
 
     /**
      * Messages moved.
      *
      * @var int
      */
-    private $moved;
+    protected $moved;
 
     public function __construct()
     {

@@ -20,42 +20,42 @@ class Recipient
      *
      * @var string
      */
-    private $action;
+    protected $action;
 
     /**
      * The status code.
      *
      * @var string
      */
-    private $status;
+    protected $status;
 
     /**
      * The recipient email.
      *
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * Bounce type (see BOUNCE_ const in Cws\MailBounceHandler\Handler).
      *
      * @var string
      */
-    private $bounceType;
+    protected $bounceType;
 
     /**
      * Bounce category (see CAT_ const in Cws\MailBounceHandler\Handler).
      *
      * @var string
      */
-    private $bounceCat;
+    protected $bounceCat;
 
     /**
      * To remove.
      *
      * @var bool
      */
-    private $remove;
+    protected $remove;
 
     public function __construct()
     {
