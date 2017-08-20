@@ -1,14 +1,15 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/crazy-max/cws-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/crazy-max/cws-mail-bounce-handler)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.3.2-8892BF.svg?style=flat-square)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php->%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
 [![Build Status](https://img.shields.io/travis/crazy-max/CwsMailBounceHandler/master.svg?style=flat-square)](https://travis-ci.org/crazy-max/CwsMailBounceHandler)
-[![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/crazy-max/CwsMailBounceHandler)
+[![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/seracid/CwsMailBounceHandler)
 [![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
 [![Gemnasium](https://img.shields.io/gemnasium/crazy-max/CwsMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/crazy-max/CwsMailBounceHandler)
 
 # CwsMailBounceHandler
+The original project for this handler was: [CwsMailBounceHandler](https://github.com/crazy-max/CwsMailBounceHandler). 
 
 📬 PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
-It checks your IMAP inbox or eml files and delete or move all bounced emails.
+It checks your IMAP inbox or eml files and deletes or moves all bounced emails.
 If a bounce is malformed, it tries to extract some useful information to parse status.
 
 ## Requirements
@@ -91,7 +92,3 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 ## License
 
 LGPL. See `LICENSE` for more details.
-
-## More infos
-
-http://www.crazyws.fr/dev/classes-php/classe-de-gestion-des-bounces-en-php-C72TG.html
