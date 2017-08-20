@@ -3,14 +3,15 @@
 /**
  * Mail.
  *
- * @author Cr@zy
+ * @author Cr@zy, Seracid
  * @copyright 2013-2015, Cr@zy
+ * @copyright 2017, Seracid
  * @license GNU LESSER GENERAL PUBLIC LICENSE
  *
- * @link https://github.com/crazy-max/CwsMailBounceHandler
+ * @link https://github.com/seracid/CwsMailBounceHandler
  */
 
-namespace Cws\MailBounceHandler\Models;
+namespace SGT\MailBounceHandler\Models;
 
 class Mail
 {

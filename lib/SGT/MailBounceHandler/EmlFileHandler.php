@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dan
- * Date: 8/20/2017
- * Time: 12:50 PM
- */
 
-namespace Cws\MailBounceHandler;
+namespace SGT\MailBounceHandler;
 
 use Cws\CwsDebug;
-use Cws\MailBounceHandler\Models\Mail;
-use Cws\MailBounceHandler\Models\Result;
+use SGT\MailBounceHandler\Models\Mail;
+use SGT\MailBounceHandler\Models\Result;
 
 class EmlFileHandler extends Handler
 {

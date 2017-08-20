@@ -7,10 +7,10 @@
  * @copyright 2013-2016, Cr@zy
  * @license GNU LESSER GENERAL PUBLIC LICENSE
  *
- * @link https://github.com/crazy-max/CwsMailBounceHandler
+ * @link https://github.com/seracid/CwsMailBounceHandler
  */
 
-namespace Cws\MailBounceHandler\Models;
+namespace SGT\MailBounceHandler\Models;
 
 class Counter
 {

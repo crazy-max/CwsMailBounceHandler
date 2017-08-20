@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Cws\MailBounceHandler;
+namespace SGT\MailBounceHandler;
 
 use Cws\CwsDebug;
-use Cws\MailBounceHandler\Models\Mail;
-use Cws\MailBounceHandler\Models\Recipient;
+use SGT\MailBounceHandler\Models\Mail;
+use SGT\MailBounceHandler\Models\Recipient;
 
 class Handler
 {
