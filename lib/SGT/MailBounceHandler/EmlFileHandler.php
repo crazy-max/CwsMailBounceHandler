@@ -67,35 +67,35 @@ class EmlFileHandler extends Handler
     /**
      * Function to delete a message.
      *
-     * @param Mail $cwsMbhMail : mail bounce object.
+     * @param Mail $phpMbhMail : mail bounce object.
      *
      * @return bool
      */
-    public function processMailDelete(Mail $cwsMbhMail)
+    public function processMailDelete(Mail $phpMbhMail)
     {
-        $this->cwsDebug->simple('Process <strong>delete ' . $cwsMbhMail->getType() . ' bounce</strong> message ' . $cwsMbhMail->getToken() . ' in folder ' . $this->emlFolder,
+        $this->cwsDebug->simple('Process <strong>delete ' . $phpMbhMail->getType() . ' bounce</strong> message ' . $phpMbhMail->getToken() . ' in folder ' . $this->emlFolder,
             CwsDebug::VERBOSE_DEBUG);
 
-        return @unlink($this->emlFolder . '/' . $cwsMbhMail->getToken());
+        return @unlink($this->emlFolder . '/' . $phpMbhMail->getToken());
     }
 
     /**
      * Method to move a mail bounce.
      *
-     * @param Mail $cwsMbhMail : mail bounce object.
+     * @param Mail $phpMbhMail : mail bounce object.
      *
      * @return bool
      */
-    public function processMailMove(Mail $cwsMbhMail)
+    public function processMailMove(Mail $phpMbhMail)
     {
         $moveFolder = $this->emlFolder . '/' . self::SUFFIX_BOUNCES_MOVE;
         if (!is_dir($moveFolder)) {
             mkdir($moveFolder);
         }
-        $this->cwsDebug->simple('Process <strong>move ' . $cwsMbhMail->getType() . '</strong> in ' . $moveFolder . ' folder',
+        $this->cwsDebug->simple('Process <strong>move ' . $phpMbhMail->getType() . '</strong> in ' . $moveFolder . ' folder',
             CwsDebug::VERBOSE_DEBUG);
 
-        return rename($this->emlFolder . '/' . $cwsMbhMail->getToken(), $moveFolder . '/' . $cwsMbhMail->getToken());
+        return rename($this->emlFolder . '/' . $phpMbhMail->getToken(), $moveFolder . '/' . $phpMbhMail->getToken());
     }
 
     /**
@@ -133,7 +133,7 @@ class EmlFileHandler extends Handler
     public function processMails()
     {
         $this->cwsDebug->titleH2('processMails', CwsDebug::VERBOSE_SIMPLE);
-        $cwsMbhResult = new Result();
+        $phpMbhResult = new Result();
 
         if (empty($this->emlFiles)) {
             $this->error = 'File(s) not opened';
@@ -145,17 +145,17 @@ class EmlFileHandler extends Handler
         $this->enableMove = $this->enableMove && $this->isMoveProcessMode();
 
         // count mails
-        $totalMails = $this->isMailboxOpenMode() ? imap_num_msg($this->mailboxHandler) : count($this->emlFiles);
+        $totalMails = count($this->emlFiles);
         $this->cwsDebug->labelValue('Total', $totalMails . ' messages', CwsDebug::VERBOSE_SIMPLE);
 
         // init counter
-        $cwsMbhResult->getCounter()->setTotal($totalMails);
-        $cwsMbhResult->getCounter()->setFetched($totalMails);
+        $phpMbhResult->getCounter()->setTotal($totalMails);
+        $phpMbhResult->getCounter()->setFetched($totalMails);
 
         // process maximum number of messages
-        if ($this->maxMessages > 0 && $cwsMbhResult->getCounter()->getFetched() > $this->maxMessages) {
-            $cwsMbhResult->getCounter()->setFetched($this->maxMessages);
-            $this->cwsDebug->labelValue('Processing', $cwsMbhResult->getCounter()->getFetched() . ' messages',
+        if ($this->maxMessages > 0 && $phpMbhResult->getCounter()->getFetched() > $this->maxMessages) {
+            $phpMbhResult->getCounter()->setFetched($this->maxMessages);
+            $this->cwsDebug->labelValue('Processing', $phpMbhResult->getCounter()->getFetched() . ' messages',
                 CwsDebug::VERBOSE_SIMPLE);
         }
 
@@ -163,44 +163,68 @@ class EmlFileHandler extends Handler
         if ($this->isNeutralProcessMode()) {
             $this->cwsDebug->simple('Running in <strong>neutral mode</strong>, messages will not be processed from mailbox.',
                 CwsDebug::VERBOSE_SIMPLE);
+            $this->parseMails($phpMbhResult);
+            // process mails
+            foreach ($phpMbhResult->getMails() as $phpMbhMail) {
+                /* @var $phpMbhMail Mail */
+                if ($phpMbhMail->isProcessed()) {
+                    $phpMbhResult->getCounter()->incrProcessed();
+                } else {
+                    $phpMbhResult->getCounter()->incrUnprocessed();
+                }
+            }
         } elseif ($this->isMoveProcessMode()) {
             $this->cwsDebug->simple('Running in <strong>move mode</strong>.', CwsDebug::VERBOSE_SIMPLE);
+            $this->parseMails($phpMbhResult);
+            // process mails
+            foreach ($phpMbhResult->getMails() as $phpMbhMail) {
+                /* @var $phpMbhMail Mail */
+                if ($phpMbhMail->isProcessed()) {
+                    $phpMbhResult->getCounter()->incrProcessed();
+                    if ($this->enableMove) {
+                        $this->processMailMove($phpMbhMail);
+                        $phpMbhResult->getCounter()->incrMoved();
+                    }
+                } else {
+                    $phpMbhResult->getCounter()->incrUnprocessed();
+                }
+            }
         } elseif ($this->isDeleteProcessMode()) {
             $this->cwsDebug->simple('<strong>Processed messages will be deleted</strong> from mailbox.',
                 CwsDebug::VERBOSE_SIMPLE);
-        }
-
-        // parsing mails
-        foreach ($this->emlFiles as $file) {
-            $this->cwsDebug->titleH3('Msg #' . $file['name'], CwsDebug::VERBOSE_REPORT);
-            $cwsMbhResult->addMail($this->processMailParsing($file['name'], $file['content']));
-        }
-
-        // process mails
-        foreach ($cwsMbhResult->getMails() as $cwsMbhMail) {
-            /* @var $cwsMbhMail Mail */
-            if ($cwsMbhMail->isProcessed()) {
-                $cwsMbhResult->getCounter()->incrProcessed();
-                if ($this->enableMove) {
-                    $this->processMailMove($cwsMbhMail);
-                    $cwsMbhResult->getCounter()->incrMoved();
-                } elseif ($this->isDeleteProcessMode()) {
-                    $this->processMailDelete($cwsMbhMail);
-                    $cwsMbhResult->getCounter()->incrDeleted();
-                }
-            } else {
-                $cwsMbhResult->getCounter()->incrUnprocessed();
-                if ($this->purge && $this->isDeleteProcessMode()) {
-                    $this->processMailDelete($cwsMbhMail);
-                    $cwsMbhResult->getCounter()->incrDeleted();
+            $this->parseMails($phpMbhResult);
+            // process mails
+            foreach ($phpMbhResult->getMails() as $phpMbhMail) {
+                /* @var $phpMbhMail Mail */
+                if ($phpMbhMail->isProcessed()) {
+                    $phpMbhResult->getCounter()->incrProcessed();
+                    $this->processMailDelete($phpMbhMail);
+                    $phpMbhResult->getCounter()->incrDeleted();
+                } else {
+                    $phpMbhResult->getCounter()->incrUnprocessed();
+                    if ($this->purge && $this->isDeleteProcessMode()) {
+                        $this->processMailDelete($phpMbhMail);
+                        $phpMbhResult->getCounter()->incrDeleted();
+                    }
                 }
             }
         }
 
         $this->cwsDebug->titleH2('Ending processMails', CwsDebug::VERBOSE_SIMPLE);
-        $this->cwsDebug->dump('Counter result', $cwsMbhResult->getCounter(), CwsDebug::VERBOSE_SIMPLE);
-        $this->cwsDebug->dump('Full result', $cwsMbhResult, CwsDebug::VERBOSE_REPORT);
+        $this->cwsDebug->dump('Counter result', $phpMbhResult->getCounter(), CwsDebug::VERBOSE_SIMPLE);
+        $this->cwsDebug->dump('Full result', $phpMbhResult, CwsDebug::VERBOSE_REPORT);
 
-        return $cwsMbhResult;
+        return $phpMbhResult;
+    }
+
+    /**
+     * @param Result $phpMbhResult
+     */
+    protected function parseMails(Result $phpMbhResult)
+    {
+        foreach ($this->emlFiles as $file) {
+            $this->cwsDebug->titleH3('Msg #' . $file['name'], CwsDebug::VERBOSE_REPORT);
+            $phpMbhResult->addMail($this->processMailParsing($file['name'], $file['content']));
+        }
     }
 }

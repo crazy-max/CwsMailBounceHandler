@@ -5,7 +5,7 @@
 [![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
 [![Gemnasium](https://img.shields.io/gemnasium/crazy-max/CwsMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/crazy-max/CwsMailBounceHandler)
 
-# CwsMailBounceHandler
+# PhpMailBounceHandler
 The original project for this handler was: [CwsMailBounceHandler](https://github.com/crazy-max/CwsMailBounceHandler). 
 
 📬 PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
@@ -36,17 +36,25 @@ You can use the eml files in the `tests/emls` folder for testing.
 
 ## Post-process
 
-A result object `Cws\MailBounceHandler\Models\Result` is available to process custom post-actions :
+A result object `Cws\MailBounceHandler\Models\Result` is available to process custom post-actions.
 
-![](https://raw.github.com/crazy-max/CwsMailBounceHandler/master/example.png)
-
-## Methods
-
-**openImapLocal** - Open a IMAP mail box in local file system.<br />
-**openImapRemote** - Open a remote IMAP mail box.<br />
-**openEmlFolder** - Open a folder containing eml files on your system.<br />
-
+# Methods
+## ImapHandler
+**openLocal** - Open a IMAP mail box in local file system.<br />
+**openRemote** - Open a remote IMAP mail box.<br />
 **processMails** - Process the messages in a mailbox or a folder.<br />
+**processMailMove** - Request mail message to be moved. <br />
+**processMailDelete** - Request mail message be deleted. <br />
+**isImapMailboxExists** - Confirms a mailbox exists (and optionally create it). <br />
+**closeMailbox** - Closes IMAP connection in use and logs it.
+
+## EmlFileHandler
+**openEmlFolder** - Open a folder containing eml files on your system.<br />
+**processMails** - Process the messages in a mailbox or a folder.<br />
+**processMailMove** - Request mail message to be moved. <br />
+**processMailDelete** - Request mail message be deleted. <br />
+
+## Handler
 
 **getStatusCodeExplanations** -Get explanations from DSN status code via the RFC 1893.<br />
 
