@@ -1,7 +1,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/seracid/php-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/seracpd/php-mail-bounce-handler)
 [![Minimum PHP Version](https://img.shields.io/badge/php->%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cd83d298ca004558ae6d3c8eeffede7b)](https://www.codacy.com/app/seracid/PhpMailBounceHandler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seracid/phpMailBounceHandler&amp;utm_campaign=Badge_Grade)
-[![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
+[![StyleCI](https://styleci.io/repos/100821082/shield?style=flat-square)](https://styleci.io/repos/100821082)
 [![Gemnasium](https://img.shields.io/gemnasium/seracid/phpMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/seracid/phpMailBounceHandler)
 
 # PhpMailBounceHandler
