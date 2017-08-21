@@ -1,9 +1,8 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/crazy-max/cws-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/crazy-max/cws-mail-bounce-handler)
 [![Minimum PHP Version](https://img.shields.io/badge/php->%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
-[![Build Status](https://img.shields.io/travis/crazy-max/CwsMailBounceHandler/master.svg?style=flat-square)](https://travis-ci.org/crazy-max/CwsMailBounceHandler)
-[![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/seracid/CwsMailBounceHandler)
+[![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/seracid/PhpMailBounceHandler)
 [![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
-[![Gemnasium](https://img.shields.io/gemnasium/crazy-max/CwsMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/crazy-max/CwsMailBounceHandler)
+[![Gemnasium](https://img.shields.io/gemnasium/seracid/phpMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/seracid/phpMailBounceHandler)
 
 # PhpMailBounceHandler
 The original project for this handler was: [CwsMailBounceHandler](https://github.com/crazy-max/CwsMailBounceHandler). 
@@ -36,7 +35,7 @@ You can use the eml files in the `tests/emls` folder for testing.
 
 ## Post-process
 
-A result object `Cws\MailBounceHandler\Models\Result` is available to process custom post-actions.
+A result object `SGT\MailBounceHandler\Models\Result` is available to process custom post-actions.
 
 # Methods
 ## ImapHandler
@@ -57,7 +56,6 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 ## Handler
 
 **getStatusCodeExplanations** -Get explanations from DSN status code via the RFC 1893.<br />
-
 **isMailboxOpenMode** - Check if open mode is mailbox.<br />
 **isFileOpenMode** - Check if open mode is file.<br />
 **isNeutralProcessMode** - Check if process mode is neutral mode.<br />
