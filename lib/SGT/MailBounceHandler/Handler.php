@@ -237,10 +237,9 @@ class Handler
         $content = self::formatEmailContent($content);
 
         // split head and body
+        list($header, $body) = preg_split('#\n\n#', $content, 2);
         if (preg_match('#\r\n\r\n#is', $content)) {
             list($header, $body) = preg_split('#\r\n\r\n#', $content, 2);
-        } else {
-            list($header, $body) = preg_split('#\n\n#', $content, 2);
         }
 
         $cwsMbhMail->setHeader($header);
@@ -776,15 +775,14 @@ class Handler
         }
 
         // type
-        if (self::isEmpty($arHeader, 'Content-type')
-            || self::isEmpty($arHeader['Content-type'], 'type')
-            || $arHeader['Content-type']['type'] != 'multipart/report') {
+        if (self::isEmpty($arHeader, 'Content-type') || self::isEmpty($arHeader['Content-type'],
+                'type') || $arHeader['Content-type']['type'] != 'multipart/report') {
             return false;
         }
 
         // report-type
-        if (self::isEmpty($arHeader['Content-type'], 'report-type')
-            || $arHeader['Content-type']['report-type'] != 'delivery-status') {
+        if (self::isEmpty($arHeader['Content-type'],
+                'report-type') || $arHeader['Content-type']['report-type'] != 'delivery-status') {
             return false;
         }
 
@@ -875,7 +873,6 @@ class Handler
 
         return $result;
     }
-
 
 
     /**

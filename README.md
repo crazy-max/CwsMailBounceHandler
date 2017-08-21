@@ -1,6 +1,6 @@
-[![Latest Stable Version](https://img.shields.io/packagist/v/crazy-max/cws-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/crazy-max/cws-mail-bounce-handler)
+[![Latest Stable Version](https://img.shields.io/packagist/v/seracid/php-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/seracpd/php-mail-bounce-handler)
 [![Minimum PHP Version](https://img.shields.io/badge/php->%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
-[![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/seracid/PhpMailBounceHandler)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cd83d298ca004558ae6d3c8eeffede7b)](https://www.codacy.com/app/seracid/PhpMailBounceHandler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seracid/phpMailBounceHandler&amp;utm_campaign=Badge_Grade)
 [![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
 [![Gemnasium](https://img.shields.io/gemnasium/seracid/phpMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/seracid/phpMailBounceHandler)
 
@@ -19,7 +19,7 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 ## Installation with Composer
 
 ```bash
-composer require crazy-max/cws-mail-bounce-handler
+composer require seracid/php-mail-bounce-handler
 ```
 
 And download the code:

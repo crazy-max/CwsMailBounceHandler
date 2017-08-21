@@ -8,7 +8,8 @@ use SGT\MailBounceHandler\Models\Result;
 
 class EmlFileHandler extends Handler
 {
-    public function __construct(CwsDebug $cwsDebug) {
+    public function __construct(CwsDebug $cwsDebug)
+    {
         parent::__construct($cwsDebug);
     }
 
@@ -56,12 +57,12 @@ class EmlFileHandler extends Handler
             $this->cwsDebug->error($this->error);
 
             return false;
-        } else {
-            $this->cwsDebug->labelValue('Opened', count($this->emlFiles) . ' / ' . $nbFiles . ' files.',
-                CwsDebug::VERBOSE_SIMPLE);
-
-            return true;
         }
+
+        $this->cwsDebug->labelValue('Opened', count($this->emlFiles) . ' / ' . $nbFiles . ' files.',
+            CwsDebug::VERBOSE_SIMPLE);
+
+        return true;
     }
 
     /**

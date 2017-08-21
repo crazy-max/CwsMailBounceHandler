@@ -80,13 +80,12 @@ class ImapHandler extends Handler
                 $this->cwsDebug->error($this->error);
 
                 return false;
-            } else {
-                $this->cwsDebug->labelValue('Connected to',
-                    $this->mailboxHost . ':' . $this->mailboxPort . $opts . ' on mailbox ' . $this->mailboxName . ' (' . $this->mailboxUsername . ')',
-                    CwsDebug::VERBOSE_SIMPLE);
-
-                return true;
             }
+            $this->cwsDebug->labelValue('Connected to',
+                $this->mailboxHost . ':' . $this->mailboxPort . $opts . ' on mailbox ' . $this->mailboxName . ' (' . $this->mailboxUsername . ')',
+                CwsDebug::VERBOSE_SIMPLE);
+
+            return true;
         } catch (Exception $e) {
             $this->error = 'Cannot create ' . $this->mailboxService . ' connection to ' . $this->mailboxHost . ': ' . imap_last_error();
             $this->cwsDebug->error($this->error);
@@ -264,7 +263,8 @@ class ImapHandler extends Handler
         return $phpMbhResult;
     }
 
-    protected function parseMails(Result $phpMbhResult) {
+    protected function parseMails(Result $phpMbhResult)
+    {
         for ($mailNo = 1; $mailNo <= $phpMbhResult->getCounter()->getFetched(); $mailNo++) {
             $this->cwsDebug->titleH3('Msg #' . $mailNo, CwsDebug::VERBOSE_REPORT);
             $header = @imap_fetchheader($this->mailboxHandler, $mailNo);
