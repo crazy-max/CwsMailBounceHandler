@@ -70,6 +70,7 @@ class Handler
     const STATUS_SECOND_SUBCODE = 'second_subcode';
     const STATUS_THIRD_SUBCODE = 'third_subcode';
 
+    const AUTOREPLY_REGEX_DEFAULT = '#auto.{0,20}reply|vacation|(out|away|on holiday).*office#i';
     /**
      * Control the method to open e-mail(s).
      *
@@ -205,11 +206,20 @@ class Handler
      */
     protected $cwsDebug;
 
+    /**
+     * The regex string describing what is an auto-reply.
+     *
+     * @var string
+     */
+    protected $autoReplyRegex;
+
+
     public function __construct(CwsDebug $cwsDebug)
     {
         $this->cwsDebug = $cwsDebug;
         $this->processMode = self::PROCESS_MODE_NEUTRAL;
         $this->purge = false;
+        $this->autoReplyRegex = self::AUTOREPLY_REGEX_DEFAULT;
     }
 
     protected function reset()
@@ -2263,4 +2273,21 @@ class Handler
     {
         return $this->error;
     }
+
+    /**
+     * @return string
+     */
+    public function getAutoReplyRegex()
+    {
+        return $this->autoReplyRegex;
+    }
+
+    /**
+     * @param string $autoReplyRegex
+     */
+    public function setAutoReplyRegex($autoReplyRegex)
+    {
+        $this->autoReplyRegex = $autoReplyRegex;
+    }
+
 }

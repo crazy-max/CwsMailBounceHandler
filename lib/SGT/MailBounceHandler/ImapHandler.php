@@ -178,7 +178,7 @@ class ImapHandler extends Handler
         $this->cwsDebug->titleH2('processMails', CwsDebug::VERBOSE_SIMPLE);
         $phpMbhResult = new Result();
 
-        if (!$this->mailboxHandler) {
+        if (!is_resource($this->mailboxHandler)) {
             $this->error = 'Mailbox not opened';
             $this->cwsDebug->error($this->error);
 
