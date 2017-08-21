@@ -333,8 +333,7 @@ class Handler
             $cwsMbhRecipient->setEmail($bodySections['arMachine']['Original-rcpt-to']);
             $tmpRecipients[] = $cwsMbhRecipient;
         } elseif (!self::isEmpty($header,
-                'Subject') && preg_match('#auto.{0,20}reply|vacation|(out|away|on holiday).*office#i',
-                $header['Subject'])) {
+                'Subject') && preg_match($this->autoReplyRegex, $header['Subject'])) {
             $this->cwsDebug->simple('<strong>Autoreply</strong> engaged', CwsDebug::VERBOSE_DEBUG);
             $cwsMbhRecipient = new Recipient();
             $cwsMbhRecipient->setBounceCat(self::CAT_AUTOREPLY);
