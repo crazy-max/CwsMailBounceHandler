@@ -2289,5 +2289,4 @@ class Handler
     {
         $this->autoReplyRegex = $autoReplyRegex;
     }
-
 }
