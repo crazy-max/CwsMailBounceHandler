@@ -1,8 +1,8 @@
 <?php
 
-namespace Cws\MailBounceHandler\Models;
+namespace SGT\MailBounceHandler\Models;
 
-use Cws\MailBounceHandler\Handler;
+use SGT\MailBounceHandler\Handler;
 
 /**
  * Recipient.
@@ -11,7 +11,7 @@ use Cws\MailBounceHandler\Handler;
  * @copyright 2013-2016, Cr@zy
  * @license GNU LESSER GENERAL PUBLIC LICENSE
  *
- * @link https://github.com/crazy-max/CwsMailBounceHandler
+ * @link https://github.com/seracid/CwsMailBounceHandler
  */
 class Recipient
 {
@@ -20,42 +20,42 @@ class Recipient
      *
      * @var string
      */
-    private $action;
+    protected $action;
 
     /**
      * The status code.
      *
      * @var string
      */
-    private $status;
+    protected $status;
 
     /**
      * The recipient email.
      *
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * Bounce type (see BOUNCE_ const in Cws\MailBounceHandler\Handler).
      *
      * @var string
      */
-    private $bounceType;
+    protected $bounceType;
 
     /**
      * Bounce category (see CAT_ const in Cws\MailBounceHandler\Handler).
      *
      * @var string
      */
-    private $bounceCat;
+    protected $bounceCat;
 
     /**
      * To remove.
      *
      * @var bool
      */
-    private $remove;
+    protected $remove;
 
     public function __construct()
     {

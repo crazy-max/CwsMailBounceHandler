@@ -7,9 +7,10 @@
  * @copyright 2013-2015, Cr@zy
  * @license GNU LESSER GENERAL PUBLIC LICENSE
  *
- * @link https://github.com/crazy-max/CwsMailBounceHandler
+ * @link https://github.com/seracid/CwsMailBounceHandler
  */
-namespace Cws\MailBounceHandler\Models;
+
+namespace SGT\MailBounceHandler\Models;
 
 class Result
 {
@@ -18,7 +19,7 @@ class Result
      *
      * @var Counter
      */
-    private $counter;
+    protected $counter;
 
     /**
      * List of mails.
@@ -27,7 +28,7 @@ class Result
      *
      * @var array
      */
-    private $mails;
+    protected $mails;
 
     public function __construct()
     {

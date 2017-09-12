@@ -3,13 +3,15 @@
 /**
  * Mail.
  *
- * @author Cr@zy
+ * @author Cr@zy, Seracid
  * @copyright 2013-2015, Cr@zy
+ * @copyright 2017, Seracid
  * @license GNU LESSER GENERAL PUBLIC LICENSE
  *
- * @link https://github.com/crazy-max/CwsMailBounceHandler
+ * @link https://github.com/seracid/CwsMailBounceHandler
  */
-namespace Cws\MailBounceHandler\Models;
+
+namespace SGT\MailBounceHandler\Models;
 
 class Mail
 {
@@ -18,42 +20,42 @@ class Mail
      *
      * @var int|string
      */
-    private $token;
+    protected $token;
 
     /**
      * Was processed during bounce or fbl analyze.
      *
      * @var bool
      */
-    private $processed;
+    protected $processed;
 
     /**
      * Message subject.
      *
      * @var string
      */
-    private $subject;
+    protected $subject;
 
     /**
      * Message headers.
      *
      * @var object
      */
-    private $header;
+    protected $header;
 
     /**
      * Message body.
      *
      * @var object
      */
-    private $body;
+    protected $body;
 
     /**
      * Type detected (bounce or fbl).
      *
      * @var string
      */
-    private $type;
+    protected $type;
 
     /**
      * List of recipients,.
@@ -62,7 +64,7 @@ class Mail
      *
      * @var array
      */
-    private $recipients;
+    protected $recipients;
 
     public function __construct()
     {

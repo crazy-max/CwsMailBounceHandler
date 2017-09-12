@@ -1,11 +1,15 @@
 {
-  "name": "crazy-max/cws-mail-bounce-handler",
+  "name": "seracid/php-mail-bounce-handler",
   "type": "library",
   "description": "PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).",
   "keywords": ["mail", "bounce", "dsn", "arf"],
   "homepage": "https://github.com/crazy-max/CwsMailBounceHandler",
   "license": "LGPL",
   "authors": [
+    {
+      "name": "seracid",
+      "homepage": "https://www.github.com/seracid"
+    },
     {
       "name": "crazy-max",
       "homepage": "http://www.crazyws.fr/"
@@ -18,7 +22,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Cws": "lib/"
+      "SGT": "lib/"
     }
   }
 }

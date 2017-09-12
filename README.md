@@ -1,14 +1,14 @@
-[![Latest Stable Version](https://img.shields.io/packagist/v/crazy-max/cws-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/crazy-max/cws-mail-bounce-handler)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.3.2-8892BF.svg?style=flat-square)](https://php.net/)
-[![Build Status](https://img.shields.io/travis/crazy-max/CwsMailBounceHandler/master.svg?style=flat-square)](https://travis-ci.org/crazy-max/CwsMailBounceHandler)
-[![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/crazy-max/CwsMailBounceHandler)
-[![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
-[![Gemnasium](https://img.shields.io/gemnasium/crazy-max/CwsMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/crazy-max/CwsMailBounceHandler)
+[![Latest Stable Version](https://img.shields.io/packagist/v/seracid/php-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/seracpd/php-mail-bounce-handler)
+[![Minimum PHP Version](https://img.shields.io/badge/php->%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cd83d298ca004558ae6d3c8eeffede7b)](https://www.codacy.com/app/seracid/PhpMailBounceHandler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seracid/phpMailBounceHandler&amp;utm_campaign=Badge_Grade)
+[![StyleCI](https://styleci.io/repos/100821082/shield?style=flat-square)](https://styleci.io/repos/100821082)
+[![Gemnasium](https://img.shields.io/gemnasium/seracid/phpMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/seracid/phpMailBounceHandler)
 
-# CwsMailBounceHandler
+# PhpMailBounceHandler
+The original project for this handler was: [CwsMailBounceHandler](https://github.com/crazy-max/CwsMailBounceHandler). 
 
 📬 PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
-It checks your IMAP inbox or eml files and delete or move all bounced emails.
+It checks your IMAP inbox or eml files and deletes or moves all bounced emails.
 If a bounce is malformed, it tries to extract some useful information to parse status.
 
 ## Requirements
@@ -19,7 +19,7 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 ## Installation with Composer
 
 ```bash
-composer require crazy-max/cws-mail-bounce-handler
+composer require seracid/php-mail-bounce-handler
 ```
 
 And download the code:
@@ -35,20 +35,27 @@ You can use the eml files in the `tests/emls` folder for testing.
 
 ## Post-process
 
-A result object `Cws\MailBounceHandler\Models\Result` is available to process custom post-actions :
+A result object `SGT\MailBounceHandler\Models\Result` is available to process custom post-actions.
 
-![](https://raw.github.com/crazy-max/CwsMailBounceHandler/master/example.png)
-
-## Methods
-
-**openImapLocal** - Open a IMAP mail box in local file system.<br />
-**openImapRemote** - Open a remote IMAP mail box.<br />
-**openEmlFolder** - Open a folder containing eml files on your system.<br />
-
+# Methods
+## ImapHandler
+**openLocal** - Open a IMAP mail box in local file system.<br />
+**openRemote** - Open a remote IMAP mail box.<br />
 **processMails** - Process the messages in a mailbox or a folder.<br />
+**processMailMove** - Request mail message to be moved. <br />
+**processMailDelete** - Request mail message be deleted. <br />
+**isImapMailboxExists** - Confirms a mailbox exists (and optionally create it). <br />
+**closeMailbox** - Closes IMAP connection in use and logs it.
+
+## EmlFileHandler
+**openEmlFolder** - Open a folder containing eml files on your system.<br />
+**processMails** - Process the messages in a mailbox or a folder.<br />
+**processMailMove** - Request mail message to be moved. <br />
+**processMailDelete** - Request mail message be deleted. <br />
+
+## Handler
 
 **getStatusCodeExplanations** -Get explanations from DSN status code via the RFC 1893.<br />
-
 **isMailboxOpenMode** - Check if open mode is mailbox.<br />
 **isFileOpenMode** - Check if open mode is file.<br />
 **isNeutralProcessMode** - Check if process mode is neutral mode.<br />
@@ -91,7 +98,3 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 ## License
 
 LGPL. See `LICENSE` for more details.
-
-## More infos
-
-http://www.crazyws.fr/dev/classes-php/classe-de-gestion-des-bounces-en-php-C72TG.html

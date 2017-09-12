@@ -1,4 +1,7 @@
 # Changelog
+## 1.14 (2017/08/20)
+* Added EmlFileHandler and ImapHandler classes to handle respective email handling types
+* Changed namespace
 
 ## 1.13 (2017/08/10)
 

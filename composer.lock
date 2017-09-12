@@ -4,12 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0df49db3d0f9a7152392eb011af1659b",
-    "content-hash": "ae9ee68f072d90f39968bb5882fedd21",
+    "content-hash": "861262f6144fd198dc989aca957ebf02",
     "packages": [
         {
             "name": "crazy-max/cws-debug",
-            "version": "dev-master",
+            "version": "1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazy-max/CwsDebug.git",
@@ -48,7 +47,7 @@
                 "log",
                 "print"
             ],
-            "time": "2016-11-28 01:21:25"
+            "time": "2016-11-28T01:21:25+00:00"
         },
         {
             "name": "crazy-max/cws-dump",
@@ -94,7 +93,7 @@
                 "print_r",
                 "var_dump"
             ],
-            "time": "2016-11-28 00:44:40"
+            "time": "2016-11-28T00:44:40+00:00"
         }
     ],
     "packages-dev": [],
