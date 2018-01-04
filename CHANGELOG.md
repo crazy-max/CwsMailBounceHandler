@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.14 (2018/01/04)
+
+* Switch to MIT LICENSE
+
 ## 1.13 (2017/08/10)
 
 * Control perRecipient element while parsing DSN fields (Issue #28)
