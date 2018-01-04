@@ -4,8 +4,9 @@
 [![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/crazy-max/CwsMailBounceHandler)
 [![StyleCI](https://styleci.io/repos/9326633/shield?style=flat-square)](https://styleci.io/repos/9326633)
 [![Gemnasium](https://img.shields.io/gemnasium/crazy-max/CwsMailBounceHandler.svg?style=flat-square)](https://gemnasium.com/github.com/crazy-max/CwsMailBounceHandler)
+[![Donate Paypal](https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AWMYVUM32F6SN)
 
-# CwsMailBounceHandler
+## About
 
 📬 PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).
 It checks your IMAP inbox or eml files and delete or move all bounced emails.
@@ -16,7 +17,7 @@ If a bounce is malformed, it tries to extract some useful information to parse s
 * PHP >= 5.4
 * Enable the [php_imap](http://php.net/manual/en/book.imap.php) extension if you want to use the IMAP open mode.
 
-## Installation with Composer
+## Installation
 
 ```bash
 composer require crazy-max/cws-mail-bounce-handler
@@ -37,7 +38,7 @@ You can use the eml files in the `tests/emls` folder for testing.
 
 A result object `Cws\MailBounceHandler\Models\Result` is available to process custom post-actions :
 
-![](https://raw.github.com/crazy-max/CwsMailBounceHandler/master/example.png)
+![](.res/example.png)
 
 ## Methods
 
@@ -88,10 +89,14 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 **setPurge** - Set the mailbox server port number.<br />
 **getError** - The last error message.<br />
 
+## How can i help ?
+
+We welcome all kinds of contributions :raised_hands:!<br />
+The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon:<br />
+Any funds donated will be used to help further development on this project! :gift_heart:
+
+[![Donate Paypal](.res/paypal.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AWMYVUM32F6SN)
+
 ## License
 
-LGPL. See `LICENSE` for more details.
-
-## More infos
-
-http://www.crazyws.fr/dev/classes-php/classe-de-gestion-des-bounces-en-php-C72TG.html
+MIT. See `LICENSE` for more details.
