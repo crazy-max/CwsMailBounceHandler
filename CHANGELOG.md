@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.14.1 (2019/02/05)
+
+* Switch to TravisCI (com)
+
 ## 1.14 (2018/01/04)
 
 * Switch to MIT LICENSE

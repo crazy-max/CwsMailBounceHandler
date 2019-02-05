@@ -1,6 +1,6 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/crazy-max/cws-mail-bounce-handler.svg?style=flat-square)](https://packagist.org/packages/crazy-max/cws-mail-bounce-handler)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.3.2-8892BF.svg?style=flat-square)](https://php.net/)
-[![Build Status](https://img.shields.io/travis/crazy-max/CwsMailBounceHandler/master.svg?style=flat-square)](https://travis-ci.org/crazy-max/CwsMailBounceHandler)
+[![Build Status](https://img.shields.io/travis/com/crazy-max/CwsMailBounceHandler/master.svg?style=flat-square)](https://travis-ci.com/crazy-max/CwsMailBounceHandler)
 [![Code Quality](https://img.shields.io/codacy/grade/8f7ffe61570648478edabbd77dcad644.svg?style=flat-square)](https://www.codacy.com/app/crazy-max/CwsMailBounceHandler)
 [![Donate Paypal](https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AWMYVUM32F6SN)
 
@@ -87,9 +87,9 @@ A result object `Cws\MailBounceHandler\Models\Result` is available to process cu
 **setPurge** - Set the mailbox server port number.<br />
 **getError** - The last error message.<br />
 
-## How can i help ?
+## How can I help ?
 
-All kinds of contributions are welcomed :raised_hands:!<br />
+All kinds of contributions are welcome :raised_hands:!<br />
 The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon:<br />
 But we're not gonna lie to each other, I'd rather you buy me a beer or two :beers:!
 
