@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "5cd235c65986f74690ea5f3be03ed651",
     "packages": [
         {
             "name": "crazy-max/cws-debug",
-            "version": "1.11",
+            "version": "1.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazy-max/CwsDebug.git",
-                "reference": "cfccbb4f57a4e76e0f5609f3d1c91114600486d3"
+                "reference": "dab027c09a127464a436099f6291c28ad2d1ce91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crazy-max/CwsDebug/zipball/cfccbb4f57a4e76e0f5609f3d1c91114600486d3",
-                "reference": "cfccbb4f57a4e76e0f5609f3d1c91114600486d3",
+                "url": "https://api.github.com/repos/crazy-max/CwsDebug/zipball/dab027c09a127464a436099f6291c28ad2d1ce91",
+                "reference": "dab027c09a127464a436099f6291c28ad2d1ce91",
                 "shasum": ""
             },
             "require": {
@@ -47,20 +47,20 @@
                 "log",
                 "print"
             ],
-            "time": "2018-01-04T14:50:39+00:00"
+            "time": "2019-10-24T21:47:37+00:00"
         },
         {
             "name": "crazy-max/cws-dump",
-            "version": "1.9",
+            "version": "1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazy-max/CwsDump.git",
-                "reference": "41e34c6aeafc9430cf3d3e40f014124b9c764a91"
+                "reference": "b82645f1f56f884b6be7ebebd78d451a67b8128b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crazy-max/CwsDump/zipball/41e34c6aeafc9430cf3d3e40f014124b9c764a91",
-                "reference": "41e34c6aeafc9430cf3d3e40f014124b9c764a91",
+                "url": "https://api.github.com/repos/crazy-max/CwsDump/zipball/b82645f1f56f884b6be7ebebd78d451a67b8128b",
+                "reference": "b82645f1f56f884b6be7ebebd78d451a67b8128b",
                 "shasum": ""
             },
             "require": {
@@ -93,7 +93,7 @@
                 "print_r",
                 "var_dump"
             ],
-            "time": "2018-01-04T14:42:56+00:00"
+            "time": "2019-10-24T21:49:14+00:00"
         }
     ],
     "packages-dev": [],
