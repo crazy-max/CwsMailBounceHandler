@@ -1,4 +1,5 @@
 {
+  "abandoned": true,
   "name": "crazy-max/cws-mail-bounce-handler",
   "type": "library",
   "description": "PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).",
